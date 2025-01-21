@@ -1,0 +1,13 @@
+.Rproj.user
+.Rhistory
+.RData
+.Ruserdata
+.DS_Store
+
+/.quarto/
+/docs
+/_site
+/*_files/
+/site_libs
+*.html
+_freeze/
