@@ -33,6 +33,7 @@ book:
 
     - part: "In-class Activities"
       chapters: 
+      - ica/quarto-demo.qmd
       - ica/ica-uni.qmd
       - ica/ica-bi.qmd
       - ica/ica-multi.qmd

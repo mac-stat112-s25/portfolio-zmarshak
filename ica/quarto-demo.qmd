@@ -88,7 +88,7 @@ Quarto isn't a mind reader -- we must distinguish R code from text.
 We do so by putting code inside an **R chunk**:
 
 ```{r}
-
+seq()
 ```
 
 - Put the `seq()` code in the chunk.
@@ -112,9 +112,16 @@ We do so by putting code inside an **R chunk**:
 - Store the sequence as `four_tens`.
 - Use an R function (which we haven't learned!) to add up the numbers in `four_tens`.
 
+```{r}
+# four tens sequence
+four_tens <- sum(rep(x=10, times=4))
 
+```
 
-
+```{r}
+#sum of four tens
+sum(four_tens)
+```
 
 \
 \
@@ -128,12 +135,15 @@ We do so by putting code inside an **R chunk**:
 Code is a form of communication, and the code below doesn't cut it.
 
 Put the code in a chunk and fix it.
+```{r}
 
-Rep(x = 1, times = 10)
+rep(x = 1, times = 10)
+
 seq(from=100,to=1000,length=20)
-theNumberofStudentsinthisclass<-27
 
+TOTAL_STUDENTS<-27
 
+```
 
 \
 \
@@ -155,7 +165,7 @@ We'll utilize this feature to **comment our code**, i.e. leave short notes about
 Below, replace the `???` with an appropriate comment.
 
 ```{r}
-# ???
+# convert celcuis to ferenheit 
 temperature_c <- 10
 temperature_f <- temperature_c * 9/5 + 32
 temperature_f
