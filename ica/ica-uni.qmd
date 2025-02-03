@@ -39,6 +39,7 @@ b.  What about a visualization of the *quantitative* `elevation` variable?
 We'll address the above questions using `ggplot` tools. Try running the following chunk and simply take note of the error message -- this is one you'll get a lot!
 
 ```{r}
+library(ggplot2)
 # Use the ggplot function
 ggplot(hikes, aes(x = rating))
 ```
