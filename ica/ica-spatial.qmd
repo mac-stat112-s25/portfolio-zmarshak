@@ -69,7 +69,6 @@ Let's load [the data](../data/our_fave_places.csv) and map it!
 
 
 ```{r}
-#| eval: false
 
 fave_places <- read.csv("https://hash-mac.github.io/stat112site-s25/data/our_fave_places.csv")
 
@@ -642,7 +641,7 @@ ggplot(elections_by_counties, aes(map_id = county_fips, fill = median_age))+
   theme_map() +
   theme(legend.position = "right") + 
   coord_equal()+
-  scale_fill_gradientn(name = "median age", colors = Oranges)
+  scale_fill_gradientn(name = "median age")
 ```
 
 ### Exercise 11: Choropleth maps with leaflet {.unnumbered}
