@@ -121,7 +121,14 @@ In some place you can see building outlines while in other places you can't, dep
 #### Exercise 2: Details {.unnumbered}
 
 We can change all sorts of details in leaflet maps.
-
+# Check if gplots is already installed. If not, install it with a mirror specified.
+if(!require(gplots)){ # Use require() for conditional loading and installation
+  chooseCRANmirror() # Or set it directly:
+```{r}
+  options(repos=c(CRAN="https://cloud.r-project.org"))
+  install.packages("gplots")
+```
+  
 ```{r}
 # Load package needed to change color
 install.packages("gplots")
@@ -641,7 +648,7 @@ ggplot(elections_by_counties, aes(map_id = county_fips, fill = median_age))+
   theme_map() +
   theme(legend.position = "right") + 
   coord_equal()+
-  scale_fill_gradientn(name = "median age")
+  scale_fill_gradientn(name = "median age", colours = c("white", "lightgreen", "darkgreen"))
 ```
 
 ### Exercise 11: Choropleth maps with leaflet {.unnumbered}
