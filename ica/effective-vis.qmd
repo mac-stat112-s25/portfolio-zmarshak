@@ -276,6 +276,7 @@ Color is another important accessibility consideration. Let's check out the colo
 -   Above the image of crayons (I think it's crayons?), click "Choose file" and choose the plot file you just saved.
 -   Click the various simulator buttons (eg: Red-Weak/Protanomaly) to check out how the colors in this plot might appear to others.
 -   Summarize what you learn. What impact might our color choices have on one's ability to interpret the viz?
+  - It's important to have highly contrasting colors, both between categories and the background. Also,  green and blue and green and red can look similar in some instances
 
 #### Part c {.unnumbered}
 
@@ -310,6 +311,8 @@ Let's scratch the surface of ethics in data viz. Central to this discussion is t
 #### Part a {.unnumbered}
 
 At a minimum, our data viz should not mislead. Reconsider the climate change example from above. Why is this plot unethical and what impact might it have on policy, public opinion, etc?
+
+  - It covers such a large amount of time that it appears there is no change however if you look in closely there is change and even small amount of climate change is harmful to the planet. This graph could make people believe climate change is not real.
 
 ![](https://mac-stat.github.io/images/112/bad_viz/bad_viz_climate_change.png)
 
