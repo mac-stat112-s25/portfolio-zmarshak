@@ -205,7 +205,7 @@ Replace A, B, C, and D in the code below to:
 ```{r}
 ggplot(weather, aes(y = temp3pm, x = temp9am, color = location)) + 
   geom_point() + 
-  labs(x = "Temperature at 9am", y = "Temperature at 3 PM", title = "Temperature in Australian Cities in the Morning vs the Afternoon", color = "Location")  
+  labs(x = "Temperature at 9AM (celcius)", y = "Temperature at 3 PM (celcius)", title = "Temperature in Australian Cities in the Morning vs the Afternoon", color = "Location")  
 ```
 
 #### Part b {.unnumbered}
@@ -221,7 +221,7 @@ When we're including our plot in an article, paper, book, or other similar outle
 
 ggplot(weather, aes(y = temp3pm, x = temp9am, color = location)) + 
   geom_point() + 
-  labs(x = "Temperature at 9 AM", y = "Temperature at 3 PM", color = "City")  
+  labs(x = "Temperature at 9 AM (celcius)", y = "Temperature at 3 PM(celcuis)", color = "City")  
 ```
 
 \
@@ -254,7 +254,7 @@ Add appropriate alt text at the top of the chunk, in `fig-alt`. Then knit your R
 
 ```{r}
 #| fig-cap: "Density plots of 3pm temperatures in 3 Australian locations."
-#| fig-alt: "???"
+#| fig-alt: "A density plot of 3 pm temperatures in degrees Celcius at Hobart, Uluru, and Wollongong, Australia. Hobart has the lowest typical temperatures, while Uluru has the highest typical temperatures. Data source https://mac-stat.github.io/data/weather_3_locations.csv"
 
 ggplot(weather, aes(x = temp3pm, fill = location)) + 
   geom_density(alpha = 0.5) + 
