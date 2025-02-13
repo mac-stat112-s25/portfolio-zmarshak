@@ -337,6 +337,8 @@ Du Bois ("Doo Boys") was a "sociologist, socialist, historian, civil rights acti
 -   A [complete set of the data visualizations provided by Anthony Starks](https://speakerdeck.com/ajstarks/du-bois-visualizations-originals) (@ajstarks).
 -   An [article by Allen Hillery](https://dataliteracy.com/web-du-bois-story-of-resilience/) (@AlDatavizguy).
 
+  - The graphs in this article are a great portrayal of this person's emotions and feelings as they are documenting their personal experience with long covid. It also brings visibilty to the effects of long covid on people which many people may not know.
+  - I think the bar graphs in the article are nice looking. The bar chart is ok however there is a lot of data to interpret that at times it can be hard to read and understand
 \
 \
 
@@ -427,6 +429,8 @@ Visual perception is selective, and our attention is often drawn to contrasts fr
 **Implication**: We should design visualizations so that the features we want to highlight stand out in contrast from those that are not worth the audience's attention.
 
 **Example**: What stands out in this example image? This is originally from C. Ware, *Information Visualization: Perception for Design*, 2004? Source: S. Few, *Now You See It*, 2009, p. 33.
+
+  - The reapting pattern stands out
 
 ![](https://mac-stat.github.io/images/112/contrast.png)
 
