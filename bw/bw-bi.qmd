@@ -3,3 +3,20 @@ title: "Bivariate Viz"
 ---
 
 Use this file to generate a professional looking **bivariate** visualization.  The visualization will not perfect the first time but you are expected to improve it throughout the semester especially after covering advanced topics such as effective viz.
+
+```{r}
+# Load needed packages
+library(tidyverse)
+library(ggplot2)
+```
+
+```{r}
+# Import data
+weather <- read.csv("https://mac-stat.github.io/data/weather_3_locations.csv") 
+```
+
+```{r}
+ggplot(weather, aes(x = temp9am, y = temp3pm))+
+  geom_point(alpha = 0.5)+
+  theme_minimal()
+```
