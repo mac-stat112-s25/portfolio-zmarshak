@@ -16,7 +16,7 @@ hikes <- read.csv("https://mac-stat.github.io/data/high_peaks.csv")
 ```
 
 ```{r}
-#| fig-cap: "Histogram of the elevations of hikes in the Adrinondack Moutains"
+#| fig-cap: "Histogram of the elevations of hikes in the Adrinondack Moutains. Created by Zach Marshak, Feb. 2025"
 #| fig-alt: "Histogram of the elevations of hikes in the Adirondack Mountains. The range of elevation is between 4250 and 5500 feet, with the typical elevation of a hike being between 4000 and 4500 feet."
 ggplot(hikes, aes(x = elevation)) +
   geom_histogram(color = "white", binwidth = 200) +
