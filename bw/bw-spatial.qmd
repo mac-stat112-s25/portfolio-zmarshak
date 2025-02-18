@@ -3,3 +3,73 @@ title: "Spatial Viz"
 ---
 
 Use this file to generate a professional looking **spatial** visualization.  The visualization will not perfect the first time but you are expected to improve on it throughout the semester especially after covering advanced topics such as effective viz.
+
+```{r}
+# Install packages
+library(ggplot2)
+library(tidyverse)
+library(viridis)
+library(maps)
+library(sf)
+library(gplots)
+library(openintro)
+library(ggthemes)
+```
+
+
+```{r}
+# Import starbucks location data
+starbucks <- read.csv("https://mac-stat.github.io/data/starbucks.csv")
+```
+
+```{r}
+starbucks_us_by_state <- starbucks |>
+  filter(Country == "US") |>
+  count(State.Province) |>
+  mutate(state_name = str_to_lower(abbr2state(State.Province)))
+```
+
+```{r}
+census_pop_est_2018 <- read_csv("https://mac-stat.github.io/data/us_census_2018_state_pop_est.csv") |>
+  separate(state, into = c("dot", "state"), extra = "merge") |>
+  select(-dot) |>
+  mutate(state = str_to_lower(state))
+
+starbucks_with_2018_pop_est <-
+  starbucks_us_by_state |>
+  left_join(census_pop_est_2018,
+    by = c("state_name" = "state")
+  ) |>
+  mutate(starbucks_per_10000 = (n / est_pop_2018) * 10000)
+```
+
+```{r}
+# Get the latitude and longitude coordinates of state boundaries
+states_map <- map_data("state")
+
+```
+
+```{r}
+# get individual Starbucks points
+starbucks_contiguous_us <- starbucks |>
+  filter(Country == "US", State.Province != "AK", State.Province != "HI")
+```
+
+```{r}
+#| fig-cap: "Cholorpleth map of the Density per 10,000 people of Starbucks locations in the United States. Created by Zach Marshak, Feb. 2025, data source Mac-Stat Git Hub"
+#| fig-alt: "Choropleth map of the density of Starbucks per 10,000 people categorized by state. Lighter colors symbolize fewer Starbucks locations per 10,000, and darker colors symbolize greater locations per 10,00 people. Grey point markers to represent each individual Starbucks location. There is a pattern of higher denisty in the Western United States"
+
+ggplot(starbucks_with_2018_pop_est)+
+  geom_map(map = states_map, aes(map_id = state_name, fill = starbucks_per_10000))+
+  expand_limits(x = states_map$long, y = states_map$lat) +
+  theme_map()+
+  theme(legend.position = "right") + 
+  coord_equal() + 
+   scale_fill_viridis_c(option = "magma", name = "Starbucks per 10,000 people", direction = -1) +
+  labs(title = "Density of Starbucks Locations in The United States")+
+  geom_point(data = starbucks_contiguous_us,
+  aes(x = Longitude, y = Latitude),
+    alpha = 0.5,
+    size = 0.25,
+    color = "grey")
+```
