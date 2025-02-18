@@ -3,3 +3,25 @@ title: "Quadvariate Viz"
 ---
 
 Use this file to generate a professional looking **quadvariate** visualization.  The visualization will not perfect the first time but you are expected to improve on it throughout the semester especially after covering advanced topics such as effective viz.
+
+```{r}
+#install packages
+library(ggplot2)
+library(tidyverse)
+library(viridis)
+```
+
+```{r}
+# Import data
+weather <- read.csv("https://mac-stat.github.io/data/weather_3_locations.csv") 
+```
+
+```{r}
+#| fig-cap: "Scatter plot of Temperatures, and perciptiation in the Australian cities of Hobart, Uluru, and Wollongong. Created by Zach Marshak, Feb. 2025, data source Mac-Stat Git Hub." 
+#| fig-alt: "Scatter plot comparing the Temperature in Celcius at 9 am to 3 pm. Dot colors symbolize if there was rain, purple meaning no and yellow meaning yes. The plot is faceted by location, with there being three: Hobart, Wollongon, and Uluru. Uluru has the typically highest temps and the least amount of rain, while Hobart is typically the coldest and Wollongong has typically the most rainy days."
+ggplot(weather, aes( x= temp9am, y = temp3pm, color = raintoday))+
+  geom_point(alpha = 0.5)+
+  scale_color_viridis_d()+
+  facet_wrap(~ location)+
+  labs(x = "Temperature 9 am (celcius)", y = "Temperature 3 pm (celcius)", color = "Did it Rain?", title = "Weather Conditions in Australian Cities")
+```
