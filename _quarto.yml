@@ -39,6 +39,7 @@ book:
       - ica/ica-multi.qmd
       - ica/ica-spatial.qmd
       - ica/effective-vis.qmd
+      - ica/ica-wrangling.qmd
 
 format:
   html:
