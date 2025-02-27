@@ -4,6 +4,8 @@ format: html
 ---
 ```{r}
 library(tidyverse)
+library(ggplot2)
+library(lubridate)
 penguins <- read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2020/2020-07-28/penguins.csv')
 
 # Check it out
@@ -334,14 +336,26 @@ Calculate the total number of births in each month and year, eg, Jan 1969, Feb 1
 Birthdays |>
   group_by(year, month) |>
   summarise(total_births = sum(births)) |>
-  mutate(month = month(month, label = TRUE)) 
+  mutate(month = month(month, label = TRUE)) |>
+  ggplot(aes(x = month, y = total_births))+
+  geom_boxplot()
+#Births are typically higher in the summer months than the winter months
 ```
+
 
 #### Part b {.unnumbered}
 
 In 1988, calculate the total number of births per week in each state. Get rid of week "53", which isn't a complete week! Then, make a line plot of births by week for each state and comment on what you learn. For example, do you notice any seasonal trends? Are these the same in every state? Any outliers?
 
 ```{r}
+Birthdays |>
+  mutate(week = week(date))|>
+  filter(year == 1988, week != 53) |>
+  group_by(week, state)|>
+  summarise(births_per_week = sum(births))|>
+  ggplot(aes(x = week, y = births_per_week, color = state))+
+  geom_line()
+#The more populous states had higher births per week, those being outliers, however mpre generally births somewhat peaked in the summer weeks
 ```
 
 #### Part c {.unnumbered}
@@ -349,6 +363,14 @@ In 1988, calculate the total number of births per week in each state. Get rid of
 Repeat the above for just Minnesota (MN) and Louisiana (LA). MN has one of the coldest climates and LA has one of the warmest. How do their seasonal trends compare? Do you think these trends are similar in other colder and warmer states? Try it!
 
 ```{r}
+Birthdays |>
+  mutate(week = week(date))|>
+  filter(year == 1988, week != 53, state %in% c("MN", "LA")) |>
+  group_by(week, state)|>
+  summarise(births_per_week = sum(births))|>
+  ggplot(aes(x = week, y = births_per_week, color = state))+
+  geom_line()
+#There are some what similar however MN didn't have the as big as a dip between weeks 10 and 20 it acutally generally continued to rise
 ```
 
 
@@ -360,9 +382,22 @@ Repeat the above for just Minnesota (MN) and Louisiana (LA). MN has one of the c
 Create a dataset with only births in Massachusetts (MA) in 1979 and sort the days from those with the most births to those with the fewest.
 
 ```{r}
+MA_1979 <- Birthdays |>
+  filter(year == 1979, state == "MA") |>
+  arrange(desc(births))
+  
 ```
 
 #### Part b {.unnumbered}
 
 Make a table showing the five states with the most births between September 9, 1979 and September 12, 1979, including the 9th and 12th. Arrange the table in descending order of births.
+
+```{r}
+Birthdays |>
+  filter(date >= ymd("1978-09-09") & date <= ymd("1979-09-12")) |>
+  group_by(state) |>
+  summarize(tot_births = sum(births))|>
+    arrange(desc(tot_births))|>
+    head(5)
+```
 
