@@ -41,6 +41,7 @@ book:
       - ica/effective-vis.qmd
       - ica/ica-wrangling.qmd
       - ica/Dates.qmd
+      - ica/ica-Reshaping.qmd
 
 format:
   html:
