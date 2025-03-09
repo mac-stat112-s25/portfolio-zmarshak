@@ -1,0 +1,82 @@
+---
+title: "Exam_1_vis"
+format: html
+---
+
+```{r}
+#load packages
+library(tidyverse)
+library(tidytuesdayR)
+library(gplots)
+```
+
+```{r}
+#get data
+tuesdata <- tt_load('2020-02-18')
+fc <- tuesdata$food_consumption
+```
+
+```{r}
+# understand data
+str(fc)
+
+dim(fc)
+
+head(fc)
+```
+
+```{r}
+#| fig-width: 13
+#understand variables individually
+ggplot(fc, aes(x = country)) +
+  geom_bar()
+
+ggplot(fc, aes(x = consumption)) +
+  geom_density()
+
+ggplot(fc, aes(x = food_category)) +
+  geom_bar()
+```
+
+# For the variables of Food Category and Country, we don't learn too much other than each variable has an equal number of observations. However, the density plot of consumption provides a range of the consumption leves as well as the overall trend which average consumpotion being aroun 30 kg per person a year.
+
+```{r}
+#consumption by food category
+ggplot(fc, aes(x = consumption, fill = food_category)) +
+  geom_histogram() +
+  scale_fill_viridis_d()
+```
+# Wheat and beef prodtucts tend to have some of the highest consumption through out the whole world
+
+```{r}
+#| fig-height: 22
+#| fig-width: 15
+
+ggplot(fc, aes(x = consumption))+
+  geom_histogram() +
+  facet_wrap(~ country)
+```
+
+# Western and "first world" country tend to have higher consumption than other countries
+
+```{r}
+#| fig-height: 20
+#| fig-width: 20
+#| fig-cap: "Food Consumption by country by food category (Zach Marshak, March 2025, data source: Nu3"
+#| fig-alt: "Histograms, with the x axis as consumption by kilograms per person per year, facted by country, and filled by food category(Beef, eggs, fish, lam & goat, Dairy, Prok, poultry, rice, soybeans, and wheat)"
+
+ggplot(fc, aes(x = consumption, fill = food_category)) +
+  geom_histogram(position = "fill") +
+  facet_wrap(~ country) +
+  scale_fill_viridis_d() +
+  labs(x = "Consumption", title = "Conusumption Throughout the World", fill = "Food Category") +
+  theme(element_text(size = 12))
+```
+
+# With so much data, it is really hard to tell, but by food category, consumption really depends on how a typical diet in each country is, and I still think the previous observation that Western countries typically have higher overall consumption holds true
+
+## Additonal questions
+
+- What does Co2 emissions look like by food category in each country?
+- What do Co2 emissions by consumption of each food category look like?
+
