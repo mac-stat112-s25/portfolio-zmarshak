@@ -35,6 +35,7 @@ book:
     - part: "Summary"
       chapters: 
         - Summary/Exam_1_Review_Sheet.qmd
+        
     - part: "In-class Activities"
       chapters: 
       - ica/quarto-demo.qmd

@@ -1,5 +1,5 @@
 ---
-title: "ica-wrangling"
+title: "Wrangling"
 format: html
 ---
 ```{r}

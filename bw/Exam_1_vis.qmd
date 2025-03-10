@@ -1,5 +1,5 @@
 ---
-title: "Exam_1_vis"
+title: "Exam 1 Visulization"
 format: html
 ---
 
