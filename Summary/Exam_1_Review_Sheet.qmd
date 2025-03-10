@@ -1,5 +1,5 @@
 ---
-title: "Exam_1_Review_Sheet"
+title: "Exam 1 Review Sheet"
 format: html
 ---
-
+![](COMP-112-Exam1-Review.png)
