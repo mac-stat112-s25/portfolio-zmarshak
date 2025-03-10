@@ -46,6 +46,7 @@ book:
       - ica/Dates.qmd
       - ica/ica-Reshaping.qmd
       - ica/ica-joining.qmd
+      - ica/ica-factors.qmd
 
 format:
   html:
