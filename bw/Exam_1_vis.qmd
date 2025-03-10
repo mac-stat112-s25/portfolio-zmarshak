@@ -73,7 +73,7 @@ ggplot(fc, aes(x = consumption, fill = food_category)) +
   theme(element_text(size = 12))
 ```
 
-# With so much data, it is really hard to tell, but by food category, consumption really depends on how a typical diet in each country is, and I still think the previous observation that Western countries typically have higher overall consumption holds true
+-  With so much data, it is really hard to tell, but by food category, consumption really depends on how a typical diet in each country is, and I still think the previous observation that Western countries typically have higher overall consumption holds true
 
 ## Additonal questions
 

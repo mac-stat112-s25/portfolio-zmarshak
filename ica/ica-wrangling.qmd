@@ -232,10 +232,10 @@ BEFORE running the below chunk, what do you think it will produce?
 :::
 
 ```{r}
-# elections_small |> 
-#   filter(state_name == "Delaware") |> 
-#   mutate(repub_win_20 = repub_pct_20 > dem_pct_20) |> 
-#   select(county_name, repub_pct_20, dem_pct_20, repub_win_20)
+ elections_small |> 
+   filter(state_name == "Delaware") |> 
+   mutate(repub_win_20 = repub_pct_20 > dem_pct_20) |> 
+   select(county_name, repub_pct_20, dem_pct_20, repub_win_20)
 ```
 
 #### Part e {-}
@@ -252,10 +252,10 @@ BEFORE trying, what do you think will happen if you change the order of mutate a
 
 ```{r}
 # Now try it. Change the order of mutate and select below.
-# elections_small |> 
-#   filter(state_name == "Delaware") |> 
-#   mutate(repub_win_20 = repub_pct_20 > dem_pct_20) |> 
-#   select(county_name, repub_pct_20, dem_pct_20, repub_win_20)
+ elections_small |> 
+   filter(state_name == "Delaware") |> 
+   mutate(repub_win_20 = repub_pct_20 > dem_pct_20) |> 
+   select(county_name, repub_pct_20, dem_pct_20, repub_win_20)
 ```
 
 
@@ -275,7 +275,7 @@ Show just the counties in Minnesota and their Democratic 2020 vote percentage, f
 elections_small |> 
   filter(state_name == "Minnesota")|>
   select(county_name, dem_pct_20)|>
-  arrange(desc(dem_pct_20))
+  arrange(desc(dem_pct_20)) |>
   head()
 ```
 

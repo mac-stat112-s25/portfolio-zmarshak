@@ -33,8 +33,6 @@ book:
       - bw/Exam_1_vis.qmd
       
     - part: "Summary"
-      chapters:
-      - sum/Comp 112- Exam 1 Review.png
       
     - part: "In-class Activities"
       chapters: 
