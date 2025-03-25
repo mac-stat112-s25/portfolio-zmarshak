@@ -49,6 +49,7 @@ book:
       - ica/ica-Reshaping.qmd
       - ica/ica-joining.qmd
       - ica/ica-factors.qmd
+      - ica/ica-data_import.qmd
 
 format:
   html:
