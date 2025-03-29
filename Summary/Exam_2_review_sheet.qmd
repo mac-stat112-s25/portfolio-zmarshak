@@ -2,4 +2,7 @@
 title: "Exam_2_review_sheet"
 format: html
 ---
-
+```{r}
+pdf_file <- "Exam_2_Cheat_sheet.pdf" # Replace with your file path
+system(paste0("open ", shQuote(pdf_file)))
+```
