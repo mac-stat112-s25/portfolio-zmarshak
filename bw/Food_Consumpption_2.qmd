@@ -52,9 +52,33 @@ print(top_5_by_cat)
 
 ```{r}
 #| fig-height: 5
-#| fig-width: 25
-ggplot(top_5_by_cat, aes(x = country, y = consumption, fill = food_category)) +
-  geom_col() +
+#| fig-width: 10
+ggplot(top_5_by_cat, aes(x = food_category, y = consumption, fill = country)) +
+  geom_col(position = "dodge") +
   scale_fill_viridis_d()
+```
+
+```{r}
+ne_countries(returnclass = "sf") |>
+  select(name, geometry) |>
+  mutate(name = ifelse(name == "United States of America", "USA", name)) |>
+  mutate(name = ifelse(name == "Bosnia and Herz.", "Bosnia and Herzegovina", name)) |>
+  mutate(name == ifelse("Czechia", "Czech Republic", name)) |>
+  mutate(name == ifelse(name == "Taiwan", "Taiwan ROC", name)) |>
+           left_join(fcc |>
+                      select(where(~ any(names(.) == "co2_emmission"))) |>
+                       group_by(food_categroy) |>
+  mutate(consumption = (consumption - mean(consumption))/sd(consumption)),
+  join_by(name == country)) |>
+  pivot_wider(names_from = food_category, values_from = consumption) |>
+  select(-"NA") |>
+  pivot_longer(cols = c(-name, -geometry), 
+               names_to = "food_category",
+               values_to = "consumption") |>
+  ggplot() +
+  geom_sf(aes(fill = consumption)) +
+  facet_wrap(~food_category) +
+  theme(legend.position = "bottom") +
+  scale_fill_viridis_c()
 ```
   
