@@ -1,0 +1,60 @@
+---
+title: "Food Consumpption 2"
+format: html
+---
+
+```{r}
+#install packages
+library(tidytuesdayR)
+library(tidyverse)
+library(rnaturalearth)
+library(sf)
+```
+
+```{r}
+#load data
+tuesdata <- tt_load('2020-02-18')
+fc <- tuesdata$food_consumption
+```
+
+```{r}
+#fix food_cat vairable
+fcc <- fc |>
+  mutate(food_category = fct_recode(food_category,
+                                    "Lamb" = "Lamb & Goat",
+                                    "Dairy" = "Milk - inc. cheese",
+                                    "Wheat" = "Wheat and Wheat Products",
+                                    "Nuts" = "Nuts inc. Peanut Butter"))
+```
+
+```{r}
+fcc |>
+  distinct(food_category)
+```
+
+### Research Question 1: What five countries consume the most food?
+
+```{r}
+fcc |>
+  group_by(country) |>
+  summarise(tot_consumption = sum(consumption)) |>
+  arrange(desc(tot_consumption)) |>
+  head(5)
+```
+
+```{r}
+top_5_by_cat <- fcc |>
+  group_by(food_category) |>
+  slice_max(order_by = consumption, n = 5)
+
+print(top_5_by_cat)
+```
+
+```{r}
+#| fig-height: 5
+#| fig-width: 25
+ggplot(top_5_by_cat, aes(x = country, y = consumption, fill = food_category)) +
+  geom_col() +
+  scale_fill_viridis_d()
+```
+  
