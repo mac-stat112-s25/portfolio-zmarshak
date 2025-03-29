@@ -35,7 +35,7 @@ book:
     - part: "Summary"
       chapters: 
         - Summary/Exam_1_Review_Sheet.qmd
-        - Summary/Food_Consumption_2.qmd
+        - Summary/Exam_2_Review_sheet.qmd
         
     - part: "In-class Activities"
       chapters: 
