@@ -63,11 +63,11 @@ ne_countries(returnclass = "sf") |>
   select(name, geometry) |>
   mutate(name = ifelse(name == "United States of America", "USA", name)) |>
   mutate(name = ifelse(name == "Bosnia and Herz.", "Bosnia and Herzegovina", name)) |>
-  mutate(name == ifelse("Czechia", "Czech Republic", name)) |>
-  mutate(name == ifelse(name == "Taiwan", "Taiwan ROC", name)) |>
+  mutate(name = ifelse("Czechia", "Czech Republic", name)) |>
+  mutate(name = ifelse(name == "Taiwan", "Taiwan. ROC", name)) |>
            left_join(fcc |>
-                      select(where(~ any(names(.) == "co2_emmission"))) |>
-                       group_by(food_categroy) |>
+                      select(-co2_emmission) |>
+                       group_by(food_category) |>
   mutate(consumption = (consumption - mean(consumption))/sd(consumption)),
   join_by(name == country)) |>
   pivot_wider(names_from = food_category, values_from = consumption) |>
