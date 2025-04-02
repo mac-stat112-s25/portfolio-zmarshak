@@ -31,6 +31,7 @@ book:
       - bw/bw-quad.qmd
       - bw/bw-spatial.qmd
       - bw/Exam_1_vis.qmd
+      - bw/Food_Consumpption_2.qmd
       
     - part: "Summary"
       chapters: 
