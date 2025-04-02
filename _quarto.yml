@@ -32,6 +32,7 @@ book:
       - bw/bw-spatial.qmd
       - bw/Exam_1_vis.qmd
       - bw/Food_Consumpption_2.qmd
+      - bw/solo_Project
       
     - part: "Summary"
       chapters: 
