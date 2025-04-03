@@ -17,12 +17,26 @@ MN <- counties(state = "Minnesota")
 
 ```{r}
 # get labor force projections
-labor_proj_bycounty <- read_csv("~/Documents/Github/portfolio-zmarshak/bw/mncounties_labor_force_rates.csv")
+labor_proj_bycounty <- read_csv("~/Documents/Github/portfolio-zmarshak/data/mn-counties_labor_rates.csv")
 ```
 
 ```{r}
-labor_proj_bycounty |>
-  select(...2, ...3, ...4, ...5, ...6, ...7) |>
-  drop_na()
-  
+#clean labor
+labor_clean <- labor_proj_bycounty |>
+  select(Geography, Age, `2015`, `2020`, `2025`, `2030`) |>
+  group_by(Geography) |>
+  summarise(`2015` = sum(`2015`), `2020` = sum(`2020`), `2025` = sum(`2025`), `2030` =  sum(`2030`)) |>
+  mutate(labor_change = `2030` - `2020`)
+```
+
+```{r}
+#| fig-cap: Projected Labor Force Participation Changes in Minnesota from 2020 to 2030 by county. (Created by: Zach Marshak April 2024, Data Sources: US Census Bureau, MN State Demographic Center)
+MN |>
+  select(NAME, geometry) |>
+  left_join(labor_clean, join_by(NAME == Geography)) |>
+  ggplot()+
+  geom_sf(aes(fill = labor_change)) +
+  scale_fill_viridis_c(direction = -1) +
+  labs(title = "Minnesota Projected Labor Force Participation", fill = "Projected Change from 2020 to 2030 by County") +
+  theme_void()
 ```
