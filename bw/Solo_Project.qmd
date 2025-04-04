@@ -30,7 +30,9 @@ labor_clean <- labor_proj_bycounty |>
 ```
 
 ```{r}
-#| fig-cap: Projected Labor Force Participation Changes in Minnesota from 2020 to 2030 by county. (Created by: Zach Marshak April 2024, Data Sources: US Census Bureau, MN State Demographic Center)
+#| fig-alt: "A choropleth map of the change in Labor Force participation from 2020 to 2030 in Minnesota by county. The Twin Cities metro area is expected to see large growth over this period, and the rest of the state is expected to see much smaller growth or even negative growth."
+#| fig-cap: "Projected Labor Force Participation Changes in Minnesota from 2020 to 2030 by county. (Created by: Zach Marshak April 2024, Data Sources: US Census Bureau, MN State Demographic Center)"
+
 MN |>
   select(NAME, geometry) |>
   left_join(labor_clean, join_by(NAME == Geography)) |>
@@ -40,3 +42,6 @@ MN |>
   labs(title = "Minnesota Projected Labor Force Participation", fill = "Projected Change from 2020 to 2030 by County") +
   theme_void()
 ```
+
+## Explaination 
+In this visualization, I pulled labor force data from the Minnesota State Demographic Center. When visualized, you can see that the majority of counties in the state are expected to see very minimal growth and even shrinking labor force participation however, the counties in the Twin Cities Metro area are expected to see a much larger growth. This could because of growing populations in Twin Cities while there may likely be shrinking populations in the rural areas of the state.
