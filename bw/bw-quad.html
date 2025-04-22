@@ -331,46 +331,28 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   
 
 
-</header><p>Use this file to generate a professional looking <strong>quadvariate</strong> visualization. The visualization will not perfect the first time but you are expected to improve on it throughout the semester especially after covering advanced topics such as effective viz.</p>
-<div class="cell">
+</header><div class="cell">
 <details class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="co">#install packages</span></span>
 <span id="cb1-2"><a href="#cb1-2"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb1-3"><a href="#cb1-3"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details><div class="cell-output cell-output-stderr">
-<pre><code>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
-✔ dplyr     1.1.4     ✔ readr     2.1.5
-✔ forcats   1.0.0     ✔ stringr   1.5.1
-✔ lubridate 1.9.4     ✔ tibble    3.2.1
-✔ purrr     1.0.2     ✔ tidyr     1.3.1
-── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
-✖ dplyr::filter() masks stats::filter()
-✖ dplyr::lag()    masks stats::lag()
-ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
-</div>
-<details class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="fu">library</span>(viridis)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details><div class="cell-output cell-output-stderr">
-<pre><code>Loading required package: viridisLite</code></pre>
-</div>
-</div>
-<div class="cell">
-<details class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="co"># Import data</span></span>
-<span id="cb5-2"><a href="#cb5-2"></a>weather <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"https://mac-stat.github.io/data/weather_3_locations.csv"</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-3"><a href="#cb1-3"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-4"><a href="#cb1-4"></a><span class="fu">library</span>(viridis)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <div class="cell">
-<details class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="fu">ggplot</span>(weather, <span class="fu">aes</span>( <span class="at">x=</span> temp9am, <span class="at">y =</span> temp3pm, <span class="at">color =</span> raintoday))<span class="sc">+</span></span>
-<span id="cb6-2"><a href="#cb6-2"></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.5</span>)<span class="sc">+</span></span>
-<span id="cb6-3"><a href="#cb6-3"></a>  <span class="fu">scale_color_viridis_d</span>()<span class="sc">+</span></span>
-<span id="cb6-4"><a href="#cb6-4"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> location)<span class="sc">+</span></span>
-<span id="cb6-5"><a href="#cb6-5"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Temperature 9 am (celcius)"</span>, <span class="at">y =</span> <span class="st">"Temperature 3 pm (celcius)"</span>, <span class="at">color =</span> <span class="st">"Did it Rain?"</span>, <span class="at">title =</span> <span class="st">"Weather Conditions in Australian Cities"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details><div class="cell-output cell-output-stderr">
-<pre><code>Warning: Removed 69 rows containing missing values or values outside the scale range
-(`geom_point()`).</code></pre>
+<details class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="co"># Import data</span></span>
+<span id="cb2-2"><a href="#cb2-2"></a>weather <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"https://mac-stat.github.io/data/weather_3_locations.csv"</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 </div>
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
+<div class="cell">
+<details class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="fu">ggplot</span>(weather, <span class="fu">aes</span>( <span class="at">x=</span> temp9am, <span class="at">y =</span> temp3pm, <span class="at">color =</span> raintoday))<span class="sc">+</span></span>
+<span id="cb3-2"><a href="#cb3-2"></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.5</span>)<span class="sc">+</span></span>
+<span id="cb3-3"><a href="#cb3-3"></a>  <span class="fu">scale_color_viridis_d</span>()<span class="sc">+</span></span>
+<span id="cb3-4"><a href="#cb3-4"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> location)<span class="sc">+</span></span>
+<span id="cb3-5"><a href="#cb3-5"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Temperature 9 am (celcius)"</span>, <span class="at">y =</span> <span class="st">"Temperature 3 pm (celcius)"</span>, <span class="at">color =</span> <span class="st">"Did it Rain?"</span>, <span class="at">title =</span> <span class="st">"Weather Conditions in Australian Cities"</span>, <span class="at">caption =</span> <span class="st">"Scatter plot of Temperatures, and perciptiation in the Australian cities of Hobart, Uluru, and Wollongong. Created by Zach Marshak, Feb. 2025, data source Mac-Stat Git Hub(https://mac-stat.github.io/data/weather_3_locations.csv)"</span> )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details><div class="cell-output-display">
+<div>
 <figure class="figure"><p><img src="bw-quad_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" alt="Scatter plot comparing the Temperature in Celcius at 9 am to 3 pm. Dot colors symbolize if there was rain, purple meaning no and yellow meaning yes. The plot is faceted by location, with there being three: Hobart, Wollongon, and Uluru. Uluru has the typically highest temps and the least amount of rain, while Hobart is typically the coldest and Wollongong has typically the most rainy days." width="672"></p>
-<figcaption>Scatter plot of Temperatures, and perciptiation in the Australian cities of Hobart, Uluru, and Wollongong. Created by Zach Marshak, Feb.&nbsp;2025, data source Mac-Stat Git Hub.</figcaption></figure>
+</figure>
 </div>
 </div>
 </div>
@@ -1009,33 +991,32 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>
   </div>
 </nav><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
-<div class="sourceCode" id="cb8" data-shortcodes="false"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb8-1"><a href="#cb8-1"></a><span class="co">---</span></span>
-<span id="cb8-2"><a href="#cb8-2"></a><span class="an">title:</span><span class="co"> "Quadvariate Viz"</span></span>
-<span id="cb8-3"><a href="#cb8-3"></a><span class="co">---</span></span>
-<span id="cb8-4"><a href="#cb8-4"></a></span>
-<span id="cb8-5"><a href="#cb8-5"></a>Use this file to generate a professional looking **quadvariate** visualization.  The visualization will not perfect the first time but you are expected to improve on it throughout the semester especially after covering advanced topics such as effective viz.</span>
-<span id="cb8-6"><a href="#cb8-6"></a></span>
-<span id="cb8-9"><a href="#cb8-9"></a><span class="in">```{r}</span></span>
-<span id="cb8-10"><a href="#cb8-10"></a><span class="co">#install packages</span></span>
-<span id="cb8-11"><a href="#cb8-11"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb8-12"><a href="#cb8-12"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb8-13"><a href="#cb8-13"></a><span class="fu">library</span>(viridis)</span>
-<span id="cb8-14"><a href="#cb8-14"></a><span class="in">```</span></span>
-<span id="cb8-15"><a href="#cb8-15"></a></span>
-<span id="cb8-18"><a href="#cb8-18"></a><span class="in">```{r}</span></span>
-<span id="cb8-19"><a href="#cb8-19"></a><span class="co"># Import data</span></span>
-<span id="cb8-20"><a href="#cb8-20"></a>weather <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"https://mac-stat.github.io/data/weather_3_locations.csv"</span>) </span>
-<span id="cb8-21"><a href="#cb8-21"></a><span class="in">```</span></span>
-<span id="cb8-22"><a href="#cb8-22"></a></span>
-<span id="cb8-25"><a href="#cb8-25"></a><span class="in">```{r}</span></span>
-<span id="cb8-26"><a href="#cb8-26"></a><span class="co">#| fig-cap: "Scatter plot of Temperatures, and perciptiation in the Australian cities of Hobart, Uluru, and Wollongong. Created by Zach Marshak, Feb. 2025, data source Mac-Stat Git Hub." </span></span>
-<span id="cb8-27"><a href="#cb8-27"></a><span class="co">#| fig-alt: "Scatter plot comparing the Temperature in Celcius at 9 am to 3 pm. Dot colors symbolize if there was rain, purple meaning no and yellow meaning yes. The plot is faceted by location, with there being three: Hobart, Wollongon, and Uluru. Uluru has the typically highest temps and the least amount of rain, while Hobart is typically the coldest and Wollongong has typically the most rainy days."</span></span>
-<span id="cb8-28"><a href="#cb8-28"></a><span class="fu">ggplot</span>(weather, <span class="fu">aes</span>( <span class="at">x=</span> temp9am, <span class="at">y =</span> temp3pm, <span class="at">color =</span> raintoday))<span class="sc">+</span></span>
-<span id="cb8-29"><a href="#cb8-29"></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.5</span>)<span class="sc">+</span></span>
-<span id="cb8-30"><a href="#cb8-30"></a>  <span class="fu">scale_color_viridis_d</span>()<span class="sc">+</span></span>
-<span id="cb8-31"><a href="#cb8-31"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> location)<span class="sc">+</span></span>
-<span id="cb8-32"><a href="#cb8-32"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Temperature 9 am (celcius)"</span>, <span class="at">y =</span> <span class="st">"Temperature 3 pm (celcius)"</span>, <span class="at">color =</span> <span class="st">"Did it Rain?"</span>, <span class="at">title =</span> <span class="st">"Weather Conditions in Australian Cities"</span>)</span>
-<span id="cb8-33"><a href="#cb8-33"></a><span class="in">```</span></span>
+<div class="sourceCode" id="cb4" data-shortcodes="false"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb4-1"><a href="#cb4-1"></a><span class="co">---</span></span>
+<span id="cb4-2"><a href="#cb4-2"></a><span class="an">title:</span><span class="co"> "Quadvariate Viz"</span></span>
+<span id="cb4-3"><a href="#cb4-3"></a><span class="co">---</span></span>
+<span id="cb4-4"><a href="#cb4-4"></a></span>
+<span id="cb4-5"><a href="#cb4-5"></a></span>
+<span id="cb4-6"><a href="#cb4-6"></a></span>
+<span id="cb4-9"><a href="#cb4-9"></a><span class="in">```{r}</span></span>
+<span id="cb4-10"><a href="#cb4-10"></a><span class="co">#install packages</span></span>
+<span id="cb4-11"><a href="#cb4-11"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb4-12"><a href="#cb4-12"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb4-13"><a href="#cb4-13"></a><span class="fu">library</span>(viridis)</span>
+<span id="cb4-14"><a href="#cb4-14"></a><span class="in">```</span></span>
+<span id="cb4-15"><a href="#cb4-15"></a></span>
+<span id="cb4-18"><a href="#cb4-18"></a><span class="in">```{r}</span></span>
+<span id="cb4-19"><a href="#cb4-19"></a><span class="co"># Import data</span></span>
+<span id="cb4-20"><a href="#cb4-20"></a>weather <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"https://mac-stat.github.io/data/weather_3_locations.csv"</span>) </span>
+<span id="cb4-21"><a href="#cb4-21"></a><span class="in">```</span></span>
+<span id="cb4-22"><a href="#cb4-22"></a></span>
+<span id="cb4-25"><a href="#cb4-25"></a><span class="in">```{r}</span></span>
+<span id="cb4-26"><a href="#cb4-26"></a><span class="co">#| fig-alt: "Scatter plot comparing the Temperature in Celcius at 9 am to 3 pm. Dot colors symbolize if there was rain, purple meaning no and yellow meaning yes. The plot is faceted by location, with there being three: Hobart, Wollongon, and Uluru. Uluru has the typically highest temps and the least amount of rain, while Hobart is typically the coldest and Wollongong has typically the most rainy days."</span></span>
+<span id="cb4-27"><a href="#cb4-27"></a><span class="fu">ggplot</span>(weather, <span class="fu">aes</span>( <span class="at">x=</span> temp9am, <span class="at">y =</span> temp3pm, <span class="at">color =</span> raintoday))<span class="sc">+</span></span>
+<span id="cb4-28"><a href="#cb4-28"></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.5</span>)<span class="sc">+</span></span>
+<span id="cb4-29"><a href="#cb4-29"></a>  <span class="fu">scale_color_viridis_d</span>()<span class="sc">+</span></span>
+<span id="cb4-30"><a href="#cb4-30"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> location)<span class="sc">+</span></span>
+<span id="cb4-31"><a href="#cb4-31"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Temperature 9 am (celcius)"</span>, <span class="at">y =</span> <span class="st">"Temperature 3 pm (celcius)"</span>, <span class="at">color =</span> <span class="st">"Did it Rain?"</span>, <span class="at">title =</span> <span class="st">"Weather Conditions in Australian Cities"</span>, <span class="at">caption =</span> <span class="st">"Scatter plot of Temperatures, and perciptiation in the Australian cities of Hobart, Uluru, and Wollongong. Created by Zach Marshak, Feb. 2025, data source Mac-Stat Git Hub(https://mac-stat.github.io/data/weather_3_locations.csv)"</span> )</span>
+<span id="cb4-32"><a href="#cb4-32"></a><span class="in">```</span></span>
 </code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
