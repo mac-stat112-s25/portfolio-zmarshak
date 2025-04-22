@@ -1,8 +1,9 @@
 ---
 title: "Exam 2 review sheet"
 format: html
-{width = 2500, height = 3000}
 ---
  
  
-![](Exam_2_cheat_sheet.pdf, {width = 2500, height = 3000}) 
+![](Exam_2_cheat_sheet.pdf) 
+
+

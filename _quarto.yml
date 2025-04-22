@@ -68,6 +68,7 @@ format:
     code-line-numbers: true
     code-tools: true
     code-fold: true
+    
 
 execute:
   cache: false
@@ -75,7 +76,7 @@ execute:
   echo: true
   warning: false
   error: false
-  message: false
+  download: false
 
 editor: 
   markdown:

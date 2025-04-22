@@ -31,7 +31,7 @@ labor_clean <- labor_proj_bycounty |>
 
 ```{r}
 #| fig-height: 10
-#| fig-width: 15
+#| fig-width: 18
 #| fig-alt: "A choropleth map of the change in Labor Force participation from 2020 to 2030 in Minnesota by county. The Twin Cities metro area is expected to see large growth over this period, and the rest of the state is expected to see much smaller growth or even negative growth."
 
 MN |>
