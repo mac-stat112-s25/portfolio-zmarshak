@@ -2,7 +2,7 @@
 title: "Univariate Viz"
 ---
 
-Use this file to generate a professional looking **univariate** visualization. The visualization will not perfect the first time but you are expected to improve on it throughout the semester especially after covering advanced topics such as effective viz.
+
 
 ```{r}
 # Load packages
@@ -16,10 +16,9 @@ hikes <- read.csv("https://mac-stat.github.io/data/high_peaks.csv")
 ```
 
 ```{r}
-#| fig-cap: "Histogram of the elevations of hikes in the Adirondack Mountains. Created by Zach Marshak, Feb. 2025, data source Mac-Stat Git Hub"
 #| fig-alt: "Histogram of the elevations of hikes in the Adirondack Mountains. The range of elevation is between 4250 and 5500 feet, with the typical elevation of a hike being between 4000 and 4500 feet."
 ggplot(hikes, aes(x = elevation)) +
   geom_histogram(color = "white", binwidth = 200) +
-  labs(x = "Elevation (feet)", y = "Number of Hikes", title = "Elevation of hikes in the Adirondacks")+
+  labs(x = "Elevation (feet)", y = "Number of Hikes", title = "Elevation of hikes in the Adirondacks", caption = "Histogram of the elevations of hikes in the Adirondack Mountains. Created by Zach Marshak, Feb. 2025, data source Mac-Stat Git Hub(https://mac-stat.github.io/data/high_peaks.csv)")+
   theme_minimal()
 ```

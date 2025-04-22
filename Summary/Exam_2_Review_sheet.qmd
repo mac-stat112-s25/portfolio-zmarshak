@@ -4,4 +4,4 @@ format: html
 ---
  
  
-![](Exam_2_cheat_sheet.pdf)
+![](Exam_2_cheat_sheet.pdf) {width = 2500, height = 3000}

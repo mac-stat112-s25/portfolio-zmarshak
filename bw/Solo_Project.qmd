@@ -31,7 +31,6 @@ labor_clean <- labor_proj_bycounty |>
 
 ```{r}
 #| fig-alt: "A choropleth map of the change in Labor Force participation from 2020 to 2030 in Minnesota by county. The Twin Cities metro area is expected to see large growth over this period, and the rest of the state is expected to see much smaller growth or even negative growth."
-#| fig-cap: "Projected Labor Force Participation Changes in Minnesota from 2020 to 2030 by county. (Created by: Zach Marshak April 2024, Data Sources: US Census Bureau, MN State Demographic Center)"
 
 MN |>
   select(NAME, geometry) |>
@@ -39,7 +38,7 @@ MN |>
   ggplot()+
   geom_sf(aes(fill = labor_change)) +
   scale_fill_viridis_c(direction = -1) +
-  labs(title = "Minnesota Projected Labor Force Participation", fill = "Projected Change from 2020 to 2030 by County") +
+  labs(title = "Minnesota Projected Labor Force Participation from 2020 to 2030", fill = "Projected Change by County", caption = "Projected Labor Force Participation Changes in Minnesota from 2020 to 2030 by county. (Created by: Zach Marshak April 2024, Data Sources: US Census Bureau, MN State Demographic Center)") +
   theme_void()
 ```
 
