@@ -349,7 +349,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb3-4"><a href="#cb3-4"></a>  <span class="fu">labs</span>( <span class="at">x =</span> <span class="st">"Temperature at 9 am (celcius)"</span>, <span class="at">y =</span> <span class="st">"Temperature at 3 pm (celcius)"</span>, <span class="at">title =</span> <span class="st">"Tempatures in Wollongong, Hobart, and Uluru Australia"</span>, <span class="at">caption =</span> <span class="st">"Comparison of morning versus afternoon temperatures in 3 Australian towns. Created by Zach Marshak, Feb. 2025, data source Mac-Stat Git Hub(https://mac-stat.github.io/data/weather_3_locations.csv)"</span> )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details><div class="cell-output-display">
 <div>
-<figure class="figure"><p><img src="bw-bi_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" alt="A scatter plot of Temperatures of the Australian Cities of Wollongong, Hobart, and Uluru. The Temperature in Celcius at 9 am is on the x-axis, and the Temperature in Celcius at 3 pm is on the y-axis. There is a positive relationship between the two" width="960"></p>
+<figure class="figure"><p><img src="bw-bi_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" alt="A scatter plot of Temperatures of the Australian Cities of Wollongong, Hobart, and Uluru. The Temperature in Celcius at 9 am is on the x-axis, and the Temperature in Celcius at 3 pm is on the y-axis. There is a positive relationship between the two" width="1344"></p>
 </figure>
 </div>
 </div>
@@ -1007,7 +1007,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb4-20"><a href="#cb4-20"></a></span>
 <span id="cb4-23"><a href="#cb4-23"></a><span class="in">```{r}</span></span>
 <span id="cb4-24"><a href="#cb4-24"></a><span class="co">#| fig-height: 10</span></span>
-<span id="cb4-25"><a href="#cb4-25"></a><span class="co">#| fig-width: 10</span></span>
+<span id="cb4-25"><a href="#cb4-25"></a><span class="co">#| fig-width: 14</span></span>
 <span id="cb4-26"><a href="#cb4-26"></a><span class="co">#| fig-alt: "A scatter plot of Temperatures of the Australian Cities of Wollongong, Hobart, and Uluru. The Temperature in Celcius at 9 am is on the x-axis, and the Temperature in Celcius at 3 pm is on the y-axis. There is a positive relationship between the two"</span></span>
 <span id="cb4-27"><a href="#cb4-27"></a><span class="fu">ggplot</span>(weather, <span class="fu">aes</span>(<span class="at">x =</span> temp9am, <span class="at">y =</span> temp3pm))<span class="sc">+</span></span>
 <span id="cb4-28"><a href="#cb4-28"></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.5</span>)<span class="sc">+</span></span>
