@@ -339,7 +339,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../ica/quarto-demo.html">In-class Activities</a></li><li class="breadcrumb-item"><a href="../ica/ica-spatial.html"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Spatial Viz</span></a></li></ol></nav><div class="quarto-title">
 <div class="quarto-title-block"><div><h1 class="title">
 <span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Spatial Viz</span>
-</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
+</h1><button type="button" class="btn code-tools-button dropdown-toggle" id="quarto-code-tools-menu" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi"></i> Code</button><ul class="dropdown-menu dropdown-menu-end" aria-labelelledby="quarto-code-tools-menu"><li><a id="quarto-show-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Show All Code</a></li><li><a id="quarto-hide-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Hide All Code</a></li><li><hr class="dropdown-divider"></li><li><a id="quarto-view-source" class="dropdown-item" href="javascript:void(0)" role="button">View Source</a></li></ul></div></div>
 </div>
 
 
@@ -354,9 +354,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 </header><div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="co"># load packages</span></span>
+<details class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="co"># load packages</span></span>
 <span id="cb1-2"><a href="#cb1-2"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
+</details><div class="cell-output cell-output-stderr">
 <pre><code>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
 ✔ dplyr     1.1.4     ✔ readr     2.1.5
 ✔ forcats   1.0.0     ✔ stringr   1.5.1
@@ -368,9 +368,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 ✖ dplyr::lag()    masks stats::lag()
 ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="fu">library</span>(ggplot2)</span>
+<details class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="fu">library</span>(ggplot2)</span>
 <span id="cb3-2"><a href="#cb3-2"></a><span class="fu">library</span>(rnaturalearth)</span>
 <span id="cb3-3"><a href="#cb3-3"></a><span class="fu">library</span>(rnaturalearthhires)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 </div>
 <p>Use this file for practice with the <strong>spatial viz</strong> in-class activity. Refer to the class website for details.</p>
 <section id="preview" class="level3" data-number="15.0.1"><h3 data-number="15.0.1" class="anchored" data-anchor-id="preview">
@@ -410,11 +411,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ol></section><section id="exercise-1-a-leaflet-with-markers-points" class="level3 unnumbered"><h3 class="unnumbered anchored" data-anchor-id="exercise-1-a-leaflet-with-markers-points">Exercise 1: A leaflet with markers / points</h3>
 <p>Earlier this semester, I asked for the latitude and longitude of one of your favorite places. I rounded these to the nearest whole number, so that they’re near to but not exactly at those places. Let’s load <a href="../data/our_fave_places.csv">the data</a> and map it!</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a>fave_places <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"https://hash-mac.github.io/stat112site-s25/data/our_fave_places.csv"</span>)</span>
+<details class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a>fave_places <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"https://hash-mac.github.io/stat112site-s25/data/our_fave_places.csv"</span>)</span>
 <span id="cb4-2"><a href="#cb4-2"></a></span>
 <span id="cb4-3"><a href="#cb4-3"></a><span class="co"># Check it out</span></span>
 <span id="cb4-4"><a href="#cb4-4"></a><span class="fu">head</span>(fave_places)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
+</details><div class="cell-output cell-output-stdout">
 <pre><code>  latitude longitude
 1       59        18
 2       45       -93
@@ -427,43 +428,43 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="part-a" class="level4 unnumbered"><h4 class="unnumbered anchored" data-anchor-id="part-a">Part a</h4>
 <p>You can use a “two-finger scroll” to zoom in and out.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="co"># Load the leaflet package</span></span>
+<details class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="co"># Load the leaflet package</span></span>
 <span id="cb6-2"><a href="#cb6-2"></a><span class="fu">library</span>(leaflet)</span>
 <span id="cb6-3"><a href="#cb6-3"></a></span>
 <span id="cb6-4"><a href="#cb6-4"></a><span class="co"># Just a plotting frame</span></span>
 <span id="cb6-5"><a href="#cb6-5"></a><span class="fu">leaflet</span>(<span class="at">data =</span> fave_places)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
+</details><div class="cell-output-display">
 <div class="leaflet html-widget html-fill-item" id="htmlwidget-5662b48b5498a5d909d7" style="width:100%;height:464px;"></div>
 <script type="application/json" data-for="htmlwidget-5662b48b5498a5d909d7">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a><span class="co"># we have a basic map without any of our plots</span></span>
+<details class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a><span class="co"># we have a basic map without any of our plots</span></span>
 <span id="cb7-2"><a href="#cb7-2"></a><span class="fu">leaflet</span>(<span class="at">data =</span> fave_places) <span class="sc">|&gt;</span> </span>
 <span id="cb7-3"><a href="#cb7-3"></a>  <span class="fu">addTiles</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
+</details><div class="cell-output-display">
 <div class="leaflet html-widget html-fill-item" id="htmlwidget-e5d3c2e44e8c83ab743b" style="width:100%;height:464px;"></div>
 <script type="application/json" data-for="htmlwidget-e5d3c2e44e8c83ab743b">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addTiles","args":["https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"https://openstreetmap.org/copyright/\">OpenStreetMap<\/a>,  <a href=\"https://opendatacommons.org/licenses/odbl/\">ODbL<\/a>"}]}]},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a><span class="co"># we have have a map that has our cordinates ploted</span></span>
+<details class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a><span class="co"># we have have a map that has our cordinates ploted</span></span>
 <span id="cb8-2"><a href="#cb8-2"></a><span class="co"># longitude and latitude refer to the variables in our data</span></span>
 <span id="cb8-3"><a href="#cb8-3"></a><span class="fu">leaflet</span>(<span class="at">data =</span> fave_places) <span class="sc">|&gt;</span> </span>
 <span id="cb8-4"><a href="#cb8-4"></a>  <span class="fu">addTiles</span>() <span class="sc">|&gt;</span> </span>
 <span id="cb8-5"><a href="#cb8-5"></a>  <span class="fu">addMarkers</span>(<span class="at">lng =</span> <span class="sc">~</span>longitude, <span class="at">lat =</span> <span class="sc">~</span>latitude)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
+</details><div class="cell-output-display">
 <div class="leaflet html-widget html-fill-item" id="htmlwidget-67d93afced53a78e4272" style="width:100%;height:464px;"></div>
 <script type="application/json" data-for="htmlwidget-67d93afced53a78e4272">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addTiles","args":["https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"https://openstreetmap.org/copyright/\">OpenStreetMap<\/a>,  <a href=\"https://opendatacommons.org/licenses/odbl/\">ODbL<\/a>"}]},{"method":"addMarkers","args":[[59,45,33,40,40,37,33,38,52,35,25,41,34,46,50,45,14,44,52,45,38,48,33,33,48,39,32,46,0,16,30,36,38,38,38,50,45,20],[18,-93,-117,116,106,-122,-106,24,5,-90,122,29,-118,-111,7,-93,101,-70,5,-90,122,-122,-117,-80,123,107,119,-85,0,68,-100,104,127,-123,-123,7,-124,-155],null,null,null,{"interactive":true,"draggable":false,"keyboard":true,"title":"","alt":"","zIndexOffset":0,"opacity":1,"riseOnHover":false,"riseOffset":250},null,null,null,null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]}],"limits":{"lat":[0,59],"lng":[-155,127]}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a><span class="co"># Since we named them "longitude" and "latitude", the function</span></span>
+<details class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a><span class="co"># Since we named them "longitude" and "latitude", the function</span></span>
 <span id="cb9-2"><a href="#cb9-2"></a><span class="co"># automatically recognizes these variables. No need to write them!</span></span>
 <span id="cb9-3"><a href="#cb9-3"></a><span class="fu">leaflet</span>(<span class="at">data =</span> fave_places) <span class="sc">|&gt;</span> </span>
 <span id="cb9-4"><a href="#cb9-4"></a>  <span class="fu">addTiles</span>() <span class="sc">|&gt;</span> </span>
 <span id="cb9-5"><a href="#cb9-5"></a>  <span class="fu">addMarkers</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
+</details><div class="cell-output-display">
 <div class="leaflet html-widget html-fill-item" id="htmlwidget-e9d0fd7add984c0861ed" style="width:100%;height:464px;"></div>
 <script type="application/json" data-for="htmlwidget-e9d0fd7add984c0861ed">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addTiles","args":["https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"https://openstreetmap.org/copyright/\">OpenStreetMap<\/a>,  <a href=\"https://opendatacommons.org/licenses/odbl/\">ODbL<\/a>"}]},{"method":"addMarkers","args":[[59,45,33,40,40,37,33,38,52,35,25,41,34,46,50,45,14,44,52,45,38,48,33,33,48,39,32,46,0,16,30,36,38,38,38,50,45,20],[18,-93,-117,116,106,-122,-106,24,5,-90,122,29,-118,-111,7,-93,101,-70,5,-90,122,-122,-117,-80,123,107,119,-85,0,68,-100,104,127,-123,-123,7,-124,-155],null,null,null,{"interactive":true,"draggable":false,"keyboard":true,"title":"","alt":"","zIndexOffset":0,"opacity":1,"riseOnHover":false,"riseOffset":250},null,null,null,null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]}],"limits":{"lat":[0,59],"lng":[-155,127]}},"evals":[],"jsHooks":[]}</script>
 </div>
@@ -473,24 +474,24 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section><section id="exercise-2-details" class="level4 unnumbered"><h4 class="unnumbered anchored" data-anchor-id="exercise-2-details">Exercise 2: Details</h4>
 <p>We can change all sorts of details in leaflet maps. # Check if gplots is already installed. If not, install it with a mirror specified. if(!require(gplots)){ # Use require() for conditional loading and installation chooseCRANmirror() # Or set it directly:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a>  <span class="fu">options</span>(<span class="at">repos=</span><span class="fu">c</span>(<span class="at">CRAN=</span><span class="st">"https://cloud.r-project.org"</span>))</span>
+<details class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a>  <span class="fu">options</span>(<span class="at">repos=</span><span class="fu">c</span>(<span class="at">CRAN=</span><span class="st">"https://cloud.r-project.org"</span>))</span>
 <span id="cb10-2"><a href="#cb10-2"></a>  <span class="fu">install.packages</span>(<span class="st">"gplots"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
+</details><div class="cell-output cell-output-stdout">
 <pre><code>
 The downloaded binary packages are in
     /var/folders/50/81nzyvws449dbqrxl05vf1cr0000gn/T//Rtmp8vig0e/downloaded_packages</code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a><span class="co"># Load package needed to change color</span></span>
+<details class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a><span class="co"># Load package needed to change color</span></span>
 <span id="cb12-2"><a href="#cb12-2"></a><span class="fu">install.packages</span>(<span class="st">"gplots"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
+</details><div class="cell-output cell-output-stdout">
 <pre><code>
 The downloaded binary packages are in
     /var/folders/50/81nzyvws449dbqrxl05vf1cr0000gn/T//Rtmp8vig0e/downloaded_packages</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a><span class="fu">library</span>(gplots)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
+<details class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a><span class="fu">library</span>(gplots)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details><div class="cell-output cell-output-stderr">
 <pre><code>
 Attaching package: 'gplots'</code></pre>
 </div>
@@ -499,17 +500,17 @@ Attaching package: 'gplots'</code></pre>
 
     lowess</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a><span class="co"># We can add colored circles instead of markers at each location</span></span>
+<details class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a><span class="co"># We can add colored circles instead of markers at each location</span></span>
 <span id="cb17-2"><a href="#cb17-2"></a><span class="fu">leaflet</span>(<span class="at">data =</span> fave_places) <span class="sc">|&gt;</span> </span>
 <span id="cb17-3"><a href="#cb17-3"></a>  <span class="fu">addTiles</span>() <span class="sc">|&gt;</span> </span>
 <span id="cb17-4"><a href="#cb17-4"></a>  <span class="fu">addCircles</span>(<span class="at">color =</span> <span class="fu">col2hex</span>(<span class="st">"red"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
+</details><div class="cell-output-display">
 <div class="leaflet html-widget html-fill-item" id="htmlwidget-0e717cb18f9a5cda623c" style="width:100%;height:464px;"></div>
 <script type="application/json" data-for="htmlwidget-0e717cb18f9a5cda623c">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addTiles","args":["https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"https://openstreetmap.org/copyright/\">OpenStreetMap<\/a>,  <a href=\"https://opendatacommons.org/licenses/odbl/\">ODbL<\/a>"}]},{"method":"addCircles","args":[[59,45,33,40,40,37,33,38,52,35,25,41,34,46,50,45,14,44,52,45,38,48,33,33,48,39,32,46,0,16,30,36,38,38,38,50,45,20],[18,-93,-117,116,106,-122,-106,24,5,-90,122,29,-118,-111,7,-93,101,-70,5,-90,122,-122,-117,-80,123,107,119,-85,0,68,-100,104,127,-123,-123,7,-124,-155],10,null,null,{"interactive":true,"className":"","stroke":true,"color":"#FF0000","weight":5,"opacity":0.5,"fill":true,"fillColor":"#FF0000","fillOpacity":0.2},null,null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null,null]}],"limits":{"lat":[0,59],"lng":[-155,127]}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1"></a><span class="co"># We can change the background</span></span>
+<details class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1"></a><span class="co"># We can change the background</span></span>
 <span id="cb18-2"><a href="#cb18-2"></a><span class="co"># Mark locations with yellow dots</span></span>
 <span id="cb18-3"><a href="#cb18-3"></a><span class="co"># And connect the dots, in their order in the dataset, with green lines</span></span>
 <span id="cb18-4"><a href="#cb18-4"></a><span class="co"># (These green lines don't mean anything here, but would if this were somebody's travel path!)</span></span>
@@ -521,7 +522,7 @@ Attaching package: 'gplots'</code></pre>
 <span id="cb18-10"><a href="#cb18-10"></a>    <span class="at">lat =</span> <span class="sc">~</span>latitude,</span>
 <span id="cb18-11"><a href="#cb18-11"></a>    <span class="at">color =</span> <span class="fu">col2hex</span>(<span class="st">"green"</span>)</span>
 <span id="cb18-12"><a href="#cb18-12"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
+</details><div class="cell-output-display">
 <div class="leaflet html-widget html-fill-item" id="htmlwidget-c5238f5c04deb420f248" style="width:100%;height:464px;"></div>
 <script type="application/json" data-for="htmlwidget-c5238f5c04deb420f248">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addProviderTiles","args":["USGS",null,null,{"errorTileUrl":"","noWrap":false,"detectRetina":false}]},{"method":"addCircles","args":[[59,45,33,40,40,37,33,38,52,35,25,41,34,46,50,45,14,44,52,45,38,48,33,33,48,39,32,46,0,16,30,36,38,38,38,50,45,20],[18,-93,-117,116,106,-122,-106,24,5,-90,122,29,-118,-111,7,-93,101,-70,5,-90,122,-122,-117,-80,123,107,119,-85,0,68,-100,104,127,-123,-123,7,-124,-155],10,null,null,{"interactive":true,"className":"","stroke":true,"color":"#FFFF00","weight":10,"opacity":1,"fill":true,"fillColor":"#FFFF00","fillOpacity":0.2},null,null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null,null]},{"method":"addPolylines","args":[[[[{"lng":[18,-93,-117,116,106,-122,-106,24,5,-90,122,29,-118,-111,7,-93,101,-70,5,-90,122,-122,-117,-80,123,107,119,-85,0,68,-100,104,127,-123,-123,7,-124,-155],"lat":[59,45,33,40,40,37,33,38,52,35,25,41,34,46,50,45,14,44,52,45,38,48,33,33,48,39,32,46,0,16,30,36,38,38,38,50,45,20]}]]],null,null,{"interactive":true,"className":"","stroke":true,"color":"#00FF00","weight":5,"opacity":0.5,"fill":false,"fillColor":"#00FF00","fillOpacity":0.2,"smoothFactor":1,"noClip":false},null,null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]}],"limits":{"lat":[0,59],"lng":[-155,127]}},"evals":[],"jsHooks":[]}</script>
 </div>
@@ -543,21 +544,23 @@ To explore all available provider base maps, type <code>providers</code> in the 
 </ul></section></section><section id="exercise-3-your-turn" class="level3 unnumbered"><h3 class="unnumbered anchored" data-anchor-id="exercise-3-your-turn">Exercise 3: Your turn</h3>
 <p>The <code>starbucks</code> data, compiled by Danny Kaplan, contains information about every Starbucks in the world at the time the data were collected, including <code>Latitude</code> and <code>Longitude</code>:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1"></a><span class="co"># Import starbucks location data</span></span>
+<details class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1"></a><span class="co"># Import starbucks location data</span></span>
 <span id="cb19-2"><a href="#cb19-2"></a>starbucks <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"https://mac-stat.github.io/data/starbucks.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 </div>
 <p>Let’s focus on only those in Minnesota for now:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1"></a><span class="co"># Don't worry about the syntax</span></span>
+<details class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1"></a><span class="co"># Don't worry about the syntax</span></span>
 <span id="cb20-2"><a href="#cb20-2"></a>starbucks_mn <span class="ot">&lt;-</span> starbucks <span class="sc">|&gt;</span>   </span>
 <span id="cb20-3"><a href="#cb20-3"></a>  <span class="fu">filter</span>(Country <span class="sc">==</span> <span class="st">"US"</span>, State.Province <span class="sc">==</span> <span class="st">"MN"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1"></a><span class="co"># MN starbcuks map</span></span>
+<details class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1"></a><span class="co"># MN starbcuks map</span></span>
 <span id="cb21-2"><a href="#cb21-2"></a><span class="fu">leaflet</span>(<span class="at">data =</span> starbucks_mn) <span class="sc">|&gt;</span> </span>
 <span id="cb21-3"><a href="#cb21-3"></a>  <span class="fu">addTiles</span>() <span class="sc">|&gt;</span> </span>
 <span id="cb21-4"><a href="#cb21-4"></a>  <span class="fu">addMarkers</span>(<span class="at">lng =</span> <span class="sc">~</span>Longitude, <span class="at">lat =</span> <span class="sc">~</span>Latitude)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
+</details><div class="cell-output-display">
 <div class="leaflet html-widget html-fill-item" id="htmlwidget-0753cff6f231bcfd6ef2" style="width:100%;height:464px;"></div>
 <script type="application/json" data-for="htmlwidget-0753cff6f231bcfd6ef2">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addTiles","args":["https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"https://openstreetmap.org/copyright/\">OpenStreetMap<\/a>,  <a href=\"https://opendatacommons.org/licenses/odbl/\">ODbL<\/a>"}]},{"method":"addMarkers","args":[[45.85,45.22,45.21,44.73,44.72,45.06,46.37,46.37,47.49,45.17,45.17,44.86,44.83,44.86,44.85,44.86,44.85,44.86,45.06,45.09,45.14,45.13,45.12,45.17,44.75,44.74,44.75,45.57,45.16,45.17,44.86,44.86,44.83,45.2,45.15,45.13,44.83,44.82,45.05,46.81,46.8,46.82,46.81,46.78,44.79,44.83,44.84,44.8,44.81,44.84,44.85,44.89,44.85,44.86,44.88,44.91,44.88,44.91,44.88,44.86,44.91,44.88,44.87,45.32,44.9,45.27,45.28,45.06,44.98,47.21,44.74,44.93,44.87,44.82,44.72,44.71,44.69,44.68,45.18,44.17,44.17,45.13,45.13,45.1,45.09,45.05,44.97,45.05,44.96,44.95,44.98,44.97,44.97,44.96,44.97,44.98,44.96,44.97,44.97,45.07,44.98,44.98,44.98,44.91,45,44.97,44.98,44.97,44.97,44.92,45.29,46.85,46.86,45.03,45.03,44.43,45.03,44.96,44.96,45.28,44.08,44.09,45.02,45.03,45.01,44.57,44.88,44.86,44.02,44.07,44.06,44,43.95,44.02,44.06,45.2,45.2,44.73,45.01,45.01,45.01,45.01,44.89,44.94,44.75,44.74,44.78,45.06,45.08,45.57,44.94,44.88,44.88,44.88,45.55,44.95,44.93,44.94,44.95,44.92,44.95,44.95,45,44.97,44.95,45.04,45.03,45.05,45.08,47.51,44.85,45.55,44.97,44.9,45.04,45.07,44.03,44.94,44.93,44.94,44.94,44.92,44.93,44.89],[-95.39,-93.31999999999999,-93.36,-93.20999999999999,-93.18000000000001,-93.15000000000001,-94.23999999999999,-94.25,-94.91,-93.23,-93.23999999999999,-93.23999999999999,-93.29000000000001,-93.23999999999999,-93.23999999999999,-93.31,-93.23999999999999,-93.31,-93.31999999999999,-93.38,-93.37,-93.36,-93.36,-93.86,-93.29000000000001,-93.29000000000001,-93.3,-93.20999999999999,-93.39,-93.39,-93.52,-93.54000000000001,-93.59999999999999,-93.34999999999999,-93.28,-93.27,-92.95999999999999,-92.93000000000001,-93.36,-92.17,-92.16,-92.08,-92.16,-92.09999999999999,-93.20999999999999,-93.17,-93.17,-93.19,-93.20999999999999,-93.40000000000001,-93.43000000000001,-93.42,-93.43000000000001,-93.44,-93.33,-93.36,-93.31999999999999,-93.33,-93.33,-93.34999999999999,-93.34999999999999,-93.31999999999999,-93.33,-93.56,-93.56999999999999,-93,-93.01000000000001,-93.25,-93.38,-93.53,-92.89,-93.42,-94.38,-93.08,-93.18000000000001,-93.28,-93.28,-93.29000000000001,-93.11,-93.95,-93.95,-93.48999999999999,-93.48,-93.45,-93.44,-93.53,-93.27,-93.36,-93.23999999999999,-93.23999999999999,-93.23999999999999,-93.23,-93.27,-93.29000000000001,-93.23999999999999,-93.27,-93.28,-93.23,-93.25,-93.25,-93.27,-93.27,-93.28,-93.29000000000001,-93.23,-93.28,-93.27,-93.45,-93.44,-93.5,-93.77,-96.77,-96.75,-93.39,-93.02,-93.19,-92.84999999999999,-92.95999999999999,-92.95999999999999,-93.56,-93.23999999999999,-93.25,-93.48,-93.45,-93.45,-92.58,-93.25,-93.29000000000001,-92.45999999999999,-92.53,-92.5,-92.48,-92.47,-92.47,-92.47,-93.55,-93.55,-93.13,-93.16,-93.18000000000001,-93.17,-93.18000000000001,-93.08,-93.15000000000001,-93.38,-93.38,-93.41,-93.14,-93.12,-94.15000000000001,-93.39,-93.20999999999999,-93.20999999999999,-93.20999999999999,-94.19,-93.33,-93.34,-93.14,-93.03,-93.19,-93.17,-93.09999999999999,-92.95,-93.17,-93.16,-92.84,-92.84,-93.06,-93.06,-92.55,-93.77,-94.22,-93.51000000000001,-93.08,-93.02,-93.02,-91.62,-92.94,-92.95999999999999,-92.91,-92.90000000000001,-92.93000000000001,-92.95999999999999,-92.94],null,null,null,{"interactive":true,"draggable":false,"keyboard":true,"title":"","alt":"","zIndexOffset":0,"opacity":1,"riseOnHover":false,"riseOffset":250},null,null,null,null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]}],"limits":{"lat":[43.95,47.51],"lng":[-96.77,-91.62]}},"evals":[],"jsHooks":[]}</script>
 </div>
@@ -578,9 +581,9 @@ To explore all available provider base maps, type <code>providers</code> in the 
 </ul>
 <p>It’s pretty cool that the plots we already know can provide some spatial context. But what <em>don’t</em> you like about this plot?</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1"></a><span class="fu">ggplot</span>(starbucks, <span class="fu">aes</span>(<span class="at">x =</span> Longitude, <span class="at">y =</span> Latitude))<span class="sc">+</span></span>
+<details class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1"></a><span class="fu">ggplot</span>(starbucks, <span class="fu">aes</span>(<span class="at">x =</span> Longitude, <span class="at">y =</span> Latitude))<span class="sc">+</span></span>
 <span id="cb22-2"><a href="#cb22-2"></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.2</span>, <span class="at">size =</span> <span class="fl">0.2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
+</details><div class="cell-output cell-output-stderr">
 <pre><code>Warning: Removed 1 row containing missing values or values outside the scale range
 (`geom_point()`).</code></pre>
 </div>
@@ -596,22 +599,23 @@ To explore all available provider base maps, type <code>providers</code> in the 
 <section id="part-a-1" class="level4 unnumbered"><h4 class="unnumbered anchored" data-anchor-id="part-a-1">Part a</h4>
 <p>First, we can grab country-level boundaries from the <code>rnaturalearth</code> package.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1"></a><span class="co"># Load the package</span></span>
+<details class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1"></a><span class="co"># Load the package</span></span>
 <span id="cb24-2"><a href="#cb24-2"></a><span class="fu">library</span>(rnaturalearth)</span>
 <span id="cb24-3"><a href="#cb24-3"></a></span>
 <span id="cb24-4"><a href="#cb24-4"></a><span class="co"># Get info about country boundaries across the world</span></span>
 <span id="cb24-5"><a href="#cb24-5"></a><span class="co"># in a "sf" or simple feature format</span></span>
 <span id="cb24-6"><a href="#cb24-6"></a>world_boundaries <span class="ot">&lt;-</span> <span class="fu">ne_countries</span>(<span class="at">returnclass =</span> <span class="st">"sf"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 </div>
 <p>In your <strong>console</strong>, type <code>world_boundaries</code> to check out what’s stored there. Don’t print it our in your Rmd – printing it would be really messy there (even just the <code><a href="https://rdrr.io/r/utils/head.html">head()</a></code>).</p>
 </section><section id="part-b-1" class="level4 unnumbered"><h4 class="unnumbered anchored" data-anchor-id="part-b-1">Part b</h4>
 <p>Run the chunks below to build up a new map.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1"></a><span class="co"># What does this code produce? It produces a plot of a map of the world</span></span>
+<details class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1"></a><span class="co"># What does this code produce? It produces a plot of a map of the world</span></span>
 <span id="cb25-2"><a href="#cb25-2"></a><span class="co"># What geom are we using for the point map? geom_sf</span></span>
 <span id="cb25-3"><a href="#cb25-3"></a><span class="fu">ggplot</span>(world_boundaries) <span class="sc">+</span> </span>
 <span id="cb25-4"><a href="#cb25-4"></a>  <span class="fu">geom_sf</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
+</details><div class="cell-output-display">
 <div>
 <figure class="figure"><p><img src="ica-spatial_files/figure-html/unnamed-chunk-15-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
@@ -619,9 +623,9 @@ To explore all available provider base maps, type <code>providers</code> in the 
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1"></a><span class="co"># Load package needed to change map theme</span></span>
+<details class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1"></a><span class="co"># Load package needed to change map theme</span></span>
 <span id="cb26-2"><a href="#cb26-2"></a><span class="fu">library</span>(mosaic)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
+</details><div class="cell-output cell-output-stderr">
 <pre><code>Registered S3 method overwritten by 'mosaic':
   method                           from   
   fortify.SpatialPolygonsDataFrame ggplot2</code></pre>
@@ -666,7 +670,7 @@ Attaching package: 'mosaic'</code></pre>
 
     max, mean, min, prod, range, sample, sum</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1"></a><span class="co"># Add a point for each Starbucks</span></span>
+<details class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1"></a><span class="co"># Add a point for each Starbucks</span></span>
 <span id="cb36-2"><a href="#cb36-2"></a><span class="co"># </span><span class="al">NOTE</span><span class="co">: The Starbucks info is in our starbucks data, not world_boundaries</span></span>
 <span id="cb36-3"><a href="#cb36-3"></a><span class="co"># How does this change how we use geom_point?! it allows us to plot maps </span></span>
 <span id="cb36-4"><a href="#cb36-4"></a><span class="fu">ggplot</span>(world_boundaries) <span class="sc">+</span> </span>
@@ -677,7 +681,7 @@ Attaching package: 'mosaic'</code></pre>
 <span id="cb36-9"><a href="#cb36-9"></a>    <span class="at">alpha =</span> <span class="fl">0.3</span>, <span class="at">size =</span> <span class="fl">0.2</span>, <span class="at">color =</span> <span class="st">"darkgreen"</span></span>
 <span id="cb36-10"><a href="#cb36-10"></a>  ) <span class="sc">+</span></span>
 <span id="cb36-11"><a href="#cb36-11"></a>  <span class="fu">theme_map</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
+</details><div class="cell-output cell-output-stderr">
 <pre><code>Warning: Removed 1 row containing missing values or values outside the scale range
 (`geom_point()`).</code></pre>
 </div>
@@ -707,25 +711,27 @@ Attaching package: 'mosaic'</code></pre>
 <li>Data on Starbucks for <em>only</em> Canada, Mexico, and the US, labeled as “CA”, “MX”, “US” in the <code>starbucks</code> data.</li>
 </ol>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1"></a><span class="co"># We'll learn this syntax soon! Don't worry about it now.</span></span>
+<details class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1"></a><span class="co"># We'll learn this syntax soon! Don't worry about it now.</span></span>
 <span id="cb38-2"><a href="#cb38-2"></a>starbucks_cma <span class="ot">&lt;-</span> starbucks <span class="sc">|&gt;</span> </span>
 <span id="cb38-3"><a href="#cb38-3"></a>  <span class="fu">filter</span>(Country <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">'CA'</span>, <span class="st">'MX'</span>, <span class="st">'US'</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 </div>
 <ol start="2" type="1">
 <li>A background map of state- and national-level boundaries in Canada, Mexico, and the US. This requires <code>ne_states()</code> in the <code>rnaturalearth</code> package where the countries are labeled ‘canada’, ‘mexico’, ‘united states of america’.</li>
 </ol>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1"></a>cma_boundaries <span class="ot">&lt;-</span> <span class="fu">ne_states</span>(</span>
+<details class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1"></a>cma_boundaries <span class="ot">&lt;-</span> <span class="fu">ne_states</span>(</span>
 <span id="cb39-2"><a href="#cb39-2"></a>  <span class="at">country =</span> <span class="fu">c</span>(<span class="st">"canada"</span>, <span class="st">"mexico"</span>, <span class="st">"united states of america"</span>),</span>
 <span id="cb39-3"><a href="#cb39-3"></a>  <span class="at">returnclass =</span> <span class="st">"sf"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 </div>
 </section><section id="part-b-2" class="level4 unnumbered"><h4 class="unnumbered anchored" data-anchor-id="part-b-2">Part b</h4>
 <p>Make the map!</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1"></a><span class="co"># Just the boundaries</span></span>
+<details class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb40"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1"></a><span class="co"># Just the boundaries</span></span>
 <span id="cb40-2"><a href="#cb40-2"></a><span class="fu">ggplot</span>(cma_boundaries) <span class="sc">+</span> </span>
 <span id="cb40-3"><a href="#cb40-3"></a>  <span class="fu">geom_sf</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
+</details><div class="cell-output-display">
 <div>
 <figure class="figure"><p><img src="ica-spatial_files/figure-html/unnamed-chunk-19-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
@@ -733,7 +739,7 @@ Attaching package: 'mosaic'</code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1"></a><span class="co"># Add the points</span></span>
+<details class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb41"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1"></a><span class="co"># Add the points</span></span>
 <span id="cb41-2"><a href="#cb41-2"></a><span class="co"># And zoom in</span></span>
 <span id="cb41-3"><a href="#cb41-3"></a><span class="fu">ggplot</span>(cma_boundaries) <span class="sc">+</span> </span>
 <span id="cb41-4"><a href="#cb41-4"></a>  <span class="fu">geom_sf</span>() <span class="sc">+</span> </span>
@@ -746,7 +752,7 @@ Attaching package: 'mosaic'</code></pre>
 <span id="cb41-11"><a href="#cb41-11"></a>  ) <span class="sc">+</span></span>
 <span id="cb41-12"><a href="#cb41-12"></a>  <span class="fu">coord_sf</span>(<span class="at">xlim =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="fl">179.14</span>, <span class="sc">-</span><span class="dv">50</span>)) <span class="sc">+</span></span>
 <span id="cb41-13"><a href="#cb41-13"></a>  <span class="fu">theme_map</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
+</details><div class="cell-output-display">
 <div>
 <figure class="figure"><p><img src="ica-spatial_files/figure-html/unnamed-chunk-20-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
@@ -761,20 +767,21 @@ Attaching package: 'mosaic'</code></pre>
 <li>Data on Starbucks for <em>only</em> the states of interest.</li>
 </ol>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1"></a>starbucks_midwest <span class="ot">&lt;-</span> starbucks <span class="sc">|&gt;</span> </span>
+<details class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb42"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1"></a>starbucks_midwest <span class="ot">&lt;-</span> starbucks <span class="sc">|&gt;</span> </span>
 <span id="cb42-2"><a href="#cb42-2"></a>  <span class="fu">filter</span>(State.Province <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"MN"</span>, <span class="st">"ND"</span>, <span class="st">"SD"</span>, <span class="st">"WI"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 </div>
 <ol start="2" type="1">
 <li>A background map of state- and county-level boundaries in these states. This requires <code>st_as_sf()</code> in the <code>sf</code> package, and <code>map()</code> in the <code>maps</code> package, where the countries are labeled ‘minnesota’, ‘north dakota’, etc.</li>
 </ol>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1"></a><span class="co"># Load packages</span></span>
+<details class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb43"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1"></a><span class="co"># Load packages</span></span>
 <span id="cb43-2"><a href="#cb43-2"></a><span class="fu">library</span>(sf)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
+</details><div class="cell-output cell-output-stderr">
 <pre><code>Linking to GEOS 3.11.0, GDAL 3.5.3, PROJ 9.1.0; sf_use_s2() is TRUE</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1"></a><span class="fu">library</span>(maps)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
+<details class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb45"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1"></a><span class="fu">library</span>(maps)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details><div class="cell-output cell-output-stderr">
 <pre><code>
 Attaching package: 'maps'</code></pre>
 </div>
@@ -783,7 +790,7 @@ Attaching package: 'maps'</code></pre>
 
     map</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1"></a><span class="co"># Get the boundaries</span></span>
+<details class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb48"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1"></a><span class="co"># Get the boundaries</span></span>
 <span id="cb48-2"><a href="#cb48-2"></a>midwest_boundaries <span class="ot">&lt;-</span> <span class="fu">st_as_sf</span>(</span>
 <span id="cb48-3"><a href="#cb48-3"></a>  maps<span class="sc">::</span><span class="fu">map</span>(<span class="st">"county"</span>,</span>
 <span id="cb48-4"><a href="#cb48-4"></a>            <span class="at">region =</span> <span class="fu">c</span>(<span class="st">"minnesota"</span>, <span class="st">"wisconsin"</span>, <span class="st">"north dakota"</span>, <span class="st">"south dakota"</span>), </span>
@@ -791,7 +798,7 @@ Attaching package: 'maps'</code></pre>
 <span id="cb48-6"><a href="#cb48-6"></a></span>
 <span id="cb48-7"><a href="#cb48-7"></a><span class="co"># Check it out</span></span>
 <span id="cb48-8"><a href="#cb48-8"></a><span class="fu">head</span>(midwest_boundaries)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
+</details><div class="cell-output cell-output-stdout">
 <pre><code>Simple feature collection with 6 features and 1 field
 Geometry type: MULTIPOLYGON
 Dimension:     XY
@@ -809,7 +816,7 @@ minnesota,big stone minnesota,big stone MULTIPOLYGON (((-96.10794 4...</code></p
 </section><section id="part-b-3" class="level4 unnumbered"><h4 class="unnumbered anchored" data-anchor-id="part-b-3">Part b</h4>
 <p>Adjust the code below to make the plot! Remove the <code>#</code> to run it.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1"></a><span class="fu">ggplot</span>(midwest_boundaries) <span class="sc">+</span></span>
+<details class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb50"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1"></a><span class="fu">ggplot</span>(midwest_boundaries) <span class="sc">+</span></span>
 <span id="cb50-2"><a href="#cb50-2"></a>  <span class="fu">geom_sf</span>() <span class="sc">+</span></span>
 <span id="cb50-3"><a href="#cb50-3"></a>  <span class="fu">geom_point</span>(</span>
 <span id="cb50-4"><a href="#cb50-4"></a>     <span class="at">data =</span> starbucks_midwest,</span>
@@ -818,7 +825,7 @@ minnesota,big stone minnesota,big stone MULTIPOLYGON (((-96.10794 4...</code></p
 <span id="cb50-7"><a href="#cb50-7"></a>     <span class="at">size =</span> <span class="fl">0.2</span>, </span>
 <span id="cb50-8"><a href="#cb50-8"></a>     <span class="at">color =</span> <span class="st">'darkgreen'</span>) <span class="sc">+</span> </span>
 <span id="cb50-9"><a href="#cb50-9"></a>    <span class="fu">theme_map</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
+</details><div class="cell-output-display">
 <div>
 <figure class="figure"><p><img src="ica-spatial_files/figure-html/unnamed-chunk-23-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
@@ -828,7 +835,7 @@ minnesota,big stone minnesota,big stone MULTIPOLYGON (((-96.10794 4...</code></p
 </section></section><section id="exercise-7-contour-maps" class="level3 unnumbered"><h3 class="unnumbered anchored" data-anchor-id="exercise-7-contour-maps">Exercise 7: Contour maps</h3>
 <p>Especially when there are lots of point locations, and those locations start overlapping on a map, it can be tough to visualize areas of higher <em>density</em>. Consider the Starbucks locations in Canada, Mexico, and the US that we mapped earlier:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1"></a><span class="co"># Point map (we made this earlier)</span></span>
+<details class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb51"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1"></a><span class="co"># Point map (we made this earlier)</span></span>
 <span id="cb51-2"><a href="#cb51-2"></a><span class="fu">ggplot</span>(cma_boundaries) <span class="sc">+</span> </span>
 <span id="cb51-3"><a href="#cb51-3"></a>  <span class="fu">geom_sf</span>() <span class="sc">+</span> </span>
 <span id="cb51-4"><a href="#cb51-4"></a>  <span class="fu">geom_point</span>(</span>
@@ -840,7 +847,7 @@ minnesota,big stone minnesota,big stone MULTIPOLYGON (((-96.10794 4...</code></p
 <span id="cb51-10"><a href="#cb51-10"></a>  ) <span class="sc">+</span></span>
 <span id="cb51-11"><a href="#cb51-11"></a>  <span class="fu">coord_sf</span>(<span class="at">xlim =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="fl">179.14</span>, <span class="sc">-</span><span class="dv">50</span>), <span class="at">ylim =</span> <span class="fu">c</span>(<span class="fl">14.54</span>, <span class="fl">83.11</span>)) <span class="sc">+</span></span>
 <span id="cb51-12"><a href="#cb51-12"></a>  <span class="fu">theme_map</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
+</details><div class="cell-output-display">
 <div>
 <figure class="figure"><p><img src="ica-spatial_files/figure-html/unnamed-chunk-24-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
@@ -849,7 +856,7 @@ minnesota,big stone minnesota,big stone MULTIPOLYGON (((-96.10794 4...</code></p
 </div>
 <p>Now check out the contour map.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1"></a><span class="co"># What changed in the plot? the points changed to lines of denity</span></span>
+<details class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb52"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1"></a><span class="co"># What changed in the plot? the points changed to lines of denity</span></span>
 <span id="cb52-2"><a href="#cb52-2"></a><span class="co"># What changed in our code?!We changed geom_point to geom_density_2d</span></span>
 <span id="cb52-3"><a href="#cb52-3"></a><span class="fu">ggplot</span>(cma_boundaries) <span class="sc">+</span> </span>
 <span id="cb52-4"><a href="#cb52-4"></a>  <span class="fu">geom_sf</span>() <span class="sc">+</span> </span>
@@ -861,7 +868,7 @@ minnesota,big stone minnesota,big stone MULTIPOLYGON (((-96.10794 4...</code></p
 <span id="cb52-10"><a href="#cb52-10"></a>  ) <span class="sc">+</span></span>
 <span id="cb52-11"><a href="#cb52-11"></a>  <span class="fu">coord_sf</span>(<span class="at">xlim =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="fl">179.14</span>, <span class="sc">-</span><span class="dv">50</span>), <span class="at">ylim =</span> <span class="fu">c</span>(<span class="fl">14.54</span>, <span class="fl">83.11</span>)) <span class="sc">+</span></span>
 <span id="cb52-12"><a href="#cb52-12"></a>  <span class="fu">theme_map</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
+</details><div class="cell-output cell-output-stderr">
 <pre><code>Warning: Using `size` aesthetic for lines was deprecated in ggplot2 3.4.0.
 ℹ Please use `linewidth` instead.</code></pre>
 </div>
@@ -875,12 +882,13 @@ minnesota,big stone minnesota,big stone MULTIPOLYGON (((-96.10794 4...</code></p
 </section><section id="part-3-choropleth-maps" class="level3 unnumbered"><h3 class="unnumbered anchored" data-anchor-id="part-3-choropleth-maps">Part 3: Choropleth maps</h3>
 <p>Spatial data isn’t always in the form of point locations! For example, recall the state and county-level data on presidential elections.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1"></a>elections_by_state <span class="ot">&lt;-</span>  <span class="fu">read.csv</span>(<span class="st">"https://mac-stat.github.io/data/election_2020_by_state.csv"</span>)</span>
+<details class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb54"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1"></a>elections_by_state <span class="ot">&lt;-</span>  <span class="fu">read.csv</span>(<span class="st">"https://mac-stat.github.io/data/election_2020_by_state.csv"</span>)</span>
 <span id="cb54-2"><a href="#cb54-2"></a>elections_by_counties <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"https://mac-stat.github.io/data/election_2020_county.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 </div>
 <p>In these datasets, we’re interested in the overall election outcome by region (state or county), not the specific geographic location of some observation. Let’s wrangle our data first. We’ll focus on just a few variables of interest, and create a new variable (<code>repub_20_categories</code>) that <em>discretizes</em> the <code>repub_pct_20</code> variable into increments of 5 percentage points (for states) or 10 percentage points (for counties):</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1"></a><span class="co"># Don't worry about the code!</span></span>
+<details class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb55"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1"></a><span class="co"># Don't worry about the code!</span></span>
 <span id="cb55-2"><a href="#cb55-2"></a></span>
 <span id="cb55-3"><a href="#cb55-3"></a>elections_by_state <span class="ot">&lt;-</span> elections_by_state <span class="sc">|&gt;</span> </span>
 <span id="cb55-4"><a href="#cb55-4"></a>  <span class="fu">filter</span>(state_abbr <span class="sc">!=</span> <span class="st">"DC"</span>) <span class="sc">|&gt;</span> </span>
@@ -901,6 +909,7 @@ minnesota,big stone minnesota,big stone MULTIPOLYGON (((-96.10794 4...</code></p
 <span id="cb55-19"><a href="#cb55-19"></a>               <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"0-9"</span>, <span class="st">"10-19"</span>, <span class="st">"20-29"</span>, <span class="st">"30-39"</span>, <span class="st">"40-49"</span>,</span>
 <span id="cb55-20"><a href="#cb55-20"></a>                          <span class="st">"50-59"</span>, <span class="st">"60-69"</span>, <span class="st">"70-79"</span>, <span class="st">"80-89"</span>, <span class="st">"90-100"</span>),</span>
 <span id="cb55-21"><a href="#cb55-21"></a>               <span class="at">include.lowest =</span> <span class="cn">TRUE</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 </div>
 </section><section id="exercise-8-state-level-choropleth-maps" class="level3 unnumbered"><h3 class="unnumbered anchored" data-anchor-id="exercise-8-state-level-choropleth-maps">Exercise 8: State-level choropleth maps</h3>
 <p>Let’s map the 2020 Republican support in each <em>state</em>, <code>repub_pct_20</code>.</p>
@@ -911,12 +920,12 @@ minnesota,big stone minnesota,big stone MULTIPOLYGON (((-96.10794 4...</code></p
 <li><p>A background map of state boundaries in the US. The boundaries we used for point maps don’t work here. (Optional detail: they’re <code>sf</code> objects and we now need a <code>data.frame</code> object.) Instead, we can use the <code>map_data()</code> function from the <code>ggplot2</code> package:</p></li>
 </ol>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1"></a><span class="co"># Get the latitude and longitude coordinates of state boundaries</span></span>
+<details class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb56"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1"></a><span class="co"># Get the latitude and longitude coordinates of state boundaries</span></span>
 <span id="cb56-2"><a href="#cb56-2"></a>states_map <span class="ot">&lt;-</span> <span class="fu">map_data</span>(<span class="st">"state"</span>)</span>
 <span id="cb56-3"><a href="#cb56-3"></a></span>
 <span id="cb56-4"><a href="#cb56-4"></a><span class="co"># Check it out</span></span>
 <span id="cb56-5"><a href="#cb56-5"></a><span class="fu">head</span>(states_map)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
+</details><div class="cell-output cell-output-stdout">
 <pre><code>       long      lat group order  region subregion
 1 -87.46201 30.38968     1     1 alabama      &lt;NA&gt;
 2 -87.48493 30.37249     1     2 alabama      &lt;NA&gt;
@@ -929,8 +938,8 @@ minnesota,big stone minnesota,big stone MULTIPOLYGON (((-96.10794 4...</code></p
 </section><section id="pause" class="level4 unnumbered"><h4 class="unnumbered anchored" data-anchor-id="pause">Pause</h4>
 <p><strong>Important detail:</strong> Note that the <code>region</code> variable in <code>states_map</code>, and the <code>state_name</code> variable in <code>elections_by_state</code> both label states by the full name in lower case letters. This is critical to the background map and our data being able to communicate.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1"></a><span class="fu">head</span>(states_map)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
+<details class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb58"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1"></a><span class="fu">head</span>(states_map)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details><div class="cell-output cell-output-stdout">
 <pre><code>       long      lat group order  region subregion
 1 -87.46201 30.38968     1     1 alabama      &lt;NA&gt;
 2 -87.48493 30.37249     1     2 alabama      &lt;NA&gt;
@@ -939,8 +948,8 @@ minnesota,big stone minnesota,big stone MULTIPOLYGON (((-96.10794 4...</code></p
 5 -87.57087 30.32665     1     5 alabama      &lt;NA&gt;
 6 -87.58806 30.32665     1     6 alabama      &lt;NA&gt;</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1"></a><span class="fu">head</span>(elections_by_state) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
+<details class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb60"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1"></a><span class="fu">head</span>(elections_by_state) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details><div class="cell-output cell-output-stdout">
 <pre><code>   state_name state_abbr repub_pct_20 repub_20_categories
 1     alabama         AL        62.03               60-64
 2    arkansas         AR        62.40               60-64
@@ -953,13 +962,13 @@ minnesota,big stone minnesota,big stone MULTIPOLYGON (((-96.10794 4...</code></p
 </section><section id="part-b-4" class="level4 unnumbered"><h4 class="unnumbered anchored" data-anchor-id="part-b-4">Part b</h4>
 <p>Now map <code>repub_pct_20</code> by state.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a href="#cb62-1"></a><span class="co"># Note where the dataset, elections_by_state, is used, used in our ggplot layer`</span></span>
+<details class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb62"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a href="#cb62-1"></a><span class="co"># Note where the dataset, elections_by_state, is used, used in our ggplot layer`</span></span>
 <span id="cb62-2"><a href="#cb62-2"></a><span class="co"># Note where the background map, states_map, is used, the geom layer</span></span>
 <span id="cb62-3"><a href="#cb62-3"></a><span class="fu">ggplot</span>(elections_by_state, <span class="fu">aes</span>(<span class="at">map_id =</span> state_name, <span class="at">fill =</span> repub_pct_20)) <span class="sc">+</span></span>
 <span id="cb62-4"><a href="#cb62-4"></a>  <span class="fu">geom_map</span>(<span class="at">map =</span> states_map) <span class="sc">+</span></span>
 <span id="cb62-5"><a href="#cb62-5"></a>  <span class="fu">expand_limits</span>(<span class="at">x =</span> states_map<span class="sc">$</span>long, <span class="at">y =</span> states_map<span class="sc">$</span>lat) <span class="sc">+</span></span>
 <span id="cb62-6"><a href="#cb62-6"></a>  <span class="fu">theme_map</span>() </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
+</details><div class="cell-output-display">
 <div>
 <figure class="figure"><p><img src="ica-spatial_files/figure-html/unnamed-chunk-30-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
@@ -967,13 +976,13 @@ minnesota,big stone minnesota,big stone MULTIPOLYGON (((-96.10794 4...</code></p
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb63"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb63-1"><a href="#cb63-1"></a><span class="co"># Make it nicer!</span></span>
+<details class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb63"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb63-1"><a href="#cb63-1"></a><span class="co"># Make it nicer!</span></span>
 <span id="cb63-2"><a href="#cb63-2"></a><span class="fu">ggplot</span>(elections_by_state, <span class="fu">aes</span>(<span class="at">map_id =</span> state_name, <span class="at">fill =</span> repub_pct_20)) <span class="sc">+</span></span>
 <span id="cb63-3"><a href="#cb63-3"></a>  <span class="fu">geom_map</span>(<span class="at">map =</span> states_map) <span class="sc">+</span></span>
 <span id="cb63-4"><a href="#cb63-4"></a>  <span class="fu">expand_limits</span>(<span class="at">x =</span> states_map<span class="sc">$</span>long, <span class="at">y =</span> states_map<span class="sc">$</span>lat) <span class="sc">+</span></span>
 <span id="cb63-5"><a href="#cb63-5"></a>  <span class="fu">theme_map</span>() <span class="sc">+</span> </span>
 <span id="cb63-6"><a href="#cb63-6"></a>  <span class="fu">scale_fill_gradientn</span>(<span class="at">name =</span> <span class="st">"% Republican"</span>, <span class="at">colors =</span> <span class="fu">c</span>(<span class="st">"blue"</span>, <span class="st">"purple"</span>, <span class="st">"red"</span>), <span class="at">values =</span> scales<span class="sc">::</span><span class="fu">rescale</span>(<span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">100</span>, <span class="at">by =</span> <span class="dv">5</span>)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
+</details><div class="cell-output-display">
 <div>
 <figure class="figure"><p><img src="ica-spatial_files/figure-html/unnamed-chunk-31-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
@@ -982,11 +991,11 @@ minnesota,big stone minnesota,big stone MULTIPOLYGON (((-96.10794 4...</code></p
 </div>
 <p>It’s not easy to get fine control over the color scale for the quantitative <code>repub_pct_20</code> variable. Instead, let’s plot the <em>discretized</em> version, <code>repub_20_categories</code>:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb64"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb64-1"><a href="#cb64-1"></a><span class="fu">ggplot</span>(elections_by_state, <span class="fu">aes</span>(<span class="at">map_id =</span> state_name, <span class="at">fill =</span> repub_20_categories)) <span class="sc">+</span></span>
+<details class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb64"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb64-1"><a href="#cb64-1"></a><span class="fu">ggplot</span>(elections_by_state, <span class="fu">aes</span>(<span class="at">map_id =</span> state_name, <span class="at">fill =</span> repub_20_categories)) <span class="sc">+</span></span>
 <span id="cb64-2"><a href="#cb64-2"></a>  <span class="fu">geom_map</span>(<span class="at">map =</span> states_map) <span class="sc">+</span></span>
 <span id="cb64-3"><a href="#cb64-3"></a>  <span class="fu">expand_limits</span>(<span class="at">x =</span> states_map<span class="sc">$</span>long, <span class="at">y =</span> states_map<span class="sc">$</span>lat) <span class="sc">+</span></span>
 <span id="cb64-4"><a href="#cb64-4"></a>  <span class="fu">theme_map</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
+</details><div class="cell-output-display">
 <div>
 <figure class="figure"><p><img src="ica-spatial_files/figure-html/unnamed-chunk-32-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
@@ -994,7 +1003,7 @@ minnesota,big stone minnesota,big stone MULTIPOLYGON (((-96.10794 4...</code></p
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb65"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb65-1"><a href="#cb65-1"></a><span class="co"># Load package needed for refining color palette</span></span>
+<details class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb65"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb65-1"><a href="#cb65-1"></a><span class="co"># Load package needed for refining color palette</span></span>
 <span id="cb65-2"><a href="#cb65-2"></a><span class="fu">library</span>(RColorBrewer)</span>
 <span id="cb65-3"><a href="#cb65-3"></a></span>
 <span id="cb65-4"><a href="#cb65-4"></a><span class="co"># Now fix the colors</span></span>
@@ -1003,7 +1012,7 @@ minnesota,big stone minnesota,big stone MULTIPOLYGON (((-96.10794 4...</code></p
 <span id="cb65-7"><a href="#cb65-7"></a>  <span class="fu">expand_limits</span>(<span class="at">x =</span> states_map<span class="sc">$</span>long, <span class="at">y =</span> states_map<span class="sc">$</span>lat) <span class="sc">+</span></span>
 <span id="cb65-8"><a href="#cb65-8"></a>  <span class="fu">theme_map</span>() <span class="sc">+</span> </span>
 <span id="cb65-9"><a href="#cb65-9"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">rev</span>(<span class="fu">brewer.pal</span>(<span class="dv">8</span>, <span class="st">"RdBu"</span>)), <span class="at">name =</span> <span class="st">"% Republican"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
+</details><div class="cell-output-display">
 <div>
 <figure class="figure"><p><img src="ica-spatial_files/figure-html/unnamed-chunk-33-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
@@ -1013,7 +1022,7 @@ minnesota,big stone minnesota,big stone MULTIPOLYGON (((-96.10794 4...</code></p
 </section><section id="part-c-1" class="level4 unnumbered"><h4 class="unnumbered anchored" data-anchor-id="part-c-1">Part c</h4>
 <p>We can add other layers, like points, on top of a choropleth map. Add a Starbucks layer! Do you notice any relationship between Starbucks and elections? Or are we just doing things at this point? ;)</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb66"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb66-1"><a href="#cb66-1"></a><span class="co"># Get only the starbucks data from the US</span></span>
+<details class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb66"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb66-1"><a href="#cb66-1"></a><span class="co"># Get only the starbucks data from the US</span></span>
 <span id="cb66-2"><a href="#cb66-2"></a>starbucks_us <span class="ot">&lt;-</span> starbucks <span class="sc">|&gt;</span> </span>
 <span id="cb66-3"><a href="#cb66-3"></a>  <span class="fu">filter</span>(Country <span class="sc">==</span> <span class="st">"US"</span>)</span>
 <span id="cb66-4"><a href="#cb66-4"></a></span>
@@ -1030,7 +1039,7 @@ minnesota,big stone minnesota,big stone MULTIPOLYGON (((-96.10794 4...</code></p
 <span id="cb66-15"><a href="#cb66-15"></a>  <span class="fu">expand_limits</span>(<span class="at">x =</span> states_map<span class="sc">$</span>long, <span class="at">y =</span> states_map<span class="sc">$</span>lat) <span class="sc">+</span></span>
 <span id="cb66-16"><a href="#cb66-16"></a>  <span class="fu">theme_map</span>() <span class="sc">+</span> </span>
 <span id="cb66-17"><a href="#cb66-17"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">rev</span>(<span class="fu">brewer.pal</span>(<span class="dv">8</span>, <span class="st">"RdBu"</span>)), <span class="at">name =</span> <span class="st">"% Republican"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
+</details><div class="cell-output-display">
 <div>
 <figure class="figure"><p><img src="ica-spatial_files/figure-html/unnamed-chunk-34-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
@@ -1059,13 +1068,13 @@ minnesota,big stone minnesota,big stone MULTIPOLYGON (((-96.10794 4...</code></p
 <li><p>A background map of county boundaries in the US, stored in the <code>county_map</code> dataset in the <code>socviz</code> package:</p></li>
 </ol>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb67"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb67-1"><a href="#cb67-1"></a><span class="co"># Get the latitude and longitude coordinates of county boundaries</span></span>
+<details class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb67"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb67-1"><a href="#cb67-1"></a><span class="co"># Get the latitude and longitude coordinates of county boundaries</span></span>
 <span id="cb67-2"><a href="#cb67-2"></a><span class="fu">library</span>(socviz)</span>
 <span id="cb67-3"><a href="#cb67-3"></a><span class="fu">data</span>(county_map) </span>
 <span id="cb67-4"><a href="#cb67-4"></a></span>
 <span id="cb67-5"><a href="#cb67-5"></a><span class="co"># Check it out</span></span>
 <span id="cb67-6"><a href="#cb67-6"></a><span class="fu">head</span>(county_map)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
+</details><div class="cell-output cell-output-stdout">
 <pre><code>     long      lat order  hole piece            group    id
 1 1225889 -1275020     1 FALSE     1 0500000US01001.1 01001
 2 1235324 -1274008     2 FALSE     1 0500000US01001.1 01001
@@ -1078,8 +1087,8 @@ minnesota,big stone minnesota,big stone MULTIPOLYGON (((-96.10794 4...</code></p
 </section><section id="pause-1" class="level4 unnumbered"><h4 class="unnumbered anchored" data-anchor-id="pause-1">Pause</h4>
 <p><strong>Important detail:</strong> We officially have a headache. Our <code>county_map</code> refers to each county by a <strong>5-number</strong> <code>id</code>. Our <code>elections_by_counties</code> data refers to each county by a <code>county_fips</code> code, which is <em>mostly</em> the same as <code>id</code>, BUT drops any 0’s at the beginning of the code.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb69"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb69-1"><a href="#cb69-1"></a><span class="fu">head</span>(county_map)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
+<details class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb69"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb69-1"><a href="#cb69-1"></a><span class="fu">head</span>(county_map)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details><div class="cell-output cell-output-stdout">
 <pre><code>     long      lat order  hole piece            group    id
 1 1225889 -1275020     1 FALSE     1 0500000US01001.1 01001
 2 1235324 -1274008     2 FALSE     1 0500000US01001.1 01001
@@ -1088,8 +1097,8 @@ minnesota,big stone minnesota,big stone MULTIPOLYGON (((-96.10794 4...</code></p
 5 1272010 -1262889     5 FALSE     1 0500000US01001.1 01001
 6 1276797 -1295514     6 FALSE     1 0500000US01001.1 01001</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb71"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb71-1"><a href="#cb71-1"></a><span class="fu">head</span>(elections_by_counties)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
+<details class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb71"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb71-1"><a href="#cb71-1"></a><span class="fu">head</span>(elections_by_counties)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details><div class="cell-output cell-output-stdout">
 <pre><code>  state_name state_abbr    county_name county_fips repub_pct_20 median_age
 1    Alabama         AL Autauga County        1001        71.44       37.5
 2    Alabama         AL Baldwin County        1003        76.17       41.5
@@ -1108,24 +1117,25 @@ minnesota,big stone minnesota,big stone MULTIPOLYGON (((-96.10794 4...</code></p
 </div>
 <p>This just means that we have to wrangle the data so that it can communicate with the background map.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb73"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb73-1"><a href="#cb73-1"></a><span class="co"># Add 0's at the beginning of any fips_code that's fewer than 5 numbers long</span></span>
+<details class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb73"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb73-1"><a href="#cb73-1"></a><span class="co"># Add 0's at the beginning of any fips_code that's fewer than 5 numbers long</span></span>
 <span id="cb73-2"><a href="#cb73-2"></a><span class="co"># Don't worry about the syntax</span></span>
 <span id="cb73-3"><a href="#cb73-3"></a>elections_by_counties <span class="ot">&lt;-</span> elections_by_counties <span class="sc">|&gt;</span> </span>
 <span id="cb73-4"><a href="#cb73-4"></a>  <span class="fu">mutate</span>(<span class="at">county_fips =</span> <span class="fu">as.character</span>(county_fips)) <span class="sc">|&gt;</span> </span>
 <span id="cb73-5"><a href="#cb73-5"></a>  <span class="fu">mutate</span>(<span class="at">county_fips =</span> </span>
 <span id="cb73-6"><a href="#cb73-6"></a>           <span class="fu">ifelse</span>(<span class="fu">nchar</span>(county_fips) <span class="sc">==</span> <span class="dv">4</span>, <span class="fu">paste0</span>(<span class="st">"0"</span>, county_fips), county_fips))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 </div>
 </section><section id="part-b-5" class="level4 unnumbered"><h4 class="unnumbered anchored" data-anchor-id="part-b-5">Part b</h4>
 <p><em>Now</em> map Republican support by county. Let’s go straight to the discretized <code>repub_20_categories</code> variable, and a good color scale.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb74"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb74-1"><a href="#cb74-1"></a><span class="fu">ggplot</span>(elections_by_counties, <span class="fu">aes</span>(<span class="at">map_id =</span> county_fips, <span class="at">fill =</span> repub_20_categories)) <span class="sc">+</span></span>
+<details class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb74"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb74-1"><a href="#cb74-1"></a><span class="fu">ggplot</span>(elections_by_counties, <span class="fu">aes</span>(<span class="at">map_id =</span> county_fips, <span class="at">fill =</span> repub_20_categories)) <span class="sc">+</span></span>
 <span id="cb74-2"><a href="#cb74-2"></a>  <span class="fu">geom_map</span>(<span class="at">map =</span> county_map) <span class="sc">+</span></span>
 <span id="cb74-3"><a href="#cb74-3"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">rev</span>(<span class="fu">brewer.pal</span>(<span class="dv">10</span>, <span class="st">"RdBu"</span>)), <span class="at">name =</span> <span class="st">"% Republican"</span>) <span class="sc">+</span></span>
 <span id="cb74-4"><a href="#cb74-4"></a>  <span class="fu">expand_limits</span>(<span class="at">x =</span> county_map<span class="sc">$</span>long, <span class="at">y =</span> county_map<span class="sc">$</span>lat) <span class="sc">+</span></span>
 <span id="cb74-5"><a href="#cb74-5"></a>  <span class="fu">theme_map</span>() <span class="sc">+</span></span>
 <span id="cb74-6"><a href="#cb74-6"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"right"</span>) <span class="sc">+</span> </span>
 <span id="cb74-7"><a href="#cb74-7"></a>  <span class="fu">coord_equal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
+</details><div class="cell-output-display">
 <div>
 <figure class="figure"><p><img src="ica-spatial_files/figure-html/unnamed-chunk-38-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
@@ -1135,7 +1145,7 @@ minnesota,big stone minnesota,big stone MULTIPOLYGON (((-96.10794 4...</code></p
 </section></section><section id="exercise-10-play-around" class="level3 unnumbered"><h3 class="unnumbered anchored" data-anchor-id="exercise-10-play-around">Exercise 10: Play around!</h3>
 <p>Construct county-level maps of <code>median_rent</code> and <code>median_age</code>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb75"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb75-1"><a href="#cb75-1"></a><span class="co">#median rent map</span></span>
+<details class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb75"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb75-1"><a href="#cb75-1"></a><span class="co">#median rent map</span></span>
 <span id="cb75-2"><a href="#cb75-2"></a><span class="fu">ggplot</span>(elections_by_counties, <span class="fu">aes</span>(<span class="at">map_id =</span> county_fips, <span class="at">fill =</span> median_rent)) <span class="sc">+</span></span>
 <span id="cb75-3"><a href="#cb75-3"></a>  <span class="fu">geom_map</span>(<span class="at">map =</span> county_map) <span class="sc">+</span></span>
 <span id="cb75-4"><a href="#cb75-4"></a>  <span class="fu">expand_limits</span>(<span class="at">x =</span> county_map<span class="sc">$</span>long, <span class="at">y =</span> county_map<span class="sc">$</span>lat) <span class="sc">+</span></span>
@@ -1143,7 +1153,7 @@ minnesota,big stone minnesota,big stone MULTIPOLYGON (((-96.10794 4...</code></p
 <span id="cb75-6"><a href="#cb75-6"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"right"</span>) <span class="sc">+</span> </span>
 <span id="cb75-7"><a href="#cb75-7"></a>  <span class="fu">coord_equal</span>()<span class="sc">+</span></span>
 <span id="cb75-8"><a href="#cb75-8"></a>  <span class="fu">scale_fill_gradientn</span>(<span class="at">name =</span> <span class="st">"median rent"</span>, <span class="at">colors =</span> <span class="fu">c</span> (<span class="st">"white"</span>, <span class="st">"lightpink"</span>, <span class="st">"darkred"</span> ))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
+</details><div class="cell-output-display">
 <div>
 <figure class="figure"><p><img src="ica-spatial_files/figure-html/unnamed-chunk-39-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
@@ -1151,14 +1161,14 @@ minnesota,big stone minnesota,big stone MULTIPOLYGON (((-96.10794 4...</code></p
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb76"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb76-1"><a href="#cb76-1"></a><span class="fu">ggplot</span>(elections_by_counties, <span class="fu">aes</span>(<span class="at">map_id =</span> county_fips, <span class="at">fill =</span> median_age))<span class="sc">+</span></span>
+<details class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb76"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb76-1"><a href="#cb76-1"></a><span class="fu">ggplot</span>(elections_by_counties, <span class="fu">aes</span>(<span class="at">map_id =</span> county_fips, <span class="at">fill =</span> median_age))<span class="sc">+</span></span>
 <span id="cb76-2"><a href="#cb76-2"></a>  <span class="fu">geom_map</span>(<span class="at">map =</span> county_map) <span class="sc">+</span></span>
 <span id="cb76-3"><a href="#cb76-3"></a>  <span class="fu">expand_limits</span>(<span class="at">x =</span> county_map<span class="sc">$</span>long, <span class="at">y =</span> county_map<span class="sc">$</span>lat) <span class="sc">+</span></span>
 <span id="cb76-4"><a href="#cb76-4"></a>  <span class="fu">theme_map</span>() <span class="sc">+</span></span>
 <span id="cb76-5"><a href="#cb76-5"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"right"</span>) <span class="sc">+</span> </span>
 <span id="cb76-6"><a href="#cb76-6"></a>  <span class="fu">coord_equal</span>()<span class="sc">+</span></span>
 <span id="cb76-7"><a href="#cb76-7"></a>  <span class="fu">scale_fill_gradientn</span>(<span class="at">name =</span> <span class="st">"median age"</span>, <span class="at">colours =</span> <span class="fu">c</span>(<span class="st">"white"</span>, <span class="st">"lightgreen"</span>, <span class="st">"darkgreen"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
+</details><div class="cell-output-display">
 <div>
 <figure class="figure"><p><img src="ica-spatial_files/figure-html/unnamed-chunk-40-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>

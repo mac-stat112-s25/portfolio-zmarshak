@@ -336,7 +336,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../ica/quarto-demo.html">In-class Activities</a></li><li class="breadcrumb-item"><a href="../ica/ica-Reshaping.html"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Reshaping</span></a></li></ol></nav><div class="quarto-title">
 <div class="quarto-title-block"><div><h1 class="title">
 <span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Reshaping</span>
-</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
+</h1><button type="button" class="btn code-tools-button dropdown-toggle" id="quarto-code-tools-menu" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi"></i> Code</button><ul class="dropdown-menu dropdown-menu-end" aria-labelelledby="quarto-code-tools-menu"><li><a id="quarto-show-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Show All Code</a></li><li><a id="quarto-hide-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Hide All Code</a></li><li><hr class="dropdown-divider"></li><li><a id="quarto-view-source" class="dropdown-item" href="javascript:void(0)" role="button">View Source</a></li></ul></div></div>
 </div>
 
 
@@ -355,8 +355,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><strong>EXAMPLE 1: warm-up counts and proportions</strong></p>
 <p>Recall the <code>penguins</code> we worked with last class:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
+<details class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details><div class="cell-output cell-output-stderr">
 <pre><code>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
 ✔ dplyr     1.1.4     ✔ readr     2.1.5
 ✔ forcats   1.0.0     ✔ stringr   1.5.1
@@ -368,8 +368,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 ✖ dplyr::lag()    masks stats::lag()
 ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a>penguins <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">'https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2020/2020-07-28/penguins.csv'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
+<details class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a>penguins <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">'https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2020/2020-07-28/penguins.csv'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details><div class="cell-output cell-output-stderr">
 <pre><code>Rows: 344 Columns: 8
 ── Column specification ────────────────────────────────────────────────────────
 Delimiter: ","
@@ -382,10 +382,10 @@ dbl (5): bill_length_mm, bill_depth_mm, flipper_length_mm, body_mass_g, year
 </div>
 <p>Tally up the number of male/female penguins by species in 2 ways:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="co"># Using count()</span></span>
+<details class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="co"># Using count()</span></span>
 <span id="cb5-2"><a href="#cb5-2"></a>penguins <span class="sc">|&gt;</span></span>
 <span id="cb5-3"><a href="#cb5-3"></a>  <span class="fu">count</span>(species, sex)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
+</details><div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 8 × 3
   species   sex        n
   &lt;chr&gt;     &lt;chr&gt;  &lt;int&gt;
@@ -398,11 +398,11 @@ dbl (5): bill_length_mm, bill_depth_mm, flipper_length_mm, body_mass_g, year
 7 Gentoo    male      61
 8 Gentoo    &lt;NA&gt;       5</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a><span class="co"># Using group_by() and summarize()</span></span>
+<details class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a><span class="co"># Using group_by() and summarize()</span></span>
 <span id="cb7-2"><a href="#cb7-2"></a>penguins <span class="sc">|&gt;</span></span>
 <span id="cb7-3"><a href="#cb7-3"></a>  <span class="fu">group_by</span>(species, sex) <span class="sc">|&gt;</span></span>
 <span id="cb7-4"><a href="#cb7-4"></a>  <span class="fu">summarise</span>(<span class="fu">n</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
+</details><div class="cell-output cell-output-stderr">
 <pre><code>`summarise()` has grouped output by 'species'. You can override using the
 `.groups` argument.</code></pre>
 </div>
@@ -427,12 +427,12 @@ dbl (5): bill_length_mm, bill_depth_mm, flipper_length_mm, body_mass_g, year
 <li>Does the order of <code>species</code> and <code>sex</code> in <code>group_by()</code> matter?</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a><span class="co"># Relative freq</span></span>
+<details class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a><span class="co"># Relative freq</span></span>
 <span id="cb10-2"><a href="#cb10-2"></a>penguins <span class="sc">|&gt;</span> </span>
 <span id="cb10-3"><a href="#cb10-3"></a>  <span class="fu">group_by</span>(species, sex) <span class="sc">|&gt;</span> </span>
 <span id="cb10-4"><a href="#cb10-4"></a>  <span class="fu">summarize</span>(<span class="at">n =</span> <span class="fu">n</span>()) <span class="sc">|&gt;</span> </span>
 <span id="cb10-5"><a href="#cb10-5"></a>  <span class="fu">mutate</span>(<span class="at">proportion =</span> n <span class="sc">/</span> <span class="fu">sum</span>(n))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
+</details><div class="cell-output cell-output-stderr">
 <pre><code>`summarise()` has grouped output by 'species'. You can override using the
 `.groups` argument.</code></pre>
 </div>
@@ -455,11 +455,11 @@ dbl (5): bill_length_mm, bill_depth_mm, flipper_length_mm, body_mass_g, year
 <p><strong>EXAMPLE 2: New data</strong></p>
 <p>What will the following code do? Think about it before running.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a>penguin_avg <span class="ot">&lt;-</span> penguins <span class="sc">|&gt;</span> </span>
+<details class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a>penguin_avg <span class="ot">&lt;-</span> penguins <span class="sc">|&gt;</span> </span>
 <span id="cb13-2"><a href="#cb13-2"></a>  <span class="fu">group_by</span>(species, sex) <span class="sc">|&gt;</span> </span>
 <span id="cb13-3"><a href="#cb13-3"></a>  <span class="fu">summarize</span>(<span class="at">avg_body_mass =</span> <span class="fu">mean</span>(body_mass_g, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)) <span class="sc">|&gt;</span> </span>
 <span id="cb13-4"><a href="#cb13-4"></a>  <span class="fu">na.omit</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
+</details><div class="cell-output cell-output-stderr">
 <pre><code>`summarise()` has grouped output by 'species'. You can override using the
 `.groups` argument.</code></pre>
 </div>
@@ -471,9 +471,9 @@ dbl (5): bill_length_mm, bill_depth_mm, flipper_length_mm, body_mass_g, year
 <li>Did the <em>reshaping</em> process change the units of observation?</li>
 </ol>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a><span class="co"># Units of observation = 6</span></span>
+<details class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a><span class="co"># Units of observation = 6</span></span>
 <span id="cb15-2"><a href="#cb15-2"></a><span class="fu">head</span>(penguins)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
+</details><div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 6 × 8
   species island    bill_length_mm bill_depth_mm flipper_length_mm body_mass_g
   &lt;chr&gt;   &lt;chr&gt;              &lt;dbl&gt;         &lt;dbl&gt;             &lt;dbl&gt;       &lt;dbl&gt;
@@ -485,9 +485,9 @@ dbl (5): bill_length_mm, bill_depth_mm, flipper_length_mm, body_mass_g, year
 6 Adelie  Torgersen           39.3          20.6               190        3650
 # ℹ 2 more variables: sex &lt;chr&gt;, year &lt;dbl&gt;</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a><span class="co"># Units of observation = 6</span></span>
+<details class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a><span class="co"># Units of observation = 6</span></span>
 <span id="cb17-2"><a href="#cb17-2"></a><span class="fu">head</span>(penguin_avg)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
+</details><div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 6 × 3
 # Groups:   species [3]
   species   sex    avg_body_mass
@@ -520,8 +520,8 @@ We often want to retain all information on individual observations, but need to 
 <li><p>Identify the units of observation.</p></li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1"></a>penguin_avg</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
+<details class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1"></a>penguin_avg</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details><div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 6 × 3
 # Groups:   species [3]
   species   sex    avg_body_mass
@@ -549,8 +549,8 @@ We often want to retain all information on individual observations, but need to 
 <p><strong>EXAMPLE 5: pivot wider</strong></p>
 <p>Because it’s a small enough dataset to examine all at once, let’s start with our <code>penguin_avg</code> data:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1"></a>penguin_avg</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
+<details class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1"></a>penguin_avg</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details><div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 6 × 3
 # Groups:   species [3]
   species   sex    avg_body_mass
@@ -566,9 +566,9 @@ We often want to retain all information on individual observations, but need to 
 <p>With the goal of being able to calculate the <em>difference</em> in average body mass, male vs female, for each species, let’s make the dataset <em>wider</em>. That is, let’s get one row per <code>species</code> with separate columns for the average body mass by <code>sex</code>. Put this code into a chunk and run it:</p>
 <p>penguin_avg |&gt; pivot_wider(names_from = sex, values_from = avg_body_mass)</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1"></a>penguin_avg <span class="sc">|&gt;</span> </span>
+<details class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1"></a>penguin_avg <span class="sc">|&gt;</span> </span>
 <span id="cb23-2"><a href="#cb23-2"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> sex, <span class="at">values_from =</span> avg_body_mass)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
+</details><div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 3 × 3
 # Groups:   species [3]
   species   female  male
@@ -605,10 +605,10 @@ Pivot Wider
 <li><p>Use the wide data to calculate the difference in average body mass, male vs female, for each species.</p></li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1"></a>penguin_avg <span class="sc">|&gt;</span> </span>
+<details class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1"></a>penguin_avg <span class="sc">|&gt;</span> </span>
 <span id="cb25-2"><a href="#cb25-2"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> sex, <span class="at">values_from =</span> avg_body_mass) <span class="sc">|&gt;</span> </span>
 <span id="cb25-3"><a href="#cb25-3"></a>  <span class="fu">mutate</span>(<span class="at">diff =</span> male <span class="sc">-</span> female)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
+</details><div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 3 × 4
 # Groups:   species [3]
   species   female  male  diff
@@ -622,11 +622,11 @@ Pivot Wider
 <p><strong>EXAMPLE 6: Pivot longer</strong></p>
 <p>Let’s store our wide data:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1"></a>penguin_avg_wide <span class="ot">&lt;-</span> penguin_avg <span class="sc">|&gt;</span> </span>
+<details class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1"></a>penguin_avg_wide <span class="ot">&lt;-</span> penguin_avg <span class="sc">|&gt;</span> </span>
 <span id="cb27-2"><a href="#cb27-2"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> sex, <span class="at">values_from =</span> avg_body_mass)</span>
 <span id="cb27-3"><a href="#cb27-3"></a></span>
 <span id="cb27-4"><a href="#cb27-4"></a>penguin_avg_wide</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
+</details><div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 3 × 3
 # Groups:   species [3]
   species   female  male
@@ -638,10 +638,10 @@ Pivot Wider
 </div>
 <p>Suppose we wanted to change this data back to a <em>longer</em> format. In general, this happens when some variables (here <code>female</code> and <code>male</code>) represent two categories or values of some <em>broader</em> variable (here <code>sex</code>), and we want to combine them into that 1 variable without losing any information. Let’s <code>pivot_longer()</code>:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1"></a><span class="co"># We can either communicate which variables we WANT to collect into a single column (female, male)</span></span>
+<details class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1"></a><span class="co"># We can either communicate which variables we WANT to collect into a single column (female, male)</span></span>
 <span id="cb29-2"><a href="#cb29-2"></a>penguin_avg_wide <span class="sc">|&gt;</span> </span>
 <span id="cb29-3"><a href="#cb29-3"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="fu">c</span>(female, male), <span class="at">names_to =</span> <span class="st">"sex"</span>, <span class="at">values_to =</span> <span class="st">"avg_body_mass"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
+</details><div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 6 × 3
 # Groups:   species [3]
   species   sex    avg_body_mass
@@ -653,10 +653,10 @@ Pivot Wider
 5 Gentoo    female         4680.
 6 Gentoo    male           5485.</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1"></a><span class="co"># Or which variable(s) we do NOT want to collect into a single column (sex)</span></span>
+<details class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1"></a><span class="co"># Or which variable(s) we do NOT want to collect into a single column (sex)</span></span>
 <span id="cb31-2"><a href="#cb31-2"></a>penguin_avg_wide <span class="sc">|&gt;</span> </span>
 <span id="cb31-3"><a href="#cb31-3"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="sc">-</span>species, <span class="at">names_to =</span> <span class="st">"sex"</span>, <span class="at">values_to =</span> <span class="st">"avg_body_mass"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
+</details><div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 6 × 3
 # Groups:   species [3]
   species   sex    avg_body_mass
@@ -699,13 +699,13 @@ Pivot Longer
 <p><strong>EXAMPLE 7: Practice</strong></p>
 <p>Let’s make up some data on the orders of 2 different customers at 3 different restaurants:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1"></a>food <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<details class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1"></a>food <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
 <span id="cb33-2"><a href="#cb33-2"></a>  <span class="at">customer =</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">"A"</span>, <span class="st">"B"</span>), <span class="at">each =</span> <span class="dv">3</span>),</span>
 <span id="cb33-3"><a href="#cb33-3"></a>  <span class="at">restaurant =</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">"Shish"</span>, <span class="st">"FrenchMeadow"</span>, <span class="st">"DunnBros"</span>), <span class="dv">2</span>),</span>
 <span id="cb33-4"><a href="#cb33-4"></a>  <span class="at">order =</span> <span class="fu">c</span>(<span class="st">"falafel"</span>, <span class="st">"salad"</span>, <span class="st">"coffee"</span>, <span class="st">"baklava"</span>, <span class="st">"pastry"</span>, <span class="st">"tea"</span>)</span>
 <span id="cb33-5"><a href="#cb33-5"></a>)</span>
 <span id="cb33-6"><a href="#cb33-6"></a>food</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
+</details><div class="cell-output cell-output-stdout">
 <pre><code>  customer   restaurant   order
 1        A        Shish falafel
 2        A FrenchMeadow   salad
@@ -717,9 +717,9 @@ Pivot Longer
 </div>
 <p>The units of observation in <code>food</code> are customer / restaurant combinations. Wrangle this data so that the units of observation are customers, spreading the restaurants into separate columns.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1"></a>food <span class="sc">|&gt;</span> </span>
+<details class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1"></a>food <span class="sc">|&gt;</span> </span>
 <span id="cb35-2"><a href="#cb35-2"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> restaurant, <span class="at">values_from =</span> order)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
+</details><div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 2 × 4
   customer Shish   FrenchMeadow DunnBros
   &lt;chr&gt;    &lt;chr&gt;   &lt;chr&gt;        &lt;chr&gt;   
@@ -729,14 +729,14 @@ Pivot Longer
 </div>
 <p>Consider 2 more customers:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1"></a>more_food <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<details class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1"></a>more_food <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
 <span id="cb37-2"><a href="#cb37-2"></a>  <span class="at">customer =</span> <span class="fu">c</span>(<span class="st">"C"</span>, <span class="st">"D"</span>),</span>
 <span id="cb37-3"><a href="#cb37-3"></a>  <span class="at">Shish =</span> <span class="fu">c</span>(<span class="st">"coffee"</span>, <span class="st">"maza"</span>),</span>
 <span id="cb37-4"><a href="#cb37-4"></a>  <span class="at">FrenchMeadow =</span> <span class="fu">c</span>(<span class="st">"soup"</span>, <span class="st">"sandwich"</span>),</span>
 <span id="cb37-5"><a href="#cb37-5"></a>  <span class="at">DunnBros =</span> <span class="fu">c</span>(<span class="st">"cookie"</span>, <span class="st">"coffee"</span>)</span>
 <span id="cb37-6"><a href="#cb37-6"></a>)</span>
 <span id="cb37-7"><a href="#cb37-7"></a>more_food</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
+</details><div class="cell-output cell-output-stdout">
 <pre><code>  customer  Shish FrenchMeadow DunnBros
 1        C coffee         soup   cookie
 2        D   maza     sandwich   coffee</code></pre>
@@ -744,9 +744,9 @@ Pivot Longer
 </div>
 <p>Wrangle this data so that the 3 restaurant columns are combined into 1, hence the units of observation are customer / restaurant combinations.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1"></a>more_food <span class="sc">|&gt;</span> </span>
+<details class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1"></a>more_food <span class="sc">|&gt;</span> </span>
 <span id="cb39-2"><a href="#cb39-2"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="sc">-</span>customer, <span class="at">names_to =</span> <span class="st">"restaurant"</span>, <span class="at">values_to =</span> <span class="st">"order"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
+</details><div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 6 × 3
   customer restaurant   order   
   &lt;chr&gt;    &lt;chr&gt;        &lt;chr&gt;   
@@ -764,10 +764,10 @@ Pivot Longer
 <section id="exercise-1-whats-the-problem" class="level3 unnumbered"><h3 class="unnumbered anchored" data-anchor-id="exercise-1-whats-the-problem">Exercise 1: What’s the problem?</h3>
 <p>Consider data on a sleep study in which subjects received only 3 hours of sleep per night. Each day, their reaction time to a stimulus (in ms) was recorded.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1"></a>sleep_wide <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"https://mac-stat.github.io/data/sleep_wide.csv"</span>)</span>
+<details class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb41"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1"></a>sleep_wide <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"https://mac-stat.github.io/data/sleep_wide.csv"</span>)</span>
 <span id="cb41-2"><a href="#cb41-2"></a></span>
 <span id="cb41-3"><a href="#cb41-3"></a><span class="fu">head</span>(sleep_wide)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
+</details><div class="cell-output cell-output-stdout">
 <pre><code>  Subject  day_0  day_1  day_2  day_3  day_4  day_5  day_6  day_7  day_8  day_9
 1     308 249.56 258.70 250.80 321.44 356.85 414.69 382.20 290.15 430.59 466.35
 2     309 222.73 205.27 202.98 204.71 207.72 215.96 213.63 217.73 224.30 237.31
@@ -822,10 +822,10 @@ Pivot Longer
 <section id="part-a-1" class="level4 unnumbered"><h4 class="unnumbered anchored" data-anchor-id="part-a-1">Part a</h4>
 <p>Use <code>pivot_longer()</code> to create the long-format dataset above. Show the first 3 lines (<code>head(3)</code>), which should be <em>similar</em> to those above. Follow-up: Thinking forward to plotting reaction time vs day for each subject, what would you like to fix / change about this dataset?</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1"></a><span class="co"># For cols, try 2 appproaches: using - and starts_with</span></span>
+<details class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb43"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1"></a><span class="co"># For cols, try 2 appproaches: using - and starts_with</span></span>
 <span id="cb43-2"><a href="#cb43-2"></a> sleep_wide <span class="sc">|&gt;</span> </span>
 <span id="cb43-3"><a href="#cb43-3"></a>   <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="sc">-</span>Subject, <span class="at">names_to =</span> <span class="st">"day"</span>, <span class="at">values_to =</span> <span class="st">"reaction_time"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
+</details><div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 180 × 3
    Subject day   reaction_time
      &lt;int&gt; &lt;chr&gt;         &lt;dbl&gt;
@@ -841,8 +841,8 @@ Pivot Longer
 10     308 day_9          466.
 # ℹ 170 more rows</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1"></a>sleep_wide <span class="sc">|&gt;</span> <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="fu">starts_with</span>(<span class="st">"day"</span>), <span class="at">names_to =</span> <span class="st">"day"</span>, <span class="at">values_to =</span> <span class="st">"reaction_time"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
+<details class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb45"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1"></a>sleep_wide <span class="sc">|&gt;</span> <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="fu">starts_with</span>(<span class="st">"day"</span>), <span class="at">names_to =</span> <span class="st">"day"</span>, <span class="at">values_to =</span> <span class="st">"reaction_time"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details><div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 180 × 3
    Subject day   reaction_time
      &lt;int&gt; &lt;chr&gt;         &lt;dbl&gt;
@@ -862,14 +862,14 @@ Pivot Longer
 </section><section id="part-b-1" class="level4 unnumbered"><h4 class="unnumbered anchored" data-anchor-id="part-b-1">Part b</h4>
 <p>Run this chunk:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1"></a>sleep_long <span class="ot">&lt;-</span> sleep_wide <span class="sc">|&gt;</span></span>
+<details class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb47"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1"></a>sleep_long <span class="ot">&lt;-</span> sleep_wide <span class="sc">|&gt;</span></span>
 <span id="cb47-2"><a href="#cb47-2"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="sc">-</span>Subject,</span>
 <span id="cb47-3"><a href="#cb47-3"></a>               <span class="at">names_to =</span> <span class="st">"day"</span>,</span>
 <span id="cb47-4"><a href="#cb47-4"></a>               <span class="at">names_prefix =</span> <span class="st">"day_"</span>,</span>
 <span id="cb47-5"><a href="#cb47-5"></a>               <span class="at">values_to =</span> <span class="st">"reaction_time"</span>)</span>
 <span id="cb47-6"><a href="#cb47-6"></a></span>
 <span id="cb47-7"><a href="#cb47-7"></a><span class="fu">head</span>(sleep_long)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
+</details><div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 6 × 3
   Subject day   reaction_time
     &lt;int&gt; &lt;chr&gt;         &lt;dbl&gt;
@@ -892,9 +892,9 @@ Pivot Longer
 </ul></section><section id="part-c-1" class="level4 unnumbered"><h4 class="unnumbered anchored" data-anchor-id="part-c-1">Part c</h4>
 <p>Using <code>sleep_long</code>, construct a line plot of reaction time vs day for each subject. This will look goofy no matter what you do. Why? HINT: look back at <code>head(sleep_long)</code>. What class or type of variables are <code>Subject</code> and <code>day</code>? What do we <em>want</em> them to be? (<code>Subject</code> is integer and <code>day</code> is character but we want <code>subject</code> as a factor and <code>day</code> as a numeric value )</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1"></a><span class="fu">ggplot</span>(sleep_long, <span class="fu">aes</span>(<span class="at">x =</span> day, <span class="at">y =</span> reaction_time)) <span class="sc">+</span></span>
+<details class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb49"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1"></a><span class="fu">ggplot</span>(sleep_long, <span class="fu">aes</span>(<span class="at">x =</span> day, <span class="at">y =</span> reaction_time)) <span class="sc">+</span></span>
 <span id="cb49-2"><a href="#cb49-2"></a>  <span class="fu">geom_line</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
+</details><div class="cell-output-display">
 <div>
 <figure class="figure"><p><img src="ica-Reshaping_files/figure-html/unnamed-chunk-19-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
@@ -905,7 +905,7 @@ Pivot Longer
 </section></section><section id="exercise-3-changing-variable-classes-plotting" class="level3 unnumbered"><h3 class="unnumbered anchored" data-anchor-id="exercise-3-changing-variable-classes-plotting">Exercise 3: Changing variable classes &amp; plotting</h3>
 <p>Let’s finalize <code>sleep_long</code> by <em>mutating</em> the <code>Subject</code> variable to be a <code>factor</code> (categorical) and the <code>day</code> variable to be <code>numeric</code> (quantitative). Take note of the <code>mutate()</code> code! You’ll use this type of code a lot.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1"></a>sleep_long <span class="ot">&lt;-</span> sleep_wide <span class="sc">|&gt;</span></span>
+<details class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb50"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1"></a>sleep_long <span class="ot">&lt;-</span> sleep_wide <span class="sc">|&gt;</span></span>
 <span id="cb50-2"><a href="#cb50-2"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="sc">-</span>Subject,</span>
 <span id="cb50-3"><a href="#cb50-3"></a>               <span class="at">names_to =</span> <span class="st">"day"</span>,</span>
 <span id="cb50-4"><a href="#cb50-4"></a>               <span class="at">names_prefix =</span> <span class="st">"day_"</span>,</span>
@@ -915,7 +915,7 @@ Pivot Longer
 <span id="cb50-8"><a href="#cb50-8"></a><span class="co"># Check it out</span></span>
 <span id="cb50-9"><a href="#cb50-9"></a><span class="co"># Same data, different class</span></span>
 <span id="cb50-10"><a href="#cb50-10"></a><span class="fu">head</span>(sleep_long)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
+</details><div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 6 × 3
   Subject   day reaction_time
   &lt;fct&gt;   &lt;dbl&gt;         &lt;dbl&gt;
@@ -930,11 +930,11 @@ Pivot Longer
 <section id="part-a-2" class="level4 unnumbered"><h4 class="unnumbered anchored" data-anchor-id="part-a-2">Part a</h4>
 <p><em>Now</em> make some plots.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1"></a><span class="co"># Make a line plot of reaction time by day for each subject</span></span>
+<details class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb52"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1"></a><span class="co"># Make a line plot of reaction time by day for each subject</span></span>
 <span id="cb52-2"><a href="#cb52-2"></a><span class="co"># Put these all on the same frame</span></span>
 <span id="cb52-3"><a href="#cb52-3"></a><span class="fu">ggplot</span>(sleep_long, <span class="fu">aes</span>(<span class="at">x =</span> day, <span class="at">y =</span> reaction_time, <span class="at">color =</span> Subject)) <span class="sc">+</span></span>
 <span id="cb52-4"><a href="#cb52-4"></a>  <span class="fu">geom_line</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
+</details><div class="cell-output-display">
 <div>
 <figure class="figure"><p><img src="ica-Reshaping_files/figure-html/unnamed-chunk-21-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
@@ -942,12 +942,12 @@ Pivot Longer
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1"></a><span class="co"># Make a line plot of reaction time by day for each subject</span></span>
+<details class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb53"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1"></a><span class="co"># Make a line plot of reaction time by day for each subject</span></span>
 <span id="cb53-2"><a href="#cb53-2"></a><span class="co"># Put these all on separate frames (one per subject)</span></span>
 <span id="cb53-3"><a href="#cb53-3"></a><span class="fu">ggplot</span>(sleep_long, <span class="fu">aes</span>(<span class="at">x =</span> day, <span class="at">y =</span> reaction_time)) <span class="sc">+</span></span>
 <span id="cb53-4"><a href="#cb53-4"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
 <span id="cb53-5"><a href="#cb53-5"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> Subject)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
+</details><div class="cell-output-display">
 <div>
 <figure class="figure"><p><img src="ica-Reshaping_files/figure-html/unnamed-chunk-22-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
@@ -966,10 +966,10 @@ Pivot Longer
 <section id="part-a-3" class="level4 unnumbered"><h4 class="unnumbered anchored" data-anchor-id="part-a-3">Part a</h4>
 <p>Adjust the code below. What don’t you like about the column labels?</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1"></a> sleep_long <span class="sc">|&gt;</span></span>
+<details class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb54"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1"></a> sleep_long <span class="sc">|&gt;</span></span>
 <span id="cb54-2"><a href="#cb54-2"></a>   <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> day, <span class="at">values_from =</span> reaction_time) <span class="sc">|&gt;</span> </span>
 <span id="cb54-3"><a href="#cb54-3"></a>   <span class="fu">head</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
+</details><div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 6 × 11
   Subject   `0`   `1`   `2`   `3`   `4`   `5`   `6`   `7`   `8`   `9`
   &lt;fct&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
@@ -984,10 +984,10 @@ Pivot Longer
 </section><section id="part-b-3" class="level4 unnumbered"><h4 class="unnumbered anchored" data-anchor-id="part-b-3">Part b</h4>
 <p>Using your intuition, adjust your code from part a to name the reaction time columns “day_0”, “day_1”, etc.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1"></a> sleep_long <span class="sc">|&gt;</span></span>
+<details class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb56"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1"></a> sleep_long <span class="sc">|&gt;</span></span>
 <span id="cb56-2"><a href="#cb56-2"></a>   <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> day, <span class="at">values_from =</span> reaction_time, <span class="at">names_prefix =</span> <span class="st">"day_"</span>) <span class="sc">|&gt;</span> </span>
 <span id="cb56-3"><a href="#cb56-3"></a>   <span class="fu">head</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
+</details><div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 6 × 11
   Subject day_0 day_1 day_2 day_3 day_4 day_5 day_6 day_7 day_8 day_9
   &lt;fct&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
@@ -1003,13 +1003,13 @@ Pivot Longer
 </section></section><section id="exercise-5-practice-with-billboard-charts" class="level3 unnumbered"><h3 class="unnumbered anchored" data-anchor-id="exercise-5-practice-with-billboard-charts">Exercise 5: Practice with Billboard charts</h3>
 <p>Load data on songs that hit the <code>billboard</code> charts around the year 2000. Included for each song is the <code>artist</code> name, <code>track</code> name, the date it hit the charts (<code>date.enter</code>), and <code>wk</code>-related variables that indicate rankings in each subsequent week on the charts:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1"></a><span class="co"># Load data</span></span>
+<details class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb58"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1"></a><span class="co"># Load data</span></span>
 <span id="cb58-2"><a href="#cb58-2"></a><span class="fu">library</span>(tidyr)</span>
 <span id="cb58-3"><a href="#cb58-3"></a><span class="fu">data</span>(<span class="st">"billboard"</span>)</span>
 <span id="cb58-4"><a href="#cb58-4"></a></span>
 <span id="cb58-5"><a href="#cb58-5"></a><span class="co"># Check it out</span></span>
 <span id="cb58-6"><a href="#cb58-6"></a><span class="fu">head</span>(billboard)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
+</details><div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 6 × 79
   artist      track date.entered   wk1   wk2   wk3   wk4   wk5   wk6   wk7   wk8
   &lt;chr&gt;       &lt;chr&gt; &lt;date&gt;       &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
@@ -1032,10 +1032,10 @@ Pivot Longer
 <section id="part-a-4" class="level4 unnumbered"><h4 class="unnumbered anchored" data-anchor-id="part-a-4">Part a</h4>
 <p>Construct and summarize a plot of how a song’s Billboard ranking its 2nd week on the chart (y-axis) is related to its ranking the 1st week on the charts (x-axis). Add a reference line <code>geom_abline(intercept = 0, slope = 1)</code>. Songs <em>above</em> this line <em>improved</em> their rankings from the 1st to 2nd week.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1"></a><span class="fu">ggplot</span>(billboard, <span class="fu">aes</span>(<span class="at">x =</span> wk1, <span class="at">y =</span> wk2)) <span class="sc">+</span> </span>
+<details class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb60"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1"></a><span class="fu">ggplot</span>(billboard, <span class="fu">aes</span>(<span class="at">x =</span> wk1, <span class="at">y =</span> wk2)) <span class="sc">+</span> </span>
 <span id="cb60-2"><a href="#cb60-2"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
 <span id="cb60-3"><a href="#cb60-3"></a>  <span class="fu">geom_abline</span>(<span class="at">intercept =</span> <span class="dv">0</span>, <span class="at">slope =</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
+</details><div class="cell-output cell-output-stderr">
 <pre><code>Warning: Removed 5 rows containing missing values or values outside the scale range
 (`geom_point()`).</code></pre>
 </div>
@@ -1049,9 +1049,9 @@ Pivot Longer
 </section><section id="part-b-4" class="level4 unnumbered"><h4 class="unnumbered anchored" data-anchor-id="part-b-4">Part b</h4>
 <p>Use your wrangling tools to identify <em>which</em> songs are those above the line in Part a, i.e.&nbsp;with rankgings that went up from week 1 to week 2.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a href="#cb62-1"></a>billboard <span class="sc">|&gt;</span></span>
+<details class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb62"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a href="#cb62-1"></a>billboard <span class="sc">|&gt;</span></span>
 <span id="cb62-2"><a href="#cb62-2"></a>  <span class="fu">filter</span>(wk2 <span class="sc">&gt;</span> wk1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
+</details><div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 7 × 79
   artist      track date.entered   wk1   wk2   wk3   wk4   wk5   wk6   wk7   wk8
   &lt;chr&gt;       &lt;chr&gt; &lt;date&gt;       &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
@@ -1078,18 +1078,18 @@ Pivot Longer
 <li>keeps all variables <em>except</em> <code>track</code> and <code>date.entered</code>. HINT: How can you avoid writing out all the variable names you want to keep?</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb64"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb64-1"><a href="#cb64-1"></a><span class="co"># Define nov_1999</span></span>
+<details class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb64"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb64-1"><a href="#cb64-1"></a><span class="co"># Define nov_1999</span></span>
 <span id="cb64-2"><a href="#cb64-2"></a>nov_1999 <span class="ot">&lt;-</span> billboard <span class="sc">|&gt;</span></span>
 <span id="cb64-3"><a href="#cb64-3"></a>  <span class="fu">filter</span>(date.entered <span class="sc">==</span> <span class="st">"1999-11-06"</span>) <span class="sc">|&gt;</span></span>
 <span id="cb64-4"><a href="#cb64-4"></a>  <span class="fu">select</span>(<span class="sc">-</span>track, <span class="sc">-</span>date.entered)</span>
 <span id="cb64-5"><a href="#cb64-5"></a></span>
 <span id="cb64-6"><a href="#cb64-6"></a><span class="co"># Confirm that nov_1999 has 2 rows (songs) and 77 columns</span></span>
 <span id="cb64-7"><a href="#cb64-7"></a><span class="fu">dim</span>(nov_1999)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
+</details><div class="cell-output cell-output-stdout">
 <pre><code>[1]  2 77</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb66"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb66-1"><a href="#cb66-1"></a><span class="fu">head</span>(nov_1999)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
+<details class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb66"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb66-1"><a href="#cb66-1"></a><span class="fu">head</span>(nov_1999)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details><div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 2 × 77
   artist   wk1   wk2   wk3   wk4   wk5   wk6   wk7   wk8   wk9  wk10  wk11  wk12
   &lt;chr&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
@@ -1107,12 +1107,12 @@ Pivot Longer
 </section><section id="part-d" class="level4 unnumbered"><h4 class="unnumbered anchored" data-anchor-id="part-d">Part d</h4>
 <p>Create and discuss a visualization of the rankings (y-axis) over time (x-axis) for the 2 songs in <code>nov_1999</code>. There are hints below (if you scroll), but you’re encouraged to play around and use as few hints as possible.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb68"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb68-1"><a href="#cb68-1"></a>nov_1999 <span class="sc">|&gt;</span> </span>
+<details class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb68"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb68-1"><a href="#cb68-1"></a>nov_1999 <span class="sc">|&gt;</span> </span>
 <span id="cb68-2"><a href="#cb68-2"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="sc">-</span>artist, <span class="at">names_to =</span> <span class="st">"week"</span>, <span class="at">names_prefix =</span> <span class="st">"wk"</span>, <span class="at">values_to =</span> <span class="st">"rank"</span>) <span class="sc">|&gt;</span> </span>
 <span id="cb68-3"><a href="#cb68-3"></a>  <span class="fu">mutate</span>(<span class="at">week =</span> <span class="fu">as.numeric</span>(week)) <span class="sc">|&gt;</span> </span>
 <span id="cb68-4"><a href="#cb68-4"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">y =</span> rank, <span class="at">x =</span> week, <span class="at">color =</span> artist)) <span class="sc">+</span> </span>
 <span id="cb68-5"><a href="#cb68-5"></a>    <span class="fu">geom_line</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
+</details><div class="cell-output cell-output-stderr">
 <pre><code>Warning: Removed 79 rows containing missing values or values outside the scale range
 (`geom_line()`).</code></pre>
 </div>
@@ -1132,26 +1132,27 @@ Pivot Longer
 </section></section><section id="exercise-6-practice-with-the-daily-show" class="level3 unnumbered"><h3 class="unnumbered anchored" data-anchor-id="exercise-6-practice-with-the-daily-show">Exercise 6: Practice with the Daily Show</h3>
 <p>The data associated with <a href="https://fivethirtyeight.com/datalab/every-guest-jon-stewart-ever-had-on-the-daily-show/">this article</a> is available in the <code>fivethirtyeight</code> package, and is loaded into <code>daily</code> below. It includes a list of every guest to ever appear on Jon Stewart’s The Daily Show, a “late-night talk and satirical news” program (per Wikipedia). Check out the dataset and note that when multiple people appeared together, each person receives their own line:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb70"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb70-1"><a href="#cb70-1"></a><span class="fu">library</span>(fivethirtyeight)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
+<details class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb70"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb70-1"><a href="#cb70-1"></a><span class="fu">library</span>(fivethirtyeight)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details><div class="cell-output cell-output-stderr">
 <pre><code>Some larger datasets need to be installed separately, like senators and
 house_district_forecast. To install these, we recommend you install the
 fivethirtyeightdata package by running:
 install.packages('fivethirtyeightdata', repos =
 'https://fivethirtyeightdata.github.io/drat/', type = 'source')</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb72"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb72-1"><a href="#cb72-1"></a><span class="fu">data</span>(<span class="st">"daily_show_guests"</span>)</span>
+<details class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb72"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb72-1"><a href="#cb72-1"></a><span class="fu">data</span>(<span class="st">"daily_show_guests"</span>)</span>
 <span id="cb72-2"><a href="#cb72-2"></a>daily <span class="ot">&lt;-</span> daily_show_guests</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 </div>
 <p>In analyzing this data, you’ll need to determine if and when the data needs to be reshaped.</p>
 <section id="part-a-5" class="level4 unnumbered"><h4 class="unnumbered anchored" data-anchor-id="part-a-5">Part a</h4>
 <p>Identify the 15 guests that appeared the most. (This isn’t a very diverse guest list!)</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb73"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb73-1"><a href="#cb73-1"></a>daily <span class="sc">|&gt;</span></span>
+<details class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb73"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb73-1"><a href="#cb73-1"></a>daily <span class="sc">|&gt;</span></span>
 <span id="cb73-2"><a href="#cb73-2"></a>  <span class="fu">count</span>(raw_guest_list) <span class="sc">|&gt;</span></span>
 <span id="cb73-3"><a href="#cb73-3"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(n)) <span class="sc">|&gt;</span></span>
 <span id="cb73-4"><a href="#cb73-4"></a>  <span class="fu">head</span>(<span class="dv">15</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
+</details><div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 15 × 2
    raw_guest_list        n
    &lt;chr&gt;             &lt;int&gt;
@@ -1181,7 +1182,7 @@ install.packages('fivethirtyeightdata', repos =
 </ul>
 <p>There are hints below (if you scroll), but you’re encouraged to play around and use as few hints as possible.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb75"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb75-1"><a href="#cb75-1"></a>wide_daily_guest <span class="ot">&lt;-</span> daily <span class="sc">|&gt;</span></span>
+<details class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb75"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb75-1"><a href="#cb75-1"></a>wide_daily_guest <span class="ot">&lt;-</span> daily <span class="sc">|&gt;</span></span>
 <span id="cb75-2"><a href="#cb75-2"></a>  <span class="fu">count</span>(year, raw_guest_list) <span class="sc">|&gt;</span></span>
 <span id="cb75-3"><a href="#cb75-3"></a>  <span class="fu">group_by</span>(raw_guest_list) <span class="sc">|&gt;</span></span>
 <span id="cb75-4"><a href="#cb75-4"></a>  <span class="fu">mutate</span>(<span class="at">total =</span> <span class="fu">sum</span>(n)) <span class="sc">|&gt;</span></span>
@@ -1189,7 +1190,7 @@ install.packages('fivethirtyeightdata', repos =
 <span id="cb75-6"><a href="#cb75-6"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(total))</span>
 <span id="cb75-7"><a href="#cb75-7"></a>  </span>
 <span id="cb75-8"><a href="#cb75-8"></a>  <span class="fu">head</span>(wide_daily_guest, <span class="dv">15</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
+</details><div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 15 × 19
 # Groups:   raw_guest_list [15]
    raw_guest_list  total `1999` `2000` `2001` `2002` `2003` `2004` `2005` `2006`
@@ -1222,9 +1223,9 @@ install.packages('fivethirtyeightdata', repos =
 </ul></section><section id="part-c-3" class="level4 unnumbered"><h4 class="unnumbered anchored" data-anchor-id="part-c-3">Part c</h4>
 <p>Let’s recreate the first figure from <a href="https://fivethirtyeight.com/datalab/every-guest-jon-stewart-ever-had-on-the-daily-show/">the article</a>. This groups all guests into 3 broader occupational categories. However, our current data has 18 categories:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb77"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb77-1"><a href="#cb77-1"></a>daily <span class="sc">|&gt;</span> </span>
+<details class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb77"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb77-1"><a href="#cb77-1"></a>daily <span class="sc">|&gt;</span> </span>
 <span id="cb77-2"><a href="#cb77-2"></a>  <span class="fu">count</span>(group)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
+</details><div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 18 × 2
    group              n
    &lt;chr&gt;          &lt;int&gt;
@@ -1250,7 +1251,7 @@ install.packages('fivethirtyeightdata', repos =
 </div>
 <p>Let’s define a new dataset that includes a new variable, <code>broad_group</code>, that buckets these 18 categories into the 3 bigger ones used in the article. And get rid of any rows missing information on <code>broad_group</code>. You’ll learn the code soon! For now, just run this chunk:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb79"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb79-1"><a href="#cb79-1"></a>plot_data <span class="ot">&lt;-</span> daily <span class="sc">|&gt;</span> </span>
+<details class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb79"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb79-1"><a href="#cb79-1"></a>plot_data <span class="ot">&lt;-</span> daily <span class="sc">|&gt;</span> </span>
 <span id="cb79-2"><a href="#cb79-2"></a>  <span class="fu">mutate</span>(<span class="at">broad_group =</span> <span class="fu">case_when</span>(</span>
 <span id="cb79-3"><a href="#cb79-3"></a>    group <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Acting"</span>, <span class="st">"Athletics"</span>, <span class="st">"Comedy"</span>, <span class="st">"Musician"</span>) <span class="sc">~</span> <span class="st">"Acting, Comedy &amp; Music"</span>,</span>
 <span id="cb79-4"><a href="#cb79-4"></a>    group <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Media"</span>, <span class="st">"media"</span>, <span class="st">"Science"</span>, <span class="st">"Academic"</span>, <span class="st">"Consultant"</span>, <span class="st">"Clergy"</span>) <span class="sc">~</span> <span class="st">"Media"</span>,</span>
@@ -1258,16 +1259,17 @@ install.packages('fivethirtyeightdata', repos =
 <span id="cb79-6"><a href="#cb79-6"></a>    <span class="at">.default =</span> <span class="cn">NA</span></span>
 <span id="cb79-7"><a href="#cb79-7"></a>  )) <span class="sc">|&gt;</span> </span>
 <span id="cb79-8"><a href="#cb79-8"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(broad_group))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 </div>
 <p>Now, using the <code>broad_group</code> variable in <code>plot_data</code>, recreate the graphic from the article, with three different lines showing the fraction of guests in each group over time. Note: You’ll have to wrangle the data first.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb80"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb80-1"><a href="#cb80-1"></a>plot_data <span class="sc">|&gt;</span></span>
+<details class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb80"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb80-1"><a href="#cb80-1"></a>plot_data <span class="sc">|&gt;</span></span>
 <span id="cb80-2"><a href="#cb80-2"></a>  <span class="fu">group_by</span>(year, broad_group) <span class="sc">|&gt;</span></span>
 <span id="cb80-3"><a href="#cb80-3"></a>  <span class="fu">summarise</span>(<span class="at">n =</span> <span class="fu">n</span>()) <span class="sc">|&gt;</span></span>
 <span id="cb80-4"><a href="#cb80-4"></a>  <span class="fu">mutate</span>(<span class="at">freq =</span> n <span class="sc">/</span> <span class="fu">sum</span>(n)) <span class="sc">|&gt;</span></span>
 <span id="cb80-5"><a href="#cb80-5"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> year, <span class="at">y =</span> freq, <span class="at">color =</span> broad_group)) <span class="sc">+</span></span>
 <span id="cb80-6"><a href="#cb80-6"></a>  <span class="fu">geom_line</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
+</details><div class="cell-output cell-output-stderr">
 <pre><code>`summarise()` has grouped output by 'year'. You can override using the
 `.groups` argument.</code></pre>
 </div>

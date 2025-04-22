@@ -337,7 +337,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../ica/quarto-demo.html">In-class Activities</a></li><li class="breadcrumb-item"><a href="../ica/ica-multi.html"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Mulivariate Viz</span></a></li></ol></nav><div class="quarto-title">
 <div class="quarto-title-block"><div><h1 class="title">
 <span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Mulivariate Viz</span>
-</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
+</h1><button type="button" class="btn code-tools-button dropdown-toggle" id="quarto-code-tools-menu" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi"></i> Code</button><ul class="dropdown-menu dropdown-menu-end" aria-labelelledby="quarto-code-tools-menu"><li><a id="quarto-show-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Show All Code</a></li><li><a id="quarto-hide-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Hide All Code</a></li><li><hr class="dropdown-divider"></li><li><a id="quarto-view-source" class="dropdown-item" href="javascript:void(0)" role="button">View Source</a></li></ul></div></div>
 </div>
 
 
@@ -356,8 +356,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span class="header-section-number">14.1</span> Review</h2>
 <p>Let’s review some <em>univariate</em> and <em>bivariate</em> plotting concepts using some daily weather data from Australia. This is a subset of the data from the <code>weatherAUS</code> data in the <code>rattle</code> package.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
+<details class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details><div class="cell-output cell-output-stderr">
 <pre><code>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
 ✔ dplyr     1.1.4     ✔ readr     2.1.5
 ✔ forcats   1.0.0     ✔ stringr   1.5.1
@@ -369,13 +369,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 ✖ dplyr::lag()    masks stats::lag()
 ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="co"># Import data</span></span>
+<details class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="co"># Import data</span></span>
 <span id="cb3-2"><a href="#cb3-2"></a>weather <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"https://mac-stat.github.io/data/weather_3_locations.csv"</span>) <span class="sc">|&gt;</span> </span>
 <span id="cb3-3"><a href="#cb3-3"></a>  <span class="fu">mutate</span>(<span class="at">date =</span> <span class="fu">as.Date</span>(date))  </span>
 <span id="cb3-4"><a href="#cb3-4"></a></span>
 <span id="cb3-5"><a href="#cb3-5"></a><span class="co"># Check out the first 6 rows</span></span>
 <span id="cb3-6"><a href="#cb3-6"></a> (<span class="fu">head</span>(weather))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
+</details><div class="cell-output cell-output-stdout">
 <pre><code>        date   location mintemp maxtemp rainfall evaporation sunshine
 1 2020-01-01 Wollongong    17.1    23.1        0          NA       NA
 2 2020-01-02 Wollongong    17.7    24.2        0          NA       NA
@@ -405,17 +405,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 5    20.0        No     0.0           No
 6    22.6        No     0.8           No</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="co"># What are the units of observation?</span></span>
+<details class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="co"># What are the units of observation?</span></span>
 <span id="cb5-2"><a href="#cb5-2"></a></span>
 <span id="cb5-3"><a href="#cb5-3"></a></span>
 <span id="cb5-4"><a href="#cb5-4"></a><span class="co"># How many data points do we have? </span></span>
 <span id="cb5-5"><a href="#cb5-5"></a><span class="fu">nrow</span>(weather)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
+</details><div class="cell-output cell-output-stdout">
 <pre><code>[1] 2367</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a><span class="co"># What type of variables do we have?</span></span>
+<details class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a><span class="co"># What type of variables do we have?</span></span>
 <span id="cb7-2"><a href="#cb7-2"></a><span class="fu">str</span>(weather)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
+</details><div class="cell-output cell-output-stdout">
 <pre><code>'data.frame':   2367 obs. of  24 variables:
  $ date         : Date, format: "2020-01-01" "2020-01-02" ...
  $ location     : chr  "Wollongong" "Wollongong" "Wollongong" "Wollongong" ...
@@ -446,9 +446,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="example-1" class="level3 unnumbered"><h3 class="unnumbered anchored" data-anchor-id="example-1">Example 1</h3>
 <p>Construct a plot that allows us to examine how <code>temp3pm</code> varies.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a><span class="fu">ggplot</span>(weather, <span class="fu">aes</span>(<span class="at">x =</span> temp3pm)) <span class="sc">+</span> </span>
+<details class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a><span class="fu">ggplot</span>(weather, <span class="fu">aes</span>(<span class="at">x =</span> temp3pm)) <span class="sc">+</span> </span>
 <span id="cb9-2"><a href="#cb9-2"></a>  <span class="fu">geom_density</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
+</details><div class="cell-output cell-output-stderr">
 <pre><code>Warning: Removed 19 rows containing non-finite outside the scale range
 (`stat_density()`).</code></pre>
 </div>
@@ -463,10 +463,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Construct 3 plots that address the following research question:</p>
 <p>How do afternoon temperatures (<code>temp3pm</code>) differ by <code>location</code>?</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a><span class="co"># Plot 1 (no facets &amp; starting from a density plot of temp3pm)</span></span>
+<details class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a><span class="co"># Plot 1 (no facets &amp; starting from a density plot of temp3pm)</span></span>
 <span id="cb11-2"><a href="#cb11-2"></a><span class="fu">ggplot</span>(weather, <span class="fu">aes</span>(<span class="at">x =</span> temp3pm)) <span class="sc">+</span> </span>
 <span id="cb11-3"><a href="#cb11-3"></a>  <span class="fu">geom_density</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
+</details><div class="cell-output cell-output-stderr">
 <pre><code>Warning: Removed 19 rows containing non-finite outside the scale range
 (`stat_density()`).</code></pre>
 </div>
@@ -478,10 +478,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a><span class="co"># Plot 2 (no facets or densities)</span></span>
+<details class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a><span class="co"># Plot 2 (no facets or densities)</span></span>
 <span id="cb13-2"><a href="#cb13-2"></a><span class="fu">ggplot</span>(weather, <span class="fu">aes</span>(<span class="at">y =</span> temp3pm, <span class="at">x =</span> location))<span class="sc">+</span></span>
 <span id="cb13-3"><a href="#cb13-3"></a>  <span class="fu">geom_boxplot</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
+</details><div class="cell-output cell-output-stderr">
 <pre><code>Warning: Removed 19 rows containing non-finite outside the scale range
 (`stat_boxplot()`).</code></pre>
 </div>
@@ -493,12 +493,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a><span class="co"># Plot 3 (facets)</span></span>
+<details class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a><span class="co"># Plot 3 (facets)</span></span>
 <span id="cb15-2"><a href="#cb15-2"></a><span class="co"># Plot 3 (facets)</span></span>
 <span id="cb15-3"><a href="#cb15-3"></a><span class="fu">ggplot</span>(weather, <span class="fu">aes</span>(<span class="at">x =</span> temp3pm, <span class="at">fill =</span> location)) <span class="sc">+</span> </span>
 <span id="cb15-4"><a href="#cb15-4"></a>  <span class="fu">geom_density</span>(<span class="at">alpha =</span> <span class="fl">0.5</span>) <span class="sc">+</span> </span>
 <span id="cb15-5"><a href="#cb15-5"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> location)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
+</details><div class="cell-output cell-output-stderr">
 <pre><code>Warning: Removed 19 rows containing non-finite outside the scale range
 (`stat_density()`).</code></pre>
 </div>
@@ -524,34 +524,35 @@ colors/fills defined by a <em>variable</em> are defined inside the <code>aes</co
 </ul></section></section><section id="example-3" class="level3 unnumbered"><h3 class="unnumbered anchored" data-anchor-id="example-3">Example 3</h3>
 <p>Let’s consider Wollongong alone:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a><span class="co"># Don't worry about the syntax (we'll learn it soon)</span></span>
+<details class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a><span class="co"># Don't worry about the syntax (we'll learn it soon)</span></span>
 <span id="cb17-2"><a href="#cb17-2"></a>woll <span class="ot">&lt;-</span> weather <span class="sc">|&gt;</span></span>
 <span id="cb17-3"><a href="#cb17-3"></a>  <span class="fu">filter</span>(location <span class="sc">==</span> <span class="st">"Wollongong"</span>) <span class="sc">|&gt;</span> </span>
 <span id="cb17-4"><a href="#cb17-4"></a>  <span class="fu">mutate</span>(<span class="at">date =</span> <span class="fu">as.Date</span>(date))  </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1"></a><span class="co"># How often does it raintoday?</span></span>
+<details class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1"></a><span class="co"># How often does it raintoday?</span></span>
 <span id="cb18-2"><a href="#cb18-2"></a><span class="co"># Fill your geometric layer with the color blue.</span></span>
 <span id="cb18-3"><a href="#cb18-3"></a><span class="fu">ggplot</span>(woll, <span class="fu">aes</span>(<span class="at">x =</span> raintoday))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
+</details><div class="cell-output-display">
 <div>
 <figure class="figure"><p><img src="ica-multi_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1"></a>  <span class="fu">geom_bar</span>( <span class="at">fill =</span> <span class="st">"blue"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
+<details class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1"></a>  <span class="fu">geom_bar</span>( <span class="at">fill =</span> <span class="st">"blue"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details><div class="cell-output cell-output-stdout">
 <pre><code>geom_bar: just = 0.5, width = NULL, na.rm = FALSE, orientation = NA
 stat_count: width = NULL, na.rm = FALSE, orientation = NA
 position_stack </code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1"></a><span class="co"># If it does raintoday, what does this tell us about raintomorrow?</span></span>
+<details class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1"></a><span class="co"># If it does raintoday, what does this tell us about raintomorrow?</span></span>
 <span id="cb21-2"><a href="#cb21-2"></a><span class="co"># Use your intuition first</span></span>
 <span id="cb21-3"><a href="#cb21-3"></a><span class="fu">ggplot</span>(woll, <span class="fu">aes</span>(<span class="at">x =</span> raintoday))<span class="sc">+</span> </span>
 <span id="cb21-4"><a href="#cb21-4"></a>  <span class="fu">geom_bar</span>(<span class="fu">aes</span>(<span class="at">fill =</span> raintomorrow))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
+</details><div class="cell-output-display">
 <div>
 <figure class="figure"><p><img src="ica-multi_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
@@ -559,12 +560,12 @@ position_stack </code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1"></a><span class="co"># Now compare different approaches</span></span>
+<details class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1"></a><span class="co"># Now compare different approaches</span></span>
 <span id="cb22-2"><a href="#cb22-2"></a></span>
 <span id="cb22-3"><a href="#cb22-3"></a><span class="co"># Default: stacked bars</span></span>
 <span id="cb22-4"><a href="#cb22-4"></a><span class="fu">ggplot</span>(woll, <span class="fu">aes</span>(<span class="at">x =</span> raintoday, <span class="at">fill =</span> raintomorrow)) <span class="sc">+</span> </span>
 <span id="cb22-5"><a href="#cb22-5"></a>  <span class="fu">geom_bar</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
+</details><div class="cell-output-display">
 <div>
 <figure class="figure"><p><img src="ica-multi_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
@@ -572,10 +573,10 @@ position_stack </code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1"></a><span class="co"># Side-by-side bars</span></span>
+<details class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1"></a><span class="co"># Side-by-side bars</span></span>
 <span id="cb23-2"><a href="#cb23-2"></a><span class="fu">ggplot</span>(woll, <span class="fu">aes</span>(<span class="at">x =</span> raintoday, <span class="at">fill =</span> raintomorrow)) <span class="sc">+</span> </span>
 <span id="cb23-3"><a href="#cb23-3"></a>  <span class="fu">geom_bar</span>(<span class="at">position =</span> <span class="st">"dodge"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
+</details><div class="cell-output-display">
 <div>
 <figure class="figure"><p><img src="ica-multi_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
@@ -583,11 +584,11 @@ position_stack </code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1"></a><span class="co"># Proportional bars</span></span>
+<details class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1"></a><span class="co"># Proportional bars</span></span>
 <span id="cb24-2"><a href="#cb24-2"></a><span class="co"># position = "fill" refers to filling the frame, nothing to do with the color-related fill</span></span>
 <span id="cb24-3"><a href="#cb24-3"></a><span class="fu">ggplot</span>(woll, <span class="fu">aes</span>(<span class="at">x =</span> raintoday, <span class="at">fill =</span> raintomorrow)) <span class="sc">+</span> </span>
 <span id="cb24-4"><a href="#cb24-4"></a>  <span class="fu">geom_bar</span>(<span class="at">position =</span> <span class="st">"fill"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
+</details><div class="cell-output-display">
 <div>
 <figure class="figure"><p><img src="ica-multi_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
@@ -602,13 +603,13 @@ position_stack </code></pre>
 </ul></section></section><section id="example-4" class="level3 unnumbered"><h3 class="unnumbered anchored" data-anchor-id="example-4">Example 4</h3>
 <p>Construct a plot that illustrates how 3pm temperatures (temp3pm) vary by <code>date</code> in Wollongong. Represent each day on the plot and use a curve/line to help highlight the trends.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1"></a><span class="co"># THINK: What variable goes on the y-axis?</span></span>
+<details class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1"></a><span class="co"># THINK: What variable goes on the y-axis?</span></span>
 <span id="cb25-2"><a href="#cb25-2"></a><span class="co"># For the curve, try adding span = 0.5 to tweak the curvature</span></span>
 <span id="cb25-3"><a href="#cb25-3"></a></span>
 <span id="cb25-4"><a href="#cb25-4"></a><span class="fu">ggplot</span>(woll, <span class="fu">aes</span>(<span class="at">y =</span> temp3pm, <span class="at">x =</span> date)) <span class="sc">+</span> </span>
 <span id="cb25-5"><a href="#cb25-5"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
 <span id="cb25-6"><a href="#cb25-6"></a>  <span class="fu">geom_smooth</span>(<span class="at">span =</span> <span class="fl">0.5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
+</details><div class="cell-output cell-output-stderr">
 <pre><code>`geom_smooth()` using method = 'loess' and formula = 'y ~ x'</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
@@ -627,12 +628,12 @@ position_stack </code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1"></a><span class="co"># Instead of a curve that captures the general TREND,</span></span>
+<details class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1"></a><span class="co"># Instead of a curve that captures the general TREND,</span></span>
 <span id="cb29-2"><a href="#cb29-2"></a><span class="co"># draw a line that illustrates the movement of RAW temperatures from day to day</span></span>
 <span id="cb29-3"><a href="#cb29-3"></a><span class="co"># </span><span class="al">NOTE</span><span class="co">: We haven't learned this geom yet! Guess.</span></span>
 <span id="cb29-4"><a href="#cb29-4"></a><span class="fu">ggplot</span>(woll, <span class="fu">aes</span>(<span class="at">y =</span> temp3pm, <span class="at">x =</span> date))<span class="sc">+</span></span>
 <span id="cb29-5"><a href="#cb29-5"></a>  <span class="fu">geom_line</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
+</details><div class="cell-output-display">
 <div>
 <figure class="figure"><p><img src="ica-multi_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
@@ -662,11 +663,11 @@ position_stack </code></pre>
 <p>Work on the examples below in your groups. Check in with your intuition! We’ll then discuss as a group as relevant.</p>
 <section id="example-5" class="level3 unnumbered"><h3 class="unnumbered anchored" data-anchor-id="example-5">Example 5</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1"></a><span class="co"># Plot temp3pm vs temp9am</span></span>
+<details class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1"></a><span class="co"># Plot temp3pm vs temp9am</span></span>
 <span id="cb30-2"><a href="#cb30-2"></a><span class="co"># Change the code in order to indicate the location to which each data point corresponds</span></span>
 <span id="cb30-3"><a href="#cb30-3"></a><span class="fu">ggplot</span>(weather, <span class="fu">aes</span>(<span class="at">y =</span> temp3pm, <span class="at">x =</span> temp9am, <span class="at">color =</span> location)) <span class="sc">+</span> </span>
 <span id="cb30-4"><a href="#cb30-4"></a>  <span class="fu">geom_point</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
+</details><div class="cell-output cell-output-stderr">
 <pre><code>Warning: Removed 27 rows containing missing values or values outside the scale range
 (`geom_point()`).</code></pre>
 </div>
@@ -678,12 +679,12 @@ position_stack </code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1"></a><span class="co"># Change the code in order to indicate the location to which each data point corresponds</span></span>
+<details class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1"></a><span class="co"># Change the code in order to indicate the location to which each data point corresponds</span></span>
 <span id="cb32-2"><a href="#cb32-2"></a><span class="co"># AND identify the days on which it rained / didn't raintoday</span></span>
 <span id="cb32-3"><a href="#cb32-3"></a><span class="fu">ggplot</span>(weather, <span class="fu">aes</span>(<span class="at">y =</span> temp3pm, <span class="at">x =</span> temp9am, <span class="at">color =</span> location)) <span class="sc">+</span> </span>
 <span id="cb32-4"><a href="#cb32-4"></a>  <span class="fu">geom_point</span>()<span class="sc">+</span></span>
 <span id="cb32-5"><a href="#cb32-5"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> raintoday)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
+</details><div class="cell-output cell-output-stderr">
 <pre><code>Warning: Removed 27 rows containing missing values or values outside the scale range
 (`geom_point()`).</code></pre>
 </div>
@@ -695,12 +696,12 @@ position_stack </code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1"></a><span class="co"># How many ways can you think to make that plot of temp3pm vs temp9am with info about location and rain?</span></span>
+<details class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1"></a><span class="co"># How many ways can you think to make that plot of temp3pm vs temp9am with info about location and rain?</span></span>
 <span id="cb34-2"><a href="#cb34-2"></a><span class="co"># Play around!</span></span>
 <span id="cb34-3"><a href="#cb34-3"></a><span class="fu">ggplot</span>(weather, <span class="fu">aes</span>(<span class="at">y =</span> temp3pm, <span class="at">x =</span> temp9am, <span class="at">color =</span> location)) <span class="sc">+</span> </span>
 <span id="cb34-4"><a href="#cb34-4"></a>  <span class="fu">geom_line</span>()<span class="sc">+</span></span>
 <span id="cb34-5"><a href="#cb34-5"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> raintoday)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
+</details><div class="cell-output cell-output-stderr">
 <pre><code>Warning: Removed 15 rows containing missing values or values outside the scale range
 (`geom_line()`).</code></pre>
 </div>
@@ -713,10 +714,10 @@ position_stack </code></pre>
 </div>
 </section><section id="example-6" class="level3 unnumbered"><h3 class="unnumbered anchored" data-anchor-id="example-6">Example 6</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1"></a><span class="co"># Change the code in order to construct a line plot of temp3pm vs date for each separate location (no points!)</span></span>
+<details class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1"></a><span class="co"># Change the code in order to construct a line plot of temp3pm vs date for each separate location (no points!)</span></span>
 <span id="cb36-2"><a href="#cb36-2"></a><span class="fu">ggplot</span>(weather, <span class="fu">aes</span>(<span class="at">y =</span> temp3pm, <span class="at">x =</span> date, <span class="at">color =</span> location)) <span class="sc">+</span> </span>
 <span id="cb36-3"><a href="#cb36-3"></a>  <span class="fu">geom_line</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
+</details><div class="cell-output-display">
 <div>
 <figure class="figure"><p><img src="ica-multi_files/figure-html/unnamed-chunk-17-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
@@ -725,12 +726,12 @@ position_stack </code></pre>
 </div>
 </section><section id="example-7" class="level3 unnumbered"><h3 class="unnumbered anchored">Example 7</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1"></a><span class="co"># Plot the relationship of raintomorrow &amp; raintoday</span></span>
+<details class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1"></a><span class="co"># Plot the relationship of raintomorrow &amp; raintoday</span></span>
 <span id="cb37-2"><a href="#cb37-2"></a><span class="co"># Change the code in order to indicate this relationship by location</span></span>
 <span id="cb37-3"><a href="#cb37-3"></a><span class="fu">ggplot</span>(weather, <span class="fu">aes</span>(<span class="at">x =</span> raintoday, <span class="at">fill =</span> raintomorrow)) <span class="sc">+</span> </span>
 <span id="cb37-4"><a href="#cb37-4"></a>  <span class="fu">geom_bar</span>(<span class="at">position =</span> <span class="st">"fill"</span>)<span class="sc">+</span></span>
 <span id="cb37-5"><a href="#cb37-5"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> location)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
+</details><div class="cell-output-display">
 <div>
 <figure class="figure"><p><img src="ica-multi_files/figure-html/unnamed-chunk-18-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
@@ -772,10 +773,10 @@ What do you want to understand about the variables or the relationships among th
 <section id="the-story" class="level3 unnumbered"><h3 class="unnumbered anchored" data-anchor-id="the-story">The story</h3>
 <p>Though far from a perfect assessment of academic preparedness, SAT scores have historically been used as one measurement of a state’s education system. The <code>education</code> dataset contains various education variables for each state:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1"></a><span class="co"># Import and check out data</span></span>
+<details class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1"></a><span class="co"># Import and check out data</span></span>
 <span id="cb38-2"><a href="#cb38-2"></a>education <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"https://mac-stat.github.io/data/sat.csv"</span>)</span>
 <span id="cb38-3"><a href="#cb38-3"></a><span class="fu">head</span>(education)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
+</details><div class="cell-output cell-output-stdout">
 <pre><code>       State expend ratio salary frac verbal math  sat  fracCat
 1    Alabama  4.405  17.2 31.144    8    491  538 1029   (0,15]
 2     Alaska  8.963  17.6 47.951   47    445  489  934 (45,100]
@@ -791,9 +792,9 @@ What do you want to understand about the variables or the relationships among th
 <section id="part-a" class="level4 unnumbered"><h4 class="unnumbered anchored" data-anchor-id="part-a">Part a</h4>
 <p>Construct a plot of how the average <code>sat</code> scores vary from state to state. (Just use 1 variable – <code>sat</code> not <code>State</code>!)</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1"></a><span class="fu">ggplot</span>(education, <span class="fu">aes</span>(<span class="at">x =</span> sat))<span class="sc">+</span></span>
+<details class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb40"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1"></a><span class="fu">ggplot</span>(education, <span class="fu">aes</span>(<span class="at">x =</span> sat))<span class="sc">+</span></span>
 <span id="cb40-2"><a href="#cb40-2"></a>  <span class="fu">geom_histogram</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
+</details><div class="cell-output cell-output-stderr">
 <pre><code>`stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
 </div>
 <div class="cell-output-display">
@@ -811,12 +812,12 @@ What do you want to understand about the variables or the relationships among th
 <p>The first question we’d like to answer is: Can the variability in <code>sat</code> scores from state to state be partially explained by how much a state spends on education, specifically its per pupil spending (<code>expend</code>) and typical teacher <code>salary</code>?</p>
 <section id="part-a-1" class="level4 unnumbered"><h4 class="unnumbered anchored" data-anchor-id="part-a-1">Part a</h4>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1"></a><span class="co"># Construct a plot of sat vs expend</span></span>
+<details class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb42"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1"></a><span class="co"># Construct a plot of sat vs expend</span></span>
 <span id="cb42-2"><a href="#cb42-2"></a><span class="co"># Include a "best fit linear regression model" (HINT: method = "lm")</span></span>
 <span id="cb42-3"><a href="#cb42-3"></a><span class="fu">ggplot</span>(education, <span class="fu">aes</span>(<span class="at">y =</span> sat, <span class="at">x =</span> expend))<span class="sc">+</span></span>
 <span id="cb42-4"><a href="#cb42-4"></a>  <span class="fu">geom_point</span>()<span class="sc">+</span></span>
 <span id="cb42-5"><a href="#cb42-5"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
+</details><div class="cell-output cell-output-stderr">
 <pre><code>`geom_smooth()` using formula = 'y ~ x'</code></pre>
 </div>
 <div class="cell-output-display">
@@ -827,12 +828,12 @@ What do you want to understand about the variables or the relationships among th
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1"></a><span class="co"># Construct a plot of sat vs salary</span></span>
+<details class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb44"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1"></a><span class="co"># Construct a plot of sat vs salary</span></span>
 <span id="cb44-2"><a href="#cb44-2"></a><span class="co"># Include a "best fit linear regression model" (HINT: method = "lm")</span></span>
 <span id="cb44-3"><a href="#cb44-3"></a><span class="fu">ggplot</span>(education, <span class="fu">aes</span>(<span class="at">y =</span> sat, <span class="at">x =</span> salary))<span class="sc">+</span></span>
 <span id="cb44-4"><a href="#cb44-4"></a>  <span class="fu">geom_point</span>()<span class="sc">+</span></span>
 <span id="cb44-5"><a href="#cb44-5"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
+</details><div class="cell-output cell-output-stderr">
 <pre><code>`geom_smooth()` using formula = 'y ~ x'</code></pre>
 </div>
 <div class="cell-output-display">
@@ -849,10 +850,10 @@ What do you want to understand about the variables or the relationships among th
 </ul></section></section><section id="exercise-3-sat-scores-vs-per-pupil-spending-and-teacher-salaries" class="level3 unnumbered"><h3 class="unnumbered anchored" data-anchor-id="exercise-3-sat-scores-vs-per-pupil-spending-and-teacher-salaries">Exercise 3: SAT Scores vs Per Pupil Spending <em>and</em> Teacher Salaries</h3>
 <p>Construct <em>one</em> visualization of the relationship of <code>sat</code> with <code>salary</code> <em>and</em> <code>expend</code>. HINT: Start with just 2 variables and tweak that code to add the third variable. Try out a few things!</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1"></a><span class="fu">ggplot</span>(education, <span class="fu">aes</span>(<span class="at">x =</span> sat, <span class="at">y =</span> salary, <span class="at">color =</span> expend))<span class="sc">+</span></span>
+<details class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb46"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1"></a><span class="fu">ggplot</span>(education, <span class="fu">aes</span>(<span class="at">x =</span> sat, <span class="at">y =</span> salary, <span class="at">color =</span> expend))<span class="sc">+</span></span>
 <span id="cb46-2"><a href="#cb46-2"></a>  <span class="fu">geom_point</span>()<span class="sc">+</span></span>
 <span id="cb46-3"><a href="#cb46-3"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
+</details><div class="cell-output cell-output-stderr">
 <pre><code>`geom_smooth()` using formula = 'y ~ x'</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
@@ -874,9 +875,10 @@ colour.
 <p>It can be tough to distinguish color scales and size scales for quantitative variables. Another option is to <em>discretize</em> a quantitative variable, or basically cut it up into <em>categories</em>.</p>
 <p>Construct the plot below. Check out the code and think about what’s happening here. What happens if you change “2” to “3”?</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1"></a><span class="fu">ggplot</span>(education, <span class="fu">aes</span>(<span class="at">y =</span> sat, <span class="at">x =</span> salary, <span class="at">color =</span> <span class="fu">cut</span>(expend, <span class="dv">2</span>))) <span class="sc">+</span> </span>
+<details class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb49"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1"></a><span class="fu">ggplot</span>(education, <span class="fu">aes</span>(<span class="at">y =</span> sat, <span class="at">x =</span> salary, <span class="at">color =</span> <span class="fu">cut</span>(expend, <span class="dv">2</span>))) <span class="sc">+</span> </span>
 <span id="cb49-2"><a href="#cb49-2"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
 <span id="cb49-3"><a href="#cb49-3"></a>  <span class="fu">geom_smooth</span>(<span class="at">se =</span> <span class="cn">FALSE</span>, <span class="at">method =</span> <span class="st">"lm"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 </div>
 <p>Describe the trivariate relationship between <code>sat</code>, <code>salary</code>, and <code>expend</code>.</p>
 <ul>
@@ -886,9 +888,9 @@ colour.
 <section id="part-a-2" class="level4 unnumbered"><h4 class="unnumbered anchored" data-anchor-id="part-a-2">Part a</h4>
 <p>Build a univariate viz of <code>fracCat</code> to better understand how many states fall into each category.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1"></a><span class="fu">ggplot</span>(education, <span class="fu">aes</span>(<span class="at">x =</span> fracCat))<span class="sc">+</span></span>
+<details class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb50"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1"></a><span class="fu">ggplot</span>(education, <span class="fu">aes</span>(<span class="at">x =</span> fracCat))<span class="sc">+</span></span>
 <span id="cb50-2"><a href="#cb50-2"></a>  <span class="fu">geom_bar</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
+</details><div class="cell-output-display">
 <div>
 <figure class="figure"><p><img src="ica-multi_files/figure-html/unnamed-chunk-25-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
@@ -898,9 +900,9 @@ colour.
 </section><section id="part-b-2" class="level4 unnumbered"><h4 class="unnumbered anchored" data-anchor-id="part-b-2">Part b</h4>
 <p>Build 2 bivariate visualizations that demonstrate the relationship between <code>sat</code> and <code>fracCat</code>. What story does your graphic tell and why does this make contextual sense?</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1"></a><span class="fu">ggplot</span>(education, <span class="fu">aes</span>(<span class="at">x =</span> sat, <span class="at">fill =</span> fracCat))<span class="sc">+</span></span>
+<details class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb51"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1"></a><span class="fu">ggplot</span>(education, <span class="fu">aes</span>(<span class="at">x =</span> sat, <span class="at">fill =</span> fracCat))<span class="sc">+</span></span>
 <span id="cb51-2"><a href="#cb51-2"></a>  <span class="fu">geom_density</span>(<span class="at">alpha =</span> <span class="fl">0.5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
+</details><div class="cell-output-display">
 <div>
 <figure class="figure"><p><img src="ica-multi_files/figure-html/unnamed-chunk-26-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
@@ -908,9 +910,9 @@ colour.
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1"></a><span class="fu">ggplot</span>(education, <span class="fu">aes</span>(<span class="at">x =</span> sat, <span class="at">fill =</span> fracCat))<span class="sc">+</span></span>
+<details class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb52"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1"></a><span class="fu">ggplot</span>(education, <span class="fu">aes</span>(<span class="at">x =</span> sat, <span class="at">fill =</span> fracCat))<span class="sc">+</span></span>
 <span id="cb52-2"><a href="#cb52-2"></a>  <span class="fu">geom_histogram</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
+</details><div class="cell-output cell-output-stderr">
 <pre><code>`stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
 </div>
 <div class="cell-output-display">
@@ -924,10 +926,10 @@ colour.
 <p>Make a trivariate visualization that demonstrates the relationship of <code>sat</code> with <code>expend</code> AND <code>fracCat</code>. Highlight the differences in <code>fracCat</code> groups through color AND unique trend lines. What story does your graphic tell?<br>
 Does it still seem that SAT scores decrease as spending increases?</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1"></a><span class="fu">ggplot</span>(education, <span class="fu">aes</span>(<span class="at">x =</span> sat , <span class="at">y =</span> expend, <span class="at">color=</span> fracCat))<span class="sc">+</span></span>
+<details class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb54"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1"></a><span class="fu">ggplot</span>(education, <span class="fu">aes</span>(<span class="at">x =</span> sat , <span class="at">y =</span> expend, <span class="at">color=</span> fracCat))<span class="sc">+</span></span>
 <span id="cb54-2"><a href="#cb54-2"></a>  <span class="fu">geom_point</span>()<span class="sc">+</span></span>
 <span id="cb54-3"><a href="#cb54-3"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
+</details><div class="cell-output cell-output-stderr">
 <pre><code>`geom_smooth()` using formula = 'y ~ x'</code></pre>
 </div>
 <div class="cell-output-display">
@@ -954,7 +956,7 @@ Does it still seem that SAT scores decrease as spending increases?</p>
 <li>We’ll improve the plot later, so don’t spend too much time trying to learn something from this plot.</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1"></a><span class="co"># Remove the "State" column and use it to label the rows</span></span>
+<details class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb56"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1"></a><span class="co"># Remove the "State" column and use it to label the rows</span></span>
 <span id="cb56-2"><a href="#cb56-2"></a><span class="co"># Then scale the variables</span></span>
 <span id="cb56-3"><a href="#cb56-3"></a>plot_data <span class="ot">&lt;-</span> education <span class="sc">|&gt;</span> </span>
 <span id="cb56-4"><a href="#cb56-4"></a>  <span class="fu">column_to_rownames</span>(<span class="st">"State"</span>) <span class="sc">|&gt;</span> </span>
@@ -976,9 +978,10 @@ Does it still seem that SAT scores decrease as spending increases?</p>
 <span id="cb56-20"><a href="#cb56-20"></a>  <span class="at">colsep =</span> <span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">7</span>), <span class="at">rowsep =</span> (<span class="dv">1</span><span class="sc">:</span><span class="dv">50</span>), <span class="at">sepwidth =</span> <span class="fu">c</span>(<span class="fl">0.05</span>, <span class="fl">0.05</span>),</span>
 <span id="cb56-21"><a href="#cb56-21"></a>  <span class="at">sepcolor =</span> <span class="st">"white"</span>, <span class="at">trace =</span> <span class="st">"none"</span></span>
 <span id="cb56-22"><a href="#cb56-22"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1"></a><span class="co"># Construct heatmap 2</span></span>
+<details class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb57"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1"></a><span class="co"># Construct heatmap 2</span></span>
 <span id="cb57-2"><a href="#cb57-2"></a><span class="fu">heatmap.2</span>(plot_data,</span>
 <span id="cb57-3"><a href="#cb57-3"></a>  <span class="at">dendrogram =</span> <span class="st">"none"</span>,</span>
 <span id="cb57-4"><a href="#cb57-4"></a>  <span class="at">Rowv =</span> <span class="cn">TRUE</span>,             <span class="do">### WE CHANGED THIS FROM NA TO TRUE</span></span>
@@ -990,9 +993,10 @@ Does it still seem that SAT scores decrease as spending increases?</p>
 <span id="cb57-10"><a href="#cb57-10"></a>  <span class="at">colsep =</span> <span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">7</span>), <span class="at">rowsep =</span> (<span class="dv">1</span><span class="sc">:</span><span class="dv">50</span>), <span class="at">sepwidth =</span> <span class="fu">c</span>(<span class="fl">0.05</span>, <span class="fl">0.05</span>),</span>
 <span id="cb57-11"><a href="#cb57-11"></a>  <span class="at">sepcolor =</span> <span class="st">"white"</span>, <span class="at">trace =</span> <span class="st">"none"</span></span>
 <span id="cb57-12"><a href="#cb57-12"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1"></a><span class="co"># Construct heatmap 3</span></span>
+<details class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb58"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1"></a><span class="co"># Construct heatmap 3</span></span>
 <span id="cb58-2"><a href="#cb58-2"></a><span class="fu">heatmap.2</span>(plot_data,</span>
 <span id="cb58-3"><a href="#cb58-3"></a>  <span class="at">dendrogram =</span> <span class="st">"row"</span>,       <span class="do">### WE CHANGED THIS FROM "none" TO "row"</span></span>
 <span id="cb58-4"><a href="#cb58-4"></a>  <span class="at">Rowv =</span> <span class="cn">TRUE</span>,            </span>
@@ -1004,6 +1008,7 @@ Does it still seem that SAT scores decrease as spending increases?</p>
 <span id="cb58-10"><a href="#cb58-10"></a>  <span class="at">colsep =</span> <span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">7</span>), <span class="at">rowsep =</span> (<span class="dv">1</span><span class="sc">:</span><span class="dv">50</span>), <span class="at">sepwidth =</span> <span class="fu">c</span>(<span class="fl">0.05</span>, <span class="fl">0.05</span>),</span>
 <span id="cb58-11"><a href="#cb58-11"></a>  <span class="at">sepcolor =</span> <span class="st">"white"</span>, <span class="at">trace =</span> <span class="st">"none"</span></span>
 <span id="cb58-12"><a href="#cb58-12"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 </div>
 </section><section id="part-b-3" class="level4 unnumbered"><h4 class="unnumbered anchored" data-anchor-id="part-b-3">Part b</h4>
 <p>In the final two plots, the states (rows) are rearranged by similarity with respect to these education metrics. The <em>final</em> plot includes a <strong>dendrogram</strong> which further indicates <em>clusters</em> of similar states. In short, states that have a shorter path to connection are more similar than others.</p>
@@ -1017,23 +1022,25 @@ Does it still seem that SAT scores decrease as spending increases?</p>
 <li>What states appear to be similar? Do these observations agree with those that you gained from the heat map?</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb59"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a href="#cb59-1"></a><span class="fu">stars</span>(plot_data,</span>
+<details class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb59"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a href="#cb59-1"></a><span class="fu">stars</span>(plot_data,</span>
 <span id="cb59-2"><a href="#cb59-2"></a>  <span class="at">flip.labels =</span> <span class="cn">FALSE</span>,</span>
 <span id="cb59-3"><a href="#cb59-3"></a>  <span class="at">key.loc =</span> <span class="fu">c</span>(<span class="dv">10</span>, <span class="fl">1.5</span>),</span>
 <span id="cb59-4"><a href="#cb59-4"></a>  <span class="at">cex =</span> <span class="dv">1</span>, </span>
 <span id="cb59-5"><a href="#cb59-5"></a>  <span class="at">draw.segments =</span> <span class="cn">TRUE</span></span>
 <span id="cb59-6"><a href="#cb59-6"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 </div>
 </section><section id="part-b-4" class="level4 unnumbered"><h4 class="unnumbered anchored" data-anchor-id="part-b-4">Part b</h4>
 <p>Finally, let’s plot the state stars by <em>geographic</em> location! What new insight do you gain here?!</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1"></a><span class="fu">stars</span>(plot_data,</span>
+<details class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb60"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1"></a><span class="fu">stars</span>(plot_data,</span>
 <span id="cb60-2"><a href="#cb60-2"></a>  <span class="at">flip.labels =</span> <span class="cn">FALSE</span>,</span>
 <span id="cb60-3"><a href="#cb60-3"></a>  <span class="at">locations =</span> <span class="fu">data.matrix</span>(<span class="fu">as.data.frame</span>(state.center)),  <span class="co"># added external data to arrange by geo location</span></span>
 <span id="cb60-4"><a href="#cb60-4"></a>  <span class="at">key.loc =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">110</span>, <span class="dv">28</span>),</span>
 <span id="cb60-5"><a href="#cb60-5"></a>  <span class="at">cex =</span> <span class="dv">1</span>, </span>
 <span id="cb60-6"><a href="#cb60-6"></a>  <span class="at">draw.segments =</span> <span class="cn">TRUE</span></span>
 <span id="cb60-7"><a href="#cb60-7"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 </div>
 
 
