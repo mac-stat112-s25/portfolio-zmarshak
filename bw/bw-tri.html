@@ -349,7 +349,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb3-4"><a href="#cb3-4"></a>  <span class="fu">labs</span>( <span class="at">x =</span> <span class="st">"Temperature at 9 am (celcius)"</span>, <span class="at">y =</span> <span class="st">"Temperature at 3 pm (celcius)"</span>, <span class="at">color =</span> <span class="st">"City"</span>, <span class="at">title =</span> <span class="st">"Temperatures in Australian Cities"</span>, <span class="at">caption =</span> <span class="st">"Scatter plot of morning versus afternoon temperatures in three Australian cities. Created by Zach Marshak, Feb. 2025, data source Mac-Stat Git Hub(https://mac-stat.github.io/data/weather_3_locations.csv)"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details><div class="cell-output-display">
 <div>
-<figure class="figure"><p><img src="bw-tri_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" alt="Scatter plot of temperatures in celcius in three Australian cities. The cities Hobart, Uluru, and Wollongong are each a different colored point, the x axis is temperatures at 9 am and the y axis is temperatures at 3 pm. Uluru has the typically highest temperatures, followed by Wollongong then Hobart" width="672"></p>
+<figure class="figure"><p><img src="bw-tri_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" alt="Scatter plot of temperatures in celcius in three Australian cities. The cities Hobart, Uluru, and Wollongong are each a different colored point, the x axis is temperatures at 9 am and the y axis is temperatures at 3 pm. Uluru has the typically highest temperatures, followed by Wollongong then Hobart" width="960"></p>
 </figure>
 </div>
 </div>
@@ -1007,12 +1007,14 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb4-20"><a href="#cb4-20"></a><span class="in">```</span></span>
 <span id="cb4-21"><a href="#cb4-21"></a></span>
 <span id="cb4-24"><a href="#cb4-24"></a><span class="in">```{r}</span></span>
-<span id="cb4-25"><a href="#cb4-25"></a><span class="co">#| fig-alt: "Scatter plot of temperatures in celcius in three Australian cities. The cities Hobart, Uluru, and Wollongong are each a different colored point, the x axis is temperatures at 9 am and the y axis is temperatures at 3 pm. Uluru has the typically highest temperatures, followed by Wollongong then Hobart"</span></span>
-<span id="cb4-26"><a href="#cb4-26"></a><span class="fu">ggplot</span>(weather, <span class="fu">aes</span>(<span class="at">x =</span> temp9am, <span class="at">y =</span> temp3pm, <span class="at">color =</span> location))<span class="sc">+</span></span>
-<span id="cb4-27"><a href="#cb4-27"></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.5</span>)<span class="sc">+</span></span>
-<span id="cb4-28"><a href="#cb4-28"></a>   <span class="fu">scale_color_viridis_d</span>()<span class="sc">+</span></span>
-<span id="cb4-29"><a href="#cb4-29"></a>  <span class="fu">labs</span>( <span class="at">x =</span> <span class="st">"Temperature at 9 am (celcius)"</span>, <span class="at">y =</span> <span class="st">"Temperature at 3 pm (celcius)"</span>, <span class="at">color =</span> <span class="st">"City"</span>, <span class="at">title =</span> <span class="st">"Temperatures in Australian Cities"</span>, <span class="at">caption =</span> <span class="st">"Scatter plot of morning versus afternoon temperatures in three Australian cities. Created by Zach Marshak, Feb. 2025, data source Mac-Stat Git Hub(https://mac-stat.github.io/data/weather_3_locations.csv)"</span>)</span>
-<span id="cb4-30"><a href="#cb4-30"></a><span class="in">```</span></span>
+<span id="cb4-25"><a href="#cb4-25"></a><span class="co">#| fig-height: 10</span></span>
+<span id="cb4-26"><a href="#cb4-26"></a><span class="co">#| fig-width: 10</span></span>
+<span id="cb4-27"><a href="#cb4-27"></a><span class="co">#| fig-alt: "Scatter plot of temperatures in celcius in three Australian cities. The cities Hobart, Uluru, and Wollongong are each a different colored point, the x axis is temperatures at 9 am and the y axis is temperatures at 3 pm. Uluru has the typically highest temperatures, followed by Wollongong then Hobart"</span></span>
+<span id="cb4-28"><a href="#cb4-28"></a><span class="fu">ggplot</span>(weather, <span class="fu">aes</span>(<span class="at">x =</span> temp9am, <span class="at">y =</span> temp3pm, <span class="at">color =</span> location))<span class="sc">+</span></span>
+<span id="cb4-29"><a href="#cb4-29"></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.5</span>)<span class="sc">+</span></span>
+<span id="cb4-30"><a href="#cb4-30"></a>   <span class="fu">scale_color_viridis_d</span>()<span class="sc">+</span></span>
+<span id="cb4-31"><a href="#cb4-31"></a>  <span class="fu">labs</span>( <span class="at">x =</span> <span class="st">"Temperature at 9 am (celcius)"</span>, <span class="at">y =</span> <span class="st">"Temperature at 3 pm (celcius)"</span>, <span class="at">color =</span> <span class="st">"City"</span>, <span class="at">title =</span> <span class="st">"Temperatures in Australian Cities"</span>, <span class="at">caption =</span> <span class="st">"Scatter plot of morning versus afternoon temperatures in three Australian cities. Created by Zach Marshak, Feb. 2025, data source Mac-Stat Git Hub(https://mac-stat.github.io/data/weather_3_locations.csv)"</span>)</span>
+<span id="cb4-32"><a href="#cb4-32"></a><span class="in">```</span></span>
 </code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->

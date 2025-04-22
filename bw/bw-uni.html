@@ -349,7 +349,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb3-4"><a href="#cb3-4"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details><div class="cell-output-display">
 <div>
-<figure class="figure"><p><img src="bw-uni_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" alt="Histogram of the elevations of hikes in the Adirondack Mountains. The range of elevation is between 4250 and 5500 feet, with the typical elevation of a hike being between 4000 and 4500 feet." width="672"></p>
+<figure class="figure"><p><img src="bw-uni_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" alt="Histogram of the elevations of hikes in the Adirondack Mountains. The range of elevation is between 4250 and 5500 feet, with the typical elevation of a hike being between 4000 and 4500 feet." width="960"></p>
 </figure>
 </div>
 </div>
@@ -1007,12 +1007,14 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb4-20"><a href="#cb4-20"></a><span class="in">```</span></span>
 <span id="cb4-21"><a href="#cb4-21"></a></span>
 <span id="cb4-24"><a href="#cb4-24"></a><span class="in">```{r}</span></span>
-<span id="cb4-25"><a href="#cb4-25"></a><span class="co">#| fig-alt: "Histogram of the elevations of hikes in the Adirondack Mountains. The range of elevation is between 4250 and 5500 feet, with the typical elevation of a hike being between 4000 and 4500 feet."</span></span>
-<span id="cb4-26"><a href="#cb4-26"></a><span class="fu">ggplot</span>(hikes, <span class="fu">aes</span>(<span class="at">x =</span> elevation)) <span class="sc">+</span></span>
-<span id="cb4-27"><a href="#cb4-27"></a>  <span class="fu">geom_histogram</span>(<span class="at">color =</span> <span class="st">"white"</span>, <span class="at">binwidth =</span> <span class="dv">200</span>) <span class="sc">+</span></span>
-<span id="cb4-28"><a href="#cb4-28"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Elevation (feet)"</span>, <span class="at">y =</span> <span class="st">"Number of Hikes"</span>, <span class="at">title =</span> <span class="st">"Elevation of hikes in the Adirondacks"</span>, <span class="at">caption =</span> <span class="st">"Histogram of the elevations of hikes in the Adirondack Mountains. Created by Zach Marshak, Feb. 2025, data source Mac-Stat Git Hub(https://mac-stat.github.io/data/high_peaks.csv)"</span>)<span class="sc">+</span></span>
-<span id="cb4-29"><a href="#cb4-29"></a>  <span class="fu">theme_minimal</span>()</span>
-<span id="cb4-30"><a href="#cb4-30"></a><span class="in">```</span></span>
+<span id="cb4-25"><a href="#cb4-25"></a><span class="co">#| fig-height: 10</span></span>
+<span id="cb4-26"><a href="#cb4-26"></a><span class="co">#| fig-width: 10</span></span>
+<span id="cb4-27"><a href="#cb4-27"></a><span class="co">#| fig-alt: "Histogram of the elevations of hikes in the Adirondack Mountains. The range of elevation is between 4250 and 5500 feet, with the typical elevation of a hike being between 4000 and 4500 feet."</span></span>
+<span id="cb4-28"><a href="#cb4-28"></a><span class="fu">ggplot</span>(hikes, <span class="fu">aes</span>(<span class="at">x =</span> elevation)) <span class="sc">+</span></span>
+<span id="cb4-29"><a href="#cb4-29"></a>  <span class="fu">geom_histogram</span>(<span class="at">color =</span> <span class="st">"white"</span>, <span class="at">binwidth =</span> <span class="dv">200</span>) <span class="sc">+</span></span>
+<span id="cb4-30"><a href="#cb4-30"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Elevation (feet)"</span>, <span class="at">y =</span> <span class="st">"Number of Hikes"</span>, <span class="at">title =</span> <span class="st">"Elevation of hikes in the Adirondacks"</span>, <span class="at">caption =</span> <span class="st">"Histogram of the elevations of hikes in the Adirondack Mountains. Created by Zach Marshak, Feb. 2025, data source Mac-Stat Git Hub(https://mac-stat.github.io/data/high_peaks.csv)"</span>)<span class="sc">+</span></span>
+<span id="cb4-31"><a href="#cb4-31"></a>  <span class="fu">theme_minimal</span>()</span>
+<span id="cb4-32"><a href="#cb4-32"></a><span class="in">```</span></span>
 </code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
