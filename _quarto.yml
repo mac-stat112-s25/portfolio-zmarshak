@@ -67,10 +67,14 @@ format:
     code-link: true
     code-line-numbers: true
     code-tools: true
+    code-fold: true
 
 execute:
   cache: false
   freeze: auto
+  echo: true
+  warning: false
+  error: false
 
 editor: 
   markdown:
