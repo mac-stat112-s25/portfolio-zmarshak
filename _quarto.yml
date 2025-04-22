@@ -75,6 +75,7 @@ execute:
   echo: true
   warning: false
   error: false
+  message: false
 
 editor: 
   markdown:
