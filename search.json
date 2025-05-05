@@ -109,17 +109,6 @@
     ]
   },
   {
-    "objectID": "Summary/Exam_2_Review_sheet.html",
-    "href": "Summary/Exam_2_Review_sheet.html",
-    "title": "10  Exam 2 review sheet",
-    "section": "",
-    "text": "!{width = 2500, height = 3000}(Exam_2_cheat_sheet.pdf)",
-    "crumbs": [
-      "Summary",
-      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Exam 2 review sheet</span>"
-    ]
-  },
-  {
     "objectID": "ica/quarto-demo.html",
     "href": "ica/quarto-demo.html",
     "title": "\n11  My first Quarto document\n",
