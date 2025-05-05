@@ -3,19 +3,19 @@ title: "Solo Project"
 format: html
 ---
 
-```{r}
+```{r, echo=FALSE, message=FALSE}
 #install packages
 library(tigris)
 library(sf)
 library(tidyverse)
 ```
 
-```{r}
+```{r, message=FALSE, echo=FALSE}
 # get mn counties shapefile
 MN <- counties(state = "Minnesota")
 ```
 
-```{r}
+```{r, message=FALSE}
 # get labor force projections
 labor_proj_bycounty <- read_csv("~/Documents/Github/portfolio-zmarshak/data/mn-counties_labor_rates.csv")
 ```
