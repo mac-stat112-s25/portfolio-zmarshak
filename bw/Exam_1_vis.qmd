@@ -3,7 +3,7 @@ title: "Exam 1 Visulization"
 format: html
 ---
 
-```{r}
+```{r, echo=FALSE, message=FALSE}
 #load packages
 library(tidyverse)
 library(tidytuesdayR)

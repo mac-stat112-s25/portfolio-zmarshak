@@ -3,7 +3,7 @@ title: "Food Consumption 2"
 format: html
 ---
 
-```{r}
+```{r, echo=FALSE, message=FALSE}
 #install packages
 library(tidytuesdayR)
 library(tidyverse)
@@ -11,7 +11,7 @@ library(rnaturalearth)
 library(sf)
 ```
 
-```{r}
+```{r, echo=FALSE, message=FALSE}
 #load data
 tuesdata <- tt_load('2020-02-18')
 fc <- tuesdata$food_consumption
@@ -32,7 +32,7 @@ fcc |>
   distinct(food_category)
 ```
 
-### Research Question 1: What five countries consume the most food?
+## Research Question 1: What five countries consume the most food?
 
 ```{r}
 fcc |>
@@ -53,7 +53,7 @@ fcc |>
            geom_col()
 ```
 
-### Research Question 2: What are the top 5 consuming countries by food category?
+## Research Question 2: What are the top 5 consuming countries by food category?
 
 ```{r}
 top_5_by_cat <- fcc |>
@@ -71,7 +71,7 @@ ggplot(top_5_by_cat, aes(x = food_category, y = consumption, fill = country)) +
   scale_fill_viridis_d()
 ```
 
-### Research Question 3: What does the consumption of each food look like?
+# Research Question 3: What does the consumption of each food look like?
 
 
-# I copied the code from the test and kept getting errors on my end, so to improve it, I would apply a color-blind friendly scale using the scale_fill_virdis_c function, I would also apply an overall title for the plot and apply an alternative text using fig-cap alt
+I copied the code from the test and kept getting errors on my end, so to improve it, I would apply a color-blind friendly scale using the scale_fill_virdis_c function, I would also apply an overall title for the plot and apply an alternative text using fig-cap alt
