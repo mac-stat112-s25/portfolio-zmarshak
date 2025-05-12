@@ -5,14 +5,14 @@ download: false
 echo: false
 ---
 
-```{r, echo=FALSE, message=FALSE}
+```{r, echo = FALSE, message = FALSE, progress_bar = FALSE}
 #install packages
 library(tigris)
 library(sf)
 library(tidyverse)
 ```
 
-```{r, message=FALSE, echo=FALSE}
+```{r, message=FALSE, echo=FALSE, progress_bar = FALSE}
 # get mn counties shapefile
 MN <- counties(state = "Minnesota")
 ```

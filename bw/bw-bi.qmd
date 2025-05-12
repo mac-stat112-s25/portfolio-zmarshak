@@ -20,6 +20,6 @@ weather <- read.csv("https://mac-stat.github.io/data/weather_3_locations.csv")
 #| fig-alt: "A scatter plot of Temperatures of the Australian Cities of Wollongong, Hobart, and Uluru. The Temperature in Celcius at 9 am is on the x-axis, and the Temperature in Celcius at 3 pm is on the y-axis. There is a positive relationship between the two"
 ggplot(weather, aes(x = temp9am, y = temp3pm))+
   geom_point(alpha = 0.5)+
-  theme_minimal()+
+  theme_minimal(base_size = 14)+
   labs( x = "Temperature at 9 am (celcius)", y = "Temperature at 3 pm (celcius)", title = "Tempatures in Wollongong, Hobart, and Uluru Australia", caption = "Comparison of morning versus afternoon temperatures in 3 Australian towns. Created by Zach Marshak, Feb. 2025, data source Mac-Stat Git Hub(https://mac-stat.github.io/data/weather_3_locations.csv)" )
 ```
