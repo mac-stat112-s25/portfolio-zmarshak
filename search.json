@@ -98,6 +98,17 @@
     ]
   },
   {
+    "objectID": "Summary/Exam_2_Review_sheet.html",
+    "href": "Summary/Exam_2_Review_sheet.html",
+    "title": "\n10  Exam 2 review sheet\n",
+    "section": "",
+    "text": "Code# Convert first page of PDF to PNG\nlibrary(magick)\nimage_read_pdf(\"Exam_2_cheat_sheet.pdf\", density = 300)[1] |&gt;\n  image_write(\"cheat_sheet.png\")",
+    "crumbs": [
+      "Summary",
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Exam 2 review sheet</span>"
+    ]
+  },
+  {
     "objectID": "ica/quarto-demo.html",
     "href": "ica/quarto-demo.html",
     "title": "\n11  My first Quarto document\n",
