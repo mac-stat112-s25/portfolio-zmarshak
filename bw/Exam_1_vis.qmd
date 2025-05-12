@@ -16,15 +16,6 @@ tuesdata <- tt_load('2020-02-18')
 fc <- tuesdata$food_consumption
 ```
 
-```{r, echo=FALSE, message=FALSE}
-# understand data
-str(fc)
-
-dim(fc)
-
-head(fc)
-```
-
 ```{r}
 #| fig-width: 13
 #understand variables individually

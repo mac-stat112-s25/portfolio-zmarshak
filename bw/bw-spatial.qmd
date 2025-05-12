@@ -62,7 +62,7 @@ starbucks_contiguous_us <- starbucks |>
 ggplot(starbucks_with_2018_pop_est)+
   geom_map(map = states_map, aes(map_id = state_name, fill = starbucks_per_10000))+
   expand_limits(x = states_map$long, y = states_map$lat) +
-  theme_map(base_size = 14)+
+  theme_map(base_size = 18)+
   theme(legend.position = "right") + 
   coord_equal() + 
    scale_fill_viridis_c(option = "magma", name = "Starbucks per 10,000 people", direction = -1) +
