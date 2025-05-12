@@ -2,11 +2,12 @@
 title: "Exam 2 review sheet"
 format: html
 ---
- 
- 
-![](Exam_2_cheat_sheet.pdf) 
+```{r} 
+# Convert first page of PDF to PNG
+library(magick)
+image_read_pdf("Exam_2_cheat_sheet.pdf", density = 300)[1] |>
+  image_write("cheat_sheet.png")
+```
 
+![](cheat_sheet.png){width=100%}
 
-<div style="width: 90%; height: auto;">
-  <img src="Exam_2_cheat_sheet.pdf" style="width: 100%; height: 100%;">
-</div>

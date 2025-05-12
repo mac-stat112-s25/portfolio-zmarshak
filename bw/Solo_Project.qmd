@@ -13,7 +13,7 @@ library(sf)
 library(tidyverse)
 ```
 
-```{r, message=FALSE, echo=FALSE, progress_bar = FALSE,}
+```{r, message=FALSE, echo=FALSE, progress_bar = FALSE}
 # get mn counties shapefile
 MN <- counties(state = "Minnesota", progress_bar = FALSE)
 ```

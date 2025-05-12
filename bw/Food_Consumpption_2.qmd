@@ -1,5 +1,5 @@
 ---
-title: "Food Consumption 2"
+title: "Exam 2 visualization"
 format: html
 ---
 
@@ -27,12 +27,8 @@ fcc <- fc |>
                                     "Nuts" = "Nuts inc. Peanut Butter"))
 ```
 
-```{r}
-fcc |>
-  distinct(food_category)
-```
 
-#### Research Question 1: What five countries consume the most food?
+### Research Question 1: What five countries consume the most food?
 
 ```{r}
 fcc |>
@@ -53,7 +49,7 @@ fcc |>
            geom_col()
 ```
 
-##### Research Question 2: What are the top 5 consuming countries by food category?
+#### Research Question 2: What are the top 5 consuming countries by food category?
 
 ```{r}
 top_5_by_cat <- fcc |>
@@ -66,12 +62,54 @@ print(top_5_by_cat)
 ```{r}
 #| fig-height: 5
 #| fig-width: 10
-ggplot(top_5_by_cat, aes(x = food_category, y = consumption, fill = country)) +
-  geom_col(position = "dodge") +
-  scale_fill_viridis_d()
+ggplot(top_5_by_cat, aes(x = reorder(country, consumption), y = consumption)) +
+  geom_col() +
+  facet_wrap(~ food_category, scales = "free_x", nrow = 2) +  # Spread out over 2 rows
+  theme_minimal(base_size = 14) +  # Larger base font size
+  labs(
+    title = "Top 5 Consumption by Food Category",
+    y = "Consumption",
+    x = "Country"
+  ) +
+  theme(
+    axis.text.x = element_text(angle = 45, hjust = 1),
+    strip.text = element_text(size = 16, face = "bold"),
+    panel.spacing = unit(1.5, "lines"),
+    legend.position = "none")
 ```
 
-#### Research Question 3: What does the consumption of each food look like?
+### Research Question 3: What does the consumption of each food look like?
 
 
-I copied the code from the test and kept getting errors on my end, so to improve it, I would apply a color-blind friendly scale using the scale_fill_virdis_c function, I would also apply an overall title for the plot and apply an alternative text using fig-cap alt
+```{r}
+#| fig-alt: choropleth map of food consumption over the entire world by country, faceted by food category
+ne_countries(returnclass = "sf") |>
+  select(name, geometry) |>
+  mutate(name = case_when(
+    name == "United States of America" ~ "USA",
+    name == "Bosnia and Herz" ~ "Bosnia and Herzegovina",
+    name == "Czechia" ~ "Czech Republic",
+    name == "Taiwan" ~ "Taiwan. ROC",  # Fixed typo: "Tiawan. ROC"
+    TRUE ~ name
+  )) |>
+  left_join(
+    fc |>
+      select(-co2_emmission) |>  # Fixed typo: "co2_emmission"
+      group_by(food_category) |>  # Fixed typo: "food_caregory"
+      mutate(consumption = (consumption - mean(consumption)) / sd(consumption)),
+    by = c("name" = "country")
+  ) |>
+  pivot_wider(names_from = food_category, values_from = consumption) |>  # Fixed typo: "consummption"
+  select(-`NA`) |>
+  pivot_longer(cols = -c(name, geometry),
+               names_to = "food_category",
+               values_to = "consumption") |>
+  ggplot() +
+  geom_sf(aes(fill = consumption)) +
+  facet_wrap(~ food_category) +
+  theme_minimal() +
+  theme(legend.position = "bottom")+
+  scale_fill_viridis_c() +
+  labs(title = "Consumption Around the World by Food Category")
+```
+  

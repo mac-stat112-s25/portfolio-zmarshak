@@ -1,5 +1,5 @@
 ---
-title: "Exam 1 Visulization"
+title: "Exam 1 visualization"
 format: html
 ---
 
@@ -29,7 +29,7 @@ ggplot(fc, aes(x = food_category)) +
   geom_bar()
 ```
 
-#### For the variables of Food Category and Country, we don't learn too much other than each variable has an equal number of observations. However, the density plot of consumption provides a range of the consumption leves as well as the overall trend which average consumpotion being aroun 30 kg per person a year.
+### For the variables of Food Category and Country, we don't learn too much other than each variable has an equal number of observations. However, the density plot of consumption provides a range of the consumption leves as well as the overall trend which average consumpotion being aroun 30 kg per person a year.
 
 ```{r}
 #consumption by food category
@@ -37,7 +37,7 @@ ggplot(fc, aes(x = consumption, fill = food_category)) +
   geom_histogram() +
   scale_fill_viridis_d()
 ```
-#### Wheat and beef prodtucts tend to have some of the highest consumption through out the whole world
+### Wheat and beef prodtucts tend to have some of the highest consumption through out the whole world
 
 ```{r}
 #| fig-height: 22
@@ -48,7 +48,7 @@ ggplot(fc, aes(x = consumption))+
   facet_wrap(~ country)
 ```
 
-#### Western and "first world" country tend to have higher consumption than other countries
+### Western and "first world" country tend to have higher consumption than other countries
 
 ```{r}
 #| fig-height: 20
