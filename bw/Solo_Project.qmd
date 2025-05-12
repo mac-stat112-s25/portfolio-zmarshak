@@ -2,6 +2,7 @@
 title: "Solo Project"
 format: html
 download: false
+echo: false
 ---
 
 ```{r, echo=FALSE, message=FALSE}
