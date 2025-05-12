@@ -321,7 +321,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../bw/bw-uni.html">Best Work</a></li><li class="breadcrumb-item"><a href="../bw/Solo_Project.html"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Solo Project</span></a></li></ol></nav><div class="quarto-title">
 <div class="quarto-title-block"><div><h1 class="title">
 <span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Solo Project</span>
-</h1><button type="button" class="btn code-tools-button dropdown-toggle" id="quarto-code-tools-menu" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi"></i> Code</button><ul class="dropdown-menu dropdown-menu-end" aria-labelelledby="quarto-code-tools-menu"><li><a id="quarto-show-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Show All Code</a></li><li><a id="quarto-hide-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Hide All Code</a></li><li><hr class="dropdown-divider"></li><li><a id="quarto-view-source" class="dropdown-item" href="javascript:void(0)" role="button">View Source</a></li></ul></div></div>
+</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
 </div>
 
 
@@ -683,29 +683,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <div class="cell">
-<details class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="co"># get labor force projections</span></span>
-<span id="cb2-2"><a href="#cb2-2"></a>labor_proj_bycounty <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"~/Documents/Github/portfolio-zmarshak/data/mn-counties_labor_rates.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-</div>
-<div class="cell">
-<details class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="co">#clean labor</span></span>
-<span id="cb3-2"><a href="#cb3-2"></a>labor_clean <span class="ot">&lt;-</span> labor_proj_bycounty <span class="sc">|&gt;</span></span>
-<span id="cb3-3"><a href="#cb3-3"></a>  <span class="fu">select</span>(Geography, Age, <span class="st">`</span><span class="at">2015</span><span class="st">`</span>, <span class="st">`</span><span class="at">2020</span><span class="st">`</span>, <span class="st">`</span><span class="at">2025</span><span class="st">`</span>, <span class="st">`</span><span class="at">2030</span><span class="st">`</span>) <span class="sc">|&gt;</span></span>
-<span id="cb3-4"><a href="#cb3-4"></a>  <span class="fu">group_by</span>(Geography) <span class="sc">|&gt;</span></span>
-<span id="cb3-5"><a href="#cb3-5"></a>  <span class="fu">summarise</span>(<span class="st">`</span><span class="at">2015</span><span class="st">`</span> <span class="ot">=</span> <span class="fu">sum</span>(<span class="st">`</span><span class="at">2015</span><span class="st">`</span>), <span class="st">`</span><span class="at">2020</span><span class="st">`</span> <span class="ot">=</span> <span class="fu">sum</span>(<span class="st">`</span><span class="at">2020</span><span class="st">`</span>), <span class="st">`</span><span class="at">2025</span><span class="st">`</span> <span class="ot">=</span> <span class="fu">sum</span>(<span class="st">`</span><span class="at">2025</span><span class="st">`</span>), <span class="st">`</span><span class="at">2030</span><span class="st">`</span> <span class="ot">=</span>  <span class="fu">sum</span>(<span class="st">`</span><span class="at">2030</span><span class="st">`</span>)) <span class="sc">|&gt;</span></span>
-<span id="cb3-6"><a href="#cb3-6"></a>  <span class="fu">mutate</span>(<span class="at">labor_change =</span> <span class="st">`</span><span class="at">2030</span><span class="st">`</span> <span class="sc">-</span> <span class="st">`</span><span class="at">2020</span><span class="st">`</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-</div>
-<div class="cell">
-<details class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a>MN <span class="sc">|&gt;</span></span>
-<span id="cb4-2"><a href="#cb4-2"></a>  <span class="fu">select</span>(NAME, geometry) <span class="sc">|&gt;</span></span>
-<span id="cb4-3"><a href="#cb4-3"></a>  <span class="fu">left_join</span>(labor_clean, <span class="fu">join_by</span>(NAME <span class="sc">==</span> Geography)) <span class="sc">|&gt;</span></span>
-<span id="cb4-4"><a href="#cb4-4"></a>  <span class="fu">ggplot</span>()<span class="sc">+</span></span>
-<span id="cb4-5"><a href="#cb4-5"></a>  <span class="fu">geom_sf</span>(<span class="fu">aes</span>(<span class="at">fill =</span> labor_change)) <span class="sc">+</span></span>
-<span id="cb4-6"><a href="#cb4-6"></a>  <span class="fu">scale_fill_viridis_c</span>(<span class="at">direction =</span> <span class="sc">-</span><span class="dv">1</span>) <span class="sc">+</span></span>
-<span id="cb4-7"><a href="#cb4-7"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Minnesota Projected Labor Force Participation from 2020 to 2030"</span>, <span class="at">fill =</span> <span class="st">"Projected Change by County"</span>, <span class="at">caption =</span> <span class="st">"Projected Labor Force Participation Changes in Minnesota from 2020 to 2030 by county. (Created by: Zach Marshak April 2024, Data Sources: US Census Bureau, MN State Demographic Center)"</span>) <span class="sc">+</span></span>
-<span id="cb4-8"><a href="#cb4-8"></a>  <span class="fu">theme_void</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details><div class="cell-output-display">
+<div class="cell-output-display">
 <div>
 <figure class="figure"><p><img src="Solo_Project_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" alt="A choropleth map of the change in Labor Force participation from 2020 to 2030 in Minnesota by county. The Twin Cities metro area is expected to see large growth over this period, and the rest of the state is expected to see much smaller growth or even negative growth." width="1728"></p>
 </figure>
@@ -1349,55 +1327,56 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>
   </div>
 </nav><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
-<div class="sourceCode" id="cb5" data-shortcodes="false"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb5-1"><a href="#cb5-1"></a><span class="co">---</span></span>
-<span id="cb5-2"><a href="#cb5-2"></a><span class="an">title:</span><span class="co"> "Solo Project"</span></span>
-<span id="cb5-3"><a href="#cb5-3"></a><span class="an">format:</span><span class="co"> html</span></span>
-<span id="cb5-4"><a href="#cb5-4"></a><span class="an">download:</span><span class="co"> false</span></span>
-<span id="cb5-5"><a href="#cb5-5"></a><span class="co">---</span></span>
-<span id="cb5-6"><a href="#cb5-6"></a></span>
-<span id="cb5-7"><a href="#cb5-7"></a><span class="in">```{r, echo=FALSE, message=FALSE}</span></span>
-<span id="cb5-8"><a href="#cb5-8"></a><span class="in">#install packages</span></span>
-<span id="cb5-9"><a href="#cb5-9"></a><span class="in">library(tigris)</span></span>
-<span id="cb5-10"><a href="#cb5-10"></a><span class="in">library(sf)</span></span>
-<span id="cb5-11"><a href="#cb5-11"></a><span class="in">library(tidyverse)</span></span>
-<span id="cb5-12"><a href="#cb5-12"></a><span class="in">```</span></span>
-<span id="cb5-13"><a href="#cb5-13"></a></span>
-<span id="cb5-14"><a href="#cb5-14"></a><span class="in">```{r, message=FALSE, echo=FALSE}</span></span>
-<span id="cb5-15"><a href="#cb5-15"></a><span class="in"># get mn counties shapefile</span></span>
-<span id="cb5-16"><a href="#cb5-16"></a><span class="in">MN &lt;- counties(state = "Minnesota")</span></span>
-<span id="cb5-17"><a href="#cb5-17"></a><span class="in">```</span></span>
-<span id="cb5-18"><a href="#cb5-18"></a></span>
-<span id="cb5-19"><a href="#cb5-19"></a><span class="in">```{r, message=FALSE}</span></span>
-<span id="cb5-20"><a href="#cb5-20"></a><span class="in"># get labor force projections</span></span>
-<span id="cb5-21"><a href="#cb5-21"></a><span class="in">labor_proj_bycounty &lt;- read_csv("~/Documents/Github/portfolio-zmarshak/data/mn-counties_labor_rates.csv")</span></span>
-<span id="cb5-22"><a href="#cb5-22"></a><span class="in">```</span></span>
-<span id="cb5-23"><a href="#cb5-23"></a></span>
-<span id="cb5-26"><a href="#cb5-26"></a><span class="in">```{r}</span></span>
-<span id="cb5-27"><a href="#cb5-27"></a><span class="co">#clean labor</span></span>
-<span id="cb5-28"><a href="#cb5-28"></a>labor_clean <span class="ot">&lt;-</span> labor_proj_bycounty <span class="sc">|&gt;</span></span>
-<span id="cb5-29"><a href="#cb5-29"></a>  <span class="fu">select</span>(Geography, Age, <span class="st">`</span><span class="at">2015</span><span class="st">`</span>, <span class="st">`</span><span class="at">2020</span><span class="st">`</span>, <span class="st">`</span><span class="at">2025</span><span class="st">`</span>, <span class="st">`</span><span class="at">2030</span><span class="st">`</span>) <span class="sc">|&gt;</span></span>
-<span id="cb5-30"><a href="#cb5-30"></a>  <span class="fu">group_by</span>(Geography) <span class="sc">|&gt;</span></span>
-<span id="cb5-31"><a href="#cb5-31"></a>  <span class="fu">summarise</span>(<span class="st">`</span><span class="at">2015</span><span class="st">`</span> <span class="ot">=</span> <span class="fu">sum</span>(<span class="st">`</span><span class="at">2015</span><span class="st">`</span>), <span class="st">`</span><span class="at">2020</span><span class="st">`</span> <span class="ot">=</span> <span class="fu">sum</span>(<span class="st">`</span><span class="at">2020</span><span class="st">`</span>), <span class="st">`</span><span class="at">2025</span><span class="st">`</span> <span class="ot">=</span> <span class="fu">sum</span>(<span class="st">`</span><span class="at">2025</span><span class="st">`</span>), <span class="st">`</span><span class="at">2030</span><span class="st">`</span> <span class="ot">=</span>  <span class="fu">sum</span>(<span class="st">`</span><span class="at">2030</span><span class="st">`</span>)) <span class="sc">|&gt;</span></span>
-<span id="cb5-32"><a href="#cb5-32"></a>  <span class="fu">mutate</span>(<span class="at">labor_change =</span> <span class="st">`</span><span class="at">2030</span><span class="st">`</span> <span class="sc">-</span> <span class="st">`</span><span class="at">2020</span><span class="st">`</span>)</span>
-<span id="cb5-33"><a href="#cb5-33"></a><span class="in">```</span></span>
-<span id="cb5-34"><a href="#cb5-34"></a></span>
-<span id="cb5-37"><a href="#cb5-37"></a><span class="in">```{r}</span></span>
-<span id="cb5-38"><a href="#cb5-38"></a><span class="co">#| fig-height: 10</span></span>
-<span id="cb5-39"><a href="#cb5-39"></a><span class="co">#| fig-width: 18</span></span>
-<span id="cb5-40"><a href="#cb5-40"></a><span class="co">#| fig-alt: "A choropleth map of the change in Labor Force participation from 2020 to 2030 in Minnesota by county. The Twin Cities metro area is expected to see large growth over this period, and the rest of the state is expected to see much smaller growth or even negative growth."</span></span>
-<span id="cb5-41"><a href="#cb5-41"></a></span>
-<span id="cb5-42"><a href="#cb5-42"></a>MN <span class="sc">|&gt;</span></span>
-<span id="cb5-43"><a href="#cb5-43"></a>  <span class="fu">select</span>(NAME, geometry) <span class="sc">|&gt;</span></span>
-<span id="cb5-44"><a href="#cb5-44"></a>  <span class="fu">left_join</span>(labor_clean, <span class="fu">join_by</span>(NAME <span class="sc">==</span> Geography)) <span class="sc">|&gt;</span></span>
-<span id="cb5-45"><a href="#cb5-45"></a>  <span class="fu">ggplot</span>()<span class="sc">+</span></span>
-<span id="cb5-46"><a href="#cb5-46"></a>  <span class="fu">geom_sf</span>(<span class="fu">aes</span>(<span class="at">fill =</span> labor_change)) <span class="sc">+</span></span>
-<span id="cb5-47"><a href="#cb5-47"></a>  <span class="fu">scale_fill_viridis_c</span>(<span class="at">direction =</span> <span class="sc">-</span><span class="dv">1</span>) <span class="sc">+</span></span>
-<span id="cb5-48"><a href="#cb5-48"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Minnesota Projected Labor Force Participation from 2020 to 2030"</span>, <span class="at">fill =</span> <span class="st">"Projected Change by County"</span>, <span class="at">caption =</span> <span class="st">"Projected Labor Force Participation Changes in Minnesota from 2020 to 2030 by county. (Created by: Zach Marshak April 2024, Data Sources: US Census Bureau, MN State Demographic Center)"</span>) <span class="sc">+</span></span>
-<span id="cb5-49"><a href="#cb5-49"></a>  <span class="fu">theme_void</span>()</span>
-<span id="cb5-50"><a href="#cb5-50"></a><span class="in">```</span></span>
-<span id="cb5-51"><a href="#cb5-51"></a></span>
-<span id="cb5-52"><a href="#cb5-52"></a><span class="fu">## Explaination </span></span>
-<span id="cb5-53"><a href="#cb5-53"></a>In this visualization, I pulled labor force data from the Minnesota State Demographic Center. When visualized, you can see that the majority of counties in the state are expected to see very minimal growth and even shrinking labor force participation however, the counties in the Twin Cities Metro area are expected to see a much larger growth. This could because of growing populations in Twin Cities while there may likely be shrinking populations in the rural areas of the state.</span>
+<div class="sourceCode" id="cb2" data-shortcodes="false"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb2-1"><a href="#cb2-1"></a><span class="co">---</span></span>
+<span id="cb2-2"><a href="#cb2-2"></a><span class="an">title:</span><span class="co"> "Solo Project"</span></span>
+<span id="cb2-3"><a href="#cb2-3"></a><span class="an">format:</span><span class="co"> html</span></span>
+<span id="cb2-4"><a href="#cb2-4"></a><span class="an">download:</span><span class="co"> false</span></span>
+<span id="cb2-5"><a href="#cb2-5"></a><span class="an">echo:</span><span class="co"> false</span></span>
+<span id="cb2-6"><a href="#cb2-6"></a><span class="co">---</span></span>
+<span id="cb2-7"><a href="#cb2-7"></a></span>
+<span id="cb2-8"><a href="#cb2-8"></a><span class="in">```{r, echo=FALSE, message=FALSE}</span></span>
+<span id="cb2-9"><a href="#cb2-9"></a><span class="in">#install packages</span></span>
+<span id="cb2-10"><a href="#cb2-10"></a><span class="in">library(tigris)</span></span>
+<span id="cb2-11"><a href="#cb2-11"></a><span class="in">library(sf)</span></span>
+<span id="cb2-12"><a href="#cb2-12"></a><span class="in">library(tidyverse)</span></span>
+<span id="cb2-13"><a href="#cb2-13"></a><span class="in">```</span></span>
+<span id="cb2-14"><a href="#cb2-14"></a></span>
+<span id="cb2-15"><a href="#cb2-15"></a><span class="in">```{r, message=FALSE, echo=FALSE}</span></span>
+<span id="cb2-16"><a href="#cb2-16"></a><span class="in"># get mn counties shapefile</span></span>
+<span id="cb2-17"><a href="#cb2-17"></a><span class="in">MN &lt;- counties(state = "Minnesota")</span></span>
+<span id="cb2-18"><a href="#cb2-18"></a><span class="in">```</span></span>
+<span id="cb2-19"><a href="#cb2-19"></a></span>
+<span id="cb2-20"><a href="#cb2-20"></a><span class="in">```{r, message=FALSE}</span></span>
+<span id="cb2-21"><a href="#cb2-21"></a><span class="in"># get labor force projections</span></span>
+<span id="cb2-22"><a href="#cb2-22"></a><span class="in">labor_proj_bycounty &lt;- read_csv("~/Documents/Github/portfolio-zmarshak/data/mn-counties_labor_rates.csv")</span></span>
+<span id="cb2-23"><a href="#cb2-23"></a><span class="in">```</span></span>
+<span id="cb2-24"><a href="#cb2-24"></a></span>
+<span id="cb2-27"><a href="#cb2-27"></a><span class="in">```{r}</span></span>
+<span id="cb2-28"><a href="#cb2-28"></a><span class="co">#clean labor</span></span>
+<span id="cb2-29"><a href="#cb2-29"></a>labor_clean <span class="ot">&lt;-</span> labor_proj_bycounty <span class="sc">|&gt;</span></span>
+<span id="cb2-30"><a href="#cb2-30"></a>  <span class="fu">select</span>(Geography, Age, <span class="st">`</span><span class="at">2015</span><span class="st">`</span>, <span class="st">`</span><span class="at">2020</span><span class="st">`</span>, <span class="st">`</span><span class="at">2025</span><span class="st">`</span>, <span class="st">`</span><span class="at">2030</span><span class="st">`</span>) <span class="sc">|&gt;</span></span>
+<span id="cb2-31"><a href="#cb2-31"></a>  <span class="fu">group_by</span>(Geography) <span class="sc">|&gt;</span></span>
+<span id="cb2-32"><a href="#cb2-32"></a>  <span class="fu">summarise</span>(<span class="st">`</span><span class="at">2015</span><span class="st">`</span> <span class="ot">=</span> <span class="fu">sum</span>(<span class="st">`</span><span class="at">2015</span><span class="st">`</span>), <span class="st">`</span><span class="at">2020</span><span class="st">`</span> <span class="ot">=</span> <span class="fu">sum</span>(<span class="st">`</span><span class="at">2020</span><span class="st">`</span>), <span class="st">`</span><span class="at">2025</span><span class="st">`</span> <span class="ot">=</span> <span class="fu">sum</span>(<span class="st">`</span><span class="at">2025</span><span class="st">`</span>), <span class="st">`</span><span class="at">2030</span><span class="st">`</span> <span class="ot">=</span>  <span class="fu">sum</span>(<span class="st">`</span><span class="at">2030</span><span class="st">`</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb2-33"><a href="#cb2-33"></a>  <span class="fu">mutate</span>(<span class="at">labor_change =</span> <span class="st">`</span><span class="at">2030</span><span class="st">`</span> <span class="sc">-</span> <span class="st">`</span><span class="at">2020</span><span class="st">`</span>)</span>
+<span id="cb2-34"><a href="#cb2-34"></a><span class="in">```</span></span>
+<span id="cb2-35"><a href="#cb2-35"></a></span>
+<span id="cb2-38"><a href="#cb2-38"></a><span class="in">```{r}</span></span>
+<span id="cb2-39"><a href="#cb2-39"></a><span class="co">#| fig-height: 10</span></span>
+<span id="cb2-40"><a href="#cb2-40"></a><span class="co">#| fig-width: 18</span></span>
+<span id="cb2-41"><a href="#cb2-41"></a><span class="co">#| fig-alt: "A choropleth map of the change in Labor Force participation from 2020 to 2030 in Minnesota by county. The Twin Cities metro area is expected to see large growth over this period, and the rest of the state is expected to see much smaller growth or even negative growth."</span></span>
+<span id="cb2-42"><a href="#cb2-42"></a></span>
+<span id="cb2-43"><a href="#cb2-43"></a>MN <span class="sc">|&gt;</span></span>
+<span id="cb2-44"><a href="#cb2-44"></a>  <span class="fu">select</span>(NAME, geometry) <span class="sc">|&gt;</span></span>
+<span id="cb2-45"><a href="#cb2-45"></a>  <span class="fu">left_join</span>(labor_clean, <span class="fu">join_by</span>(NAME <span class="sc">==</span> Geography)) <span class="sc">|&gt;</span></span>
+<span id="cb2-46"><a href="#cb2-46"></a>  <span class="fu">ggplot</span>()<span class="sc">+</span></span>
+<span id="cb2-47"><a href="#cb2-47"></a>  <span class="fu">geom_sf</span>(<span class="fu">aes</span>(<span class="at">fill =</span> labor_change)) <span class="sc">+</span></span>
+<span id="cb2-48"><a href="#cb2-48"></a>  <span class="fu">scale_fill_viridis_c</span>(<span class="at">direction =</span> <span class="sc">-</span><span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb2-49"><a href="#cb2-49"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Minnesota Projected Labor Force Participation from 2020 to 2030"</span>, <span class="at">fill =</span> <span class="st">"Projected Change by County"</span>, <span class="at">caption =</span> <span class="st">"Projected Labor Force Participation Changes in Minnesota from 2020 to 2030 by county. (Created by: Zach Marshak April 2024, Data Sources: US Census Bureau, MN State Demographic Center)"</span>) <span class="sc">+</span></span>
+<span id="cb2-50"><a href="#cb2-50"></a>  <span class="fu">theme_void</span>()</span>
+<span id="cb2-51"><a href="#cb2-51"></a><span class="in">```</span></span>
+<span id="cb2-52"><a href="#cb2-52"></a></span>
+<span id="cb2-53"><a href="#cb2-53"></a><span class="fu">## Explaination </span></span>
+<span id="cb2-54"><a href="#cb2-54"></a>In this visualization, I pulled labor force data from the Minnesota State Demographic Center. When visualized, you can see that the majority of counties in the state are expected to see very minimal growth and even shrinking labor force participation however, the counties in the Twin Cities Metro area are expected to see a much larger growth. This could because of growing populations in Twin Cities while there may likely be shrinking populations in the rural areas of the state.</span>
 </code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
