@@ -314,9 +314,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">Table of contents</h2>
    
   <ul>
-<li><a href="#for-the-variables-of-food-category-and-country-we-dont-learn-too-much-other-than-each-variable-has-an-equal-number-of-observations.-however-the-density-plot-of-consumption-provides-a-range-of-the-consumption-leves-as-well-as-the-overall-trend-which-average-consumpotion-being-aroun-30-kg-per-person-a-year." id="toc-for-the-variables-of-food-category-and-country-we-dont-learn-too-much-other-than-each-variable-has-an-equal-number-of-observations.-however-the-density-plot-of-consumption-provides-a-range-of-the-consumption-leves-as-well-as-the-overall-trend-which-average-consumpotion-being-aroun-30-kg-per-person-a-year." class="nav-link active" data-scroll-target="#for-the-variables-of-food-category-and-country-we-dont-learn-too-much-other-than-each-variable-has-an-equal-number-of-observations.-however-the-density-plot-of-consumption-provides-a-range-of-the-consumption-leves-as-well-as-the-overall-trend-which-average-consumpotion-being-aroun-30-kg-per-person-a-year."><span class="header-section-number">6.0.1</span> For the variables of Food Category and Country, we don’t learn too much other than each variable has an equal number of observations. However, the density plot of consumption provides a range of the consumption leves as well as the overall trend which average consumpotion being aroun 30 kg per person a year.</a></li>
-  <li><a href="#wheat-and-beef-prodtucts-tend-to-have-some-of-the-highest-consumption-through-out-the-whole-world" id="toc-wheat-and-beef-prodtucts-tend-to-have-some-of-the-highest-consumption-through-out-the-whole-world" class="nav-link" data-scroll-target="#wheat-and-beef-prodtucts-tend-to-have-some-of-the-highest-consumption-through-out-the-whole-world"><span class="header-section-number">6.0.2</span> Wheat and beef prodtucts tend to have some of the highest consumption through out the whole world</a></li>
-  <li><a href="#western-and-first-world-country-tend-to-have-higher-consumption-than-other-countries" id="toc-western-and-first-world-country-tend-to-have-higher-consumption-than-other-countries" class="nav-link" data-scroll-target="#western-and-first-world-country-tend-to-have-higher-consumption-than-other-countries"><span class="header-section-number">6.0.3</span> Western and “first world” country tend to have higher consumption than other countries</a></li>
+<li><a href="#additonal-questions" id="toc-additonal-questions" class="nav-link active" data-scroll-target="#additonal-questions"><span class="header-section-number">6.1</span> Additonal questions</a></li>
   </ul></nav>
     </div>
 <!-- main -->
@@ -339,38 +337,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </header><div class="cell">
 <details class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="co">#understand variables individually</span></span>
-<span id="cb1-2"><a href="#cb1-2"></a><span class="fu">ggplot</span>(fc, <span class="fu">aes</span>(<span class="at">x =</span> country)) <span class="sc">+</span></span>
-<span id="cb1-3"><a href="#cb1-3"></a>  <span class="fu">geom_bar</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-2"><a href="#cb1-2"></a><span class="fu">ggplot</span>(fc, <span class="fu">aes</span>(<span class="at">x =</span> consumption)) <span class="sc">+</span></span>
+<span id="cb1-3"><a href="#cb1-3"></a>  <span class="fu">geom_density</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details><div class="cell-output-display">
 <div>
 <figure class="figure"><p><img src="Exam_1_vis_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="1248"></p>
 </figure>
 </div>
 </div>
-<details class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="fu">ggplot</span>(fc, <span class="fu">aes</span>(<span class="at">x =</span> consumption)) <span class="sc">+</span></span>
-<span id="cb2-2"><a href="#cb2-2"></a>  <span class="fu">geom_density</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details><div class="cell-output-display">
-<div>
-<figure class="figure"><p><img src="Exam_1_vis_files/figure-html/unnamed-chunk-3-2.png" class="img-fluid figure-img" width="1248"></p>
-</figure>
 </div>
-</div>
-<details class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="fu">ggplot</span>(fc, <span class="fu">aes</span>(<span class="at">x =</span> food_category)) <span class="sc">+</span></span>
-<span id="cb3-2"><a href="#cb3-2"></a>  <span class="fu">geom_bar</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details><div class="cell-output-display">
-<div>
-<figure class="figure"><p><img src="Exam_1_vis_files/figure-html/unnamed-chunk-3-3.png" class="img-fluid figure-img" width="1248"></p>
-</figure>
-</div>
-</div>
-</div>
-<section id="for-the-variables-of-food-category-and-country-we-dont-learn-too-much-other-than-each-variable-has-an-equal-number-of-observations.-however-the-density-plot-of-consumption-provides-a-range-of-the-consumption-leves-as-well-as-the-overall-trend-which-average-consumpotion-being-aroun-30-kg-per-person-a-year." class="level3" data-number="6.0.1"><h3 data-number="6.0.1" class="anchored" data-anchor-id="for-the-variables-of-food-category-and-country-we-dont-learn-too-much-other-than-each-variable-has-an-equal-number-of-observations.-however-the-density-plot-of-consumption-provides-a-range-of-the-consumption-leves-as-well-as-the-overall-trend-which-average-consumpotion-being-aroun-30-kg-per-person-a-year.">
-<span class="header-section-number">6.0.1</span> For the variables of Food Category and Country, we don’t learn too much other than each variable has an equal number of observations. However, the density plot of consumption provides a range of the consumption leves as well as the overall trend which average consumpotion being aroun 30 kg per person a year.</h3>
+<p>For the variables of Food Category and Country, we don’t learn too much other than each variable has an equal number of observations. However, the density plot of consumption provides a range of the consumption leves as well as the overall trend which average consumpotion being aroun 30 kg per person a year.</p>
 <div class="cell">
-<details class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a><span class="co">#consumption by food category</span></span>
-<span id="cb4-2"><a href="#cb4-2"></a><span class="fu">ggplot</span>(fc, <span class="fu">aes</span>(<span class="at">x =</span> consumption, <span class="at">fill =</span> food_category)) <span class="sc">+</span></span>
-<span id="cb4-3"><a href="#cb4-3"></a>  <span class="fu">geom_histogram</span>() <span class="sc">+</span></span>
-<span id="cb4-4"><a href="#cb4-4"></a>  <span class="fu">scale_fill_viridis_d</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<details class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="co">#consumption by food category</span></span>
+<span id="cb2-2"><a href="#cb2-2"></a><span class="fu">ggplot</span>(fc, <span class="fu">aes</span>(<span class="at">x =</span> consumption, <span class="at">fill =</span> food_category)) <span class="sc">+</span></span>
+<span id="cb2-3"><a href="#cb2-3"></a>  <span class="fu">geom_histogram</span>() <span class="sc">+</span></span>
+<span id="cb2-4"><a href="#cb2-4"></a>  <span class="fu">scale_fill_viridis_d</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details><div class="cell-output-display">
 <div>
 <figure class="figure"><p><img src="Exam_1_vis_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></p>
@@ -378,12 +359,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-</section><section id="wheat-and-beef-prodtucts-tend-to-have-some-of-the-highest-consumption-through-out-the-whole-world" class="level3" data-number="6.0.2"><h3 data-number="6.0.2" class="anchored" data-anchor-id="wheat-and-beef-prodtucts-tend-to-have-some-of-the-highest-consumption-through-out-the-whole-world">
-<span class="header-section-number">6.0.2</span> Wheat and beef prodtucts tend to have some of the highest consumption through out the whole world</h3>
+<p>Wheat and beef products tend to have some of the highest consumption through out the whole world</p>
 <div class="cell">
-<details class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="fu">ggplot</span>(fc, <span class="fu">aes</span>(<span class="at">x =</span> consumption))<span class="sc">+</span></span>
-<span id="cb5-2"><a href="#cb5-2"></a>  <span class="fu">geom_histogram</span>() <span class="sc">+</span></span>
-<span id="cb5-3"><a href="#cb5-3"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> country)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<details class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="fu">ggplot</span>(fc, <span class="fu">aes</span>(<span class="at">x =</span> consumption))<span class="sc">+</span></span>
+<span id="cb3-2"><a href="#cb3-2"></a>  <span class="fu">geom_histogram</span>() <span class="sc">+</span></span>
+<span id="cb3-3"><a href="#cb3-3"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> country)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details><div class="cell-output-display">
 <div>
 <figure class="figure"><p><img src="Exam_1_vis_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="1440"></p>
@@ -391,15 +371,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-</section><section id="western-and-first-world-country-tend-to-have-higher-consumption-than-other-countries" class="level3" data-number="6.0.3"><h3 data-number="6.0.3" class="anchored" data-anchor-id="western-and-first-world-country-tend-to-have-higher-consumption-than-other-countries">
-<span class="header-section-number">6.0.3</span> Western and “first world” country tend to have higher consumption than other countries</h3>
+<p>Western and “first world” country tend to have higher consumption than other countries</p>
 <div class="cell">
-<details class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="fu">ggplot</span>(fc, <span class="fu">aes</span>(<span class="at">x =</span> consumption, <span class="at">fill =</span> food_category)) <span class="sc">+</span></span>
-<span id="cb6-2"><a href="#cb6-2"></a>  <span class="fu">geom_histogram</span>(<span class="at">position =</span> <span class="st">"fill"</span>) <span class="sc">+</span></span>
-<span id="cb6-3"><a href="#cb6-3"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> country) <span class="sc">+</span></span>
-<span id="cb6-4"><a href="#cb6-4"></a>  <span class="fu">scale_fill_viridis_d</span>() <span class="sc">+</span></span>
-<span id="cb6-5"><a href="#cb6-5"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Consumption"</span>, <span class="at">title =</span> <span class="st">"Conusumption Throughout the World"</span>, <span class="at">fill =</span> <span class="st">"Food Category"</span>) <span class="sc">+</span></span>
-<span id="cb6-6"><a href="#cb6-6"></a>  <span class="fu">theme</span>(<span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">12</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<details class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a><span class="fu">ggplot</span>(fc, <span class="fu">aes</span>(<span class="at">x =</span> consumption, <span class="at">fill =</span> food_category)) <span class="sc">+</span></span>
+<span id="cb4-2"><a href="#cb4-2"></a>  <span class="fu">geom_histogram</span>(<span class="at">position =</span> <span class="st">"fill"</span>) <span class="sc">+</span></span>
+<span id="cb4-3"><a href="#cb4-3"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> country) <span class="sc">+</span></span>
+<span id="cb4-4"><a href="#cb4-4"></a>  <span class="fu">scale_fill_viridis_d</span>() <span class="sc">+</span></span>
+<span id="cb4-5"><a href="#cb4-5"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Consumption"</span>, <span class="at">title =</span> <span class="st">"Conusumption Throughout the World"</span>, <span class="at">fill =</span> <span class="st">"Food Category"</span>) <span class="sc">+</span></span>
+<span id="cb4-6"><a href="#cb4-6"></a>  <span class="fu">theme</span>(<span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">12</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details><div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure"><p><img src="Exam_1_vis_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" alt="Histograms, with the x axis as consumption by kilograms per person per year, facted by country, and filled by food category(Beef, eggs, fish, lam &amp; goat, Dairy, Prok, poultry, rice, soybeans, and wheat)" width="1920"></p>
@@ -410,8 +389,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ul>
 <li>With so much data, it is really hard to tell, but by food category, consumption really depends on how a typical diet in each country is, and I still think the previous observation that Western countries typically have higher overall consumption holds true</li>
 </ul>
-<section id="additonal-questions" class="level4" data-number="6.0.3.1"><h4 data-number="6.0.3.1" class="anchored" data-anchor-id="additonal-questions">
-<span class="header-section-number">6.0.3.1</span> Additonal questions</h4>
+<div class="cell">
+<details class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="fu">ggplot</span>(fc, <span class="fu">aes</span>(<span class="at">x =</span> country, <span class="at">y =</span> consumption)) <span class="sc">+</span></span>
+<span id="cb5-2"><a href="#cb5-2"></a>  <span class="fu">geom_col</span>() <span class="sc">+</span></span>
+<span id="cb5-3"><a href="#cb5-3"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>food_category)<span class="sc">+</span></span>
+<span id="cb5-4"><a href="#cb5-4"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">50</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details><div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="Exam_1_vis_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="4800"></p>
+</figure>
+</div>
+</div>
+</div>
+<section id="additonal-questions" class="level2" data-number="6.1"><h2 data-number="6.1" class="anchored" data-anchor-id="additonal-questions">
+<span class="header-section-number">6.1</span> Additonal questions</h2>
 <ul>
 <li>What does Co2 emissions look like by food category in each country?</li>
 <li>What do Co2 emissions by consumption of each food category look like?</li>
@@ -420,7 +411,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <!-- -->
 
-</section></section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
+</section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
     const mode = bsSheetEl.getAttribute("data-mode");
@@ -1050,78 +1041,80 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>
   </div>
 </nav><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
-<div class="sourceCode" id="cb7" data-shortcodes="false"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb7-1"><a href="#cb7-1"></a><span class="co">---</span></span>
-<span id="cb7-2"><a href="#cb7-2"></a><span class="an">title:</span><span class="co"> "Exam 1 visualization"</span></span>
-<span id="cb7-3"><a href="#cb7-3"></a><span class="an">format:</span><span class="co"> html</span></span>
-<span id="cb7-4"><a href="#cb7-4"></a><span class="co">---</span></span>
-<span id="cb7-5"><a href="#cb7-5"></a></span>
-<span id="cb7-6"><a href="#cb7-6"></a><span class="in">```{r, echo=FALSE, message=FALSE}</span></span>
-<span id="cb7-7"><a href="#cb7-7"></a><span class="in">#load packages</span></span>
-<span id="cb7-8"><a href="#cb7-8"></a><span class="in">library(tidyverse)</span></span>
-<span id="cb7-9"><a href="#cb7-9"></a><span class="in">library(tidytuesdayR)</span></span>
-<span id="cb7-10"><a href="#cb7-10"></a><span class="in">library(gplots)</span></span>
-<span id="cb7-11"><a href="#cb7-11"></a><span class="in">```</span></span>
-<span id="cb7-12"><a href="#cb7-12"></a></span>
-<span id="cb7-13"><a href="#cb7-13"></a><span class="in">```{r, echo=FALSE, message=FALSE}</span></span>
-<span id="cb7-14"><a href="#cb7-14"></a><span class="in">#get data</span></span>
-<span id="cb7-15"><a href="#cb7-15"></a><span class="in">tuesdata &lt;- tt_load('2020-02-18')</span></span>
-<span id="cb7-16"><a href="#cb7-16"></a><span class="in">fc &lt;- tuesdata$food_consumption</span></span>
-<span id="cb7-17"><a href="#cb7-17"></a><span class="in">```</span></span>
-<span id="cb7-18"><a href="#cb7-18"></a></span>
-<span id="cb7-21"><a href="#cb7-21"></a><span class="in">```{r}</span></span>
-<span id="cb7-22"><a href="#cb7-22"></a><span class="co">#| fig-width: 13</span></span>
-<span id="cb7-23"><a href="#cb7-23"></a><span class="co">#understand variables individually</span></span>
-<span id="cb7-24"><a href="#cb7-24"></a><span class="fu">ggplot</span>(fc, <span class="fu">aes</span>(<span class="at">x =</span> country)) <span class="sc">+</span></span>
-<span id="cb7-25"><a href="#cb7-25"></a>  <span class="fu">geom_bar</span>()</span>
-<span id="cb7-26"><a href="#cb7-26"></a></span>
-<span id="cb7-27"><a href="#cb7-27"></a><span class="fu">ggplot</span>(fc, <span class="fu">aes</span>(<span class="at">x =</span> consumption)) <span class="sc">+</span></span>
-<span id="cb7-28"><a href="#cb7-28"></a>  <span class="fu">geom_density</span>()</span>
-<span id="cb7-29"><a href="#cb7-29"></a></span>
-<span id="cb7-30"><a href="#cb7-30"></a><span class="fu">ggplot</span>(fc, <span class="fu">aes</span>(<span class="at">x =</span> food_category)) <span class="sc">+</span></span>
-<span id="cb7-31"><a href="#cb7-31"></a>  <span class="fu">geom_bar</span>()</span>
-<span id="cb7-32"><a href="#cb7-32"></a><span class="in">```</span></span>
-<span id="cb7-33"><a href="#cb7-33"></a></span>
-<span id="cb7-34"><a href="#cb7-34"></a><span class="fu">### For the variables of Food Category and Country, we don't learn too much other than each variable has an equal number of observations. However, the density plot of consumption provides a range of the consumption leves as well as the overall trend which average consumpotion being aroun 30 kg per person a year.</span></span>
-<span id="cb7-35"><a href="#cb7-35"></a></span>
-<span id="cb7-38"><a href="#cb7-38"></a><span class="in">```{r}</span></span>
-<span id="cb7-39"><a href="#cb7-39"></a><span class="co">#consumption by food category</span></span>
-<span id="cb7-40"><a href="#cb7-40"></a><span class="fu">ggplot</span>(fc, <span class="fu">aes</span>(<span class="at">x =</span> consumption, <span class="at">fill =</span> food_category)) <span class="sc">+</span></span>
-<span id="cb7-41"><a href="#cb7-41"></a>  <span class="fu">geom_histogram</span>() <span class="sc">+</span></span>
-<span id="cb7-42"><a href="#cb7-42"></a>  <span class="fu">scale_fill_viridis_d</span>()</span>
-<span id="cb7-43"><a href="#cb7-43"></a><span class="in">```</span></span>
-<span id="cb7-44"><a href="#cb7-44"></a><span class="fu">### Wheat and beef prodtucts tend to have some of the highest consumption through out the whole world</span></span>
-<span id="cb7-45"><a href="#cb7-45"></a></span>
-<span id="cb7-48"><a href="#cb7-48"></a><span class="in">```{r}</span></span>
-<span id="cb7-49"><a href="#cb7-49"></a><span class="co">#| fig-height: 22</span></span>
-<span id="cb7-50"><a href="#cb7-50"></a><span class="co">#| fig-width: 15</span></span>
-<span id="cb7-51"><a href="#cb7-51"></a></span>
-<span id="cb7-52"><a href="#cb7-52"></a><span class="fu">ggplot</span>(fc, <span class="fu">aes</span>(<span class="at">x =</span> consumption))<span class="sc">+</span></span>
-<span id="cb7-53"><a href="#cb7-53"></a>  <span class="fu">geom_histogram</span>() <span class="sc">+</span></span>
-<span id="cb7-54"><a href="#cb7-54"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> country)</span>
-<span id="cb7-55"><a href="#cb7-55"></a><span class="in">```</span></span>
-<span id="cb7-56"><a href="#cb7-56"></a></span>
-<span id="cb7-57"><a href="#cb7-57"></a><span class="fu">### Western and "first world" country tend to have higher consumption than other countries</span></span>
-<span id="cb7-58"><a href="#cb7-58"></a></span>
-<span id="cb7-61"><a href="#cb7-61"></a><span class="in">```{r}</span></span>
-<span id="cb7-62"><a href="#cb7-62"></a><span class="co">#| fig-height: 20</span></span>
-<span id="cb7-63"><a href="#cb7-63"></a><span class="co">#| fig-width: 20</span></span>
-<span id="cb7-64"><a href="#cb7-64"></a><span class="co">#| fig-cap: "Food Consumption by country by food category (Zach Marshak, March 2025, data source: Nu3"</span></span>
-<span id="cb7-65"><a href="#cb7-65"></a><span class="co">#| fig-alt: "Histograms, with the x axis as consumption by kilograms per person per year, facted by country, and filled by food category(Beef, eggs, fish, lam &amp; goat, Dairy, Prok, poultry, rice, soybeans, and wheat)"</span></span>
-<span id="cb7-66"><a href="#cb7-66"></a></span>
-<span id="cb7-67"><a href="#cb7-67"></a><span class="fu">ggplot</span>(fc, <span class="fu">aes</span>(<span class="at">x =</span> consumption, <span class="at">fill =</span> food_category)) <span class="sc">+</span></span>
-<span id="cb7-68"><a href="#cb7-68"></a>  <span class="fu">geom_histogram</span>(<span class="at">position =</span> <span class="st">"fill"</span>) <span class="sc">+</span></span>
-<span id="cb7-69"><a href="#cb7-69"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> country) <span class="sc">+</span></span>
-<span id="cb7-70"><a href="#cb7-70"></a>  <span class="fu">scale_fill_viridis_d</span>() <span class="sc">+</span></span>
-<span id="cb7-71"><a href="#cb7-71"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Consumption"</span>, <span class="at">title =</span> <span class="st">"Conusumption Throughout the World"</span>, <span class="at">fill =</span> <span class="st">"Food Category"</span>) <span class="sc">+</span></span>
-<span id="cb7-72"><a href="#cb7-72"></a>  <span class="fu">theme</span>(<span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">12</span>))</span>
-<span id="cb7-73"><a href="#cb7-73"></a><span class="in">```</span></span>
-<span id="cb7-74"><a href="#cb7-74"></a></span>
-<span id="cb7-75"><a href="#cb7-75"></a><span class="ss">-  </span>With so much data, it is really hard to tell, but by food category, consumption really depends on how a typical diet in each country is, and I still think the previous observation that Western countries typically have higher overall consumption holds true</span>
-<span id="cb7-76"><a href="#cb7-76"></a></span>
-<span id="cb7-77"><a href="#cb7-77"></a><span class="fu">#### Additonal questions</span></span>
-<span id="cb7-78"><a href="#cb7-78"></a></span>
-<span id="cb7-79"><a href="#cb7-79"></a><span class="ss">- </span>What does Co2 emissions look like by food category in each country?</span>
-<span id="cb7-80"><a href="#cb7-80"></a><span class="ss">- </span>What do Co2 emissions by consumption of each food category look like?</span>
+<div class="sourceCode" id="cb6" data-shortcodes="false"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb6-1"><a href="#cb6-1"></a><span class="co">---</span></span>
+<span id="cb6-2"><a href="#cb6-2"></a><span class="an">title:</span><span class="co"> "Exam 1 visualization"</span></span>
+<span id="cb6-3"><a href="#cb6-3"></a><span class="an">format:</span><span class="co"> html</span></span>
+<span id="cb6-4"><a href="#cb6-4"></a><span class="co">---</span></span>
+<span id="cb6-5"><a href="#cb6-5"></a></span>
+<span id="cb6-6"><a href="#cb6-6"></a><span class="in">```{r, echo=FALSE, message=FALSE}</span></span>
+<span id="cb6-7"><a href="#cb6-7"></a><span class="in">#load packages</span></span>
+<span id="cb6-8"><a href="#cb6-8"></a><span class="in">library(tidyverse)</span></span>
+<span id="cb6-9"><a href="#cb6-9"></a><span class="in">library(tidytuesdayR)</span></span>
+<span id="cb6-10"><a href="#cb6-10"></a><span class="in">library(gplots)</span></span>
+<span id="cb6-11"><a href="#cb6-11"></a><span class="in">```</span></span>
+<span id="cb6-12"><a href="#cb6-12"></a></span>
+<span id="cb6-13"><a href="#cb6-13"></a><span class="in">```{r, echo=FALSE, message=FALSE}</span></span>
+<span id="cb6-14"><a href="#cb6-14"></a><span class="in">#get data</span></span>
+<span id="cb6-15"><a href="#cb6-15"></a><span class="in">tuesdata &lt;- tt_load('2020-02-18')</span></span>
+<span id="cb6-16"><a href="#cb6-16"></a><span class="in">fc &lt;- tuesdata$food_consumption</span></span>
+<span id="cb6-17"><a href="#cb6-17"></a><span class="in">```</span></span>
+<span id="cb6-18"><a href="#cb6-18"></a></span>
+<span id="cb6-21"><a href="#cb6-21"></a><span class="in">```{r}</span></span>
+<span id="cb6-22"><a href="#cb6-22"></a><span class="co">#| fig-width: 13</span></span>
+<span id="cb6-23"><a href="#cb6-23"></a><span class="co">#understand variables individually</span></span>
+<span id="cb6-24"><a href="#cb6-24"></a><span class="fu">ggplot</span>(fc, <span class="fu">aes</span>(<span class="at">x =</span> consumption)) <span class="sc">+</span></span>
+<span id="cb6-25"><a href="#cb6-25"></a>  <span class="fu">geom_density</span>()</span>
+<span id="cb6-26"><a href="#cb6-26"></a><span class="in">```</span></span>
+<span id="cb6-27"><a href="#cb6-27"></a></span>
+<span id="cb6-28"><a href="#cb6-28"></a>For the variables of Food Category and Country, we don't learn too much other than each variable has an equal number of observations. However, the density plot of consumption provides a range of the consumption leves as well as the overall trend which average consumpotion being aroun 30 kg per person a year.</span>
+<span id="cb6-29"><a href="#cb6-29"></a></span>
+<span id="cb6-32"><a href="#cb6-32"></a><span class="in">```{r}</span></span>
+<span id="cb6-33"><a href="#cb6-33"></a><span class="co">#consumption by food category</span></span>
+<span id="cb6-34"><a href="#cb6-34"></a><span class="fu">ggplot</span>(fc, <span class="fu">aes</span>(<span class="at">x =</span> consumption, <span class="at">fill =</span> food_category)) <span class="sc">+</span></span>
+<span id="cb6-35"><a href="#cb6-35"></a>  <span class="fu">geom_histogram</span>() <span class="sc">+</span></span>
+<span id="cb6-36"><a href="#cb6-36"></a>  <span class="fu">scale_fill_viridis_d</span>()</span>
+<span id="cb6-37"><a href="#cb6-37"></a><span class="in">```</span></span>
+<span id="cb6-38"><a href="#cb6-38"></a>Wheat and beef products tend to have some of the highest consumption through out the whole world</span>
+<span id="cb6-39"><a href="#cb6-39"></a></span>
+<span id="cb6-42"><a href="#cb6-42"></a><span class="in">```{r}</span></span>
+<span id="cb6-43"><a href="#cb6-43"></a><span class="co">#| fig-height: 22</span></span>
+<span id="cb6-44"><a href="#cb6-44"></a><span class="co">#| fig-width: 15</span></span>
+<span id="cb6-45"><a href="#cb6-45"></a></span>
+<span id="cb6-46"><a href="#cb6-46"></a><span class="fu">ggplot</span>(fc, <span class="fu">aes</span>(<span class="at">x =</span> consumption))<span class="sc">+</span></span>
+<span id="cb6-47"><a href="#cb6-47"></a>  <span class="fu">geom_histogram</span>() <span class="sc">+</span></span>
+<span id="cb6-48"><a href="#cb6-48"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> country)</span>
+<span id="cb6-49"><a href="#cb6-49"></a><span class="in">```</span></span>
+<span id="cb6-50"><a href="#cb6-50"></a></span>
+<span id="cb6-51"><a href="#cb6-51"></a>Western and "first world" country tend to have higher consumption than other countries</span>
+<span id="cb6-52"><a href="#cb6-52"></a></span>
+<span id="cb6-55"><a href="#cb6-55"></a><span class="in">```{r}</span></span>
+<span id="cb6-56"><a href="#cb6-56"></a><span class="co">#| fig-height: 20</span></span>
+<span id="cb6-57"><a href="#cb6-57"></a><span class="co">#| fig-width: 20</span></span>
+<span id="cb6-58"><a href="#cb6-58"></a><span class="co">#| fig-cap: "Food Consumption by country by food category (Zach Marshak, March 2025, data source: Nu3"</span></span>
+<span id="cb6-59"><a href="#cb6-59"></a><span class="co">#| fig-alt: "Histograms, with the x axis as consumption by kilograms per person per year, facted by country, and filled by food category(Beef, eggs, fish, lam &amp; goat, Dairy, Prok, poultry, rice, soybeans, and wheat)"</span></span>
+<span id="cb6-60"><a href="#cb6-60"></a></span>
+<span id="cb6-61"><a href="#cb6-61"></a><span class="fu">ggplot</span>(fc, <span class="fu">aes</span>(<span class="at">x =</span> consumption, <span class="at">fill =</span> food_category)) <span class="sc">+</span></span>
+<span id="cb6-62"><a href="#cb6-62"></a>  <span class="fu">geom_histogram</span>(<span class="at">position =</span> <span class="st">"fill"</span>) <span class="sc">+</span></span>
+<span id="cb6-63"><a href="#cb6-63"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> country) <span class="sc">+</span></span>
+<span id="cb6-64"><a href="#cb6-64"></a>  <span class="fu">scale_fill_viridis_d</span>() <span class="sc">+</span></span>
+<span id="cb6-65"><a href="#cb6-65"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Consumption"</span>, <span class="at">title =</span> <span class="st">"Conusumption Throughout the World"</span>, <span class="at">fill =</span> <span class="st">"Food Category"</span>) <span class="sc">+</span></span>
+<span id="cb6-66"><a href="#cb6-66"></a>  <span class="fu">theme</span>(<span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">12</span>))</span>
+<span id="cb6-67"><a href="#cb6-67"></a><span class="in">```</span></span>
+<span id="cb6-68"><a href="#cb6-68"></a></span>
+<span id="cb6-69"><a href="#cb6-69"></a><span class="ss">-  </span>With so much data, it is really hard to tell, but by food category, consumption really depends on how a typical diet in each country is, and I still think the previous observation that Western countries typically have higher overall consumption holds true</span>
+<span id="cb6-70"><a href="#cb6-70"></a></span>
+<span id="cb6-73"><a href="#cb6-73"></a><span class="in">```{r}</span></span>
+<span id="cb6-74"><a href="#cb6-74"></a><span class="co">#| fig-height: 20</span></span>
+<span id="cb6-75"><a href="#cb6-75"></a><span class="co">#| fig-width: 50</span></span>
+<span id="cb6-76"><a href="#cb6-76"></a><span class="fu">ggplot</span>(fc, <span class="fu">aes</span>(<span class="at">x =</span> country, <span class="at">y =</span> consumption)) <span class="sc">+</span></span>
+<span id="cb6-77"><a href="#cb6-77"></a>  <span class="fu">geom_col</span>() <span class="sc">+</span></span>
+<span id="cb6-78"><a href="#cb6-78"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>food_category)<span class="sc">+</span></span>
+<span id="cb6-79"><a href="#cb6-79"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">50</span>)</span>
+<span id="cb6-80"><a href="#cb6-80"></a><span class="in">```</span></span>
+<span id="cb6-81"><a href="#cb6-81"></a><span class="fu">## Additonal questions</span></span>
+<span id="cb6-82"><a href="#cb6-82"></a></span>
+<span id="cb6-83"><a href="#cb6-83"></a><span class="ss">- </span>What does Co2 emissions look like by food category in each country?</span>
+<span id="cb6-84"><a href="#cb6-84"></a><span class="ss">- </span>What do Co2 emissions by consumption of each food category look like?</span>
 </code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
